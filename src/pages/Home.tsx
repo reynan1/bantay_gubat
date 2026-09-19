@@ -49,8 +49,9 @@ function Home() {
         description:
           "Unauthorized tree cutting damages natural forests and threatens protected forest resources.",
         details:[
-          `Illegal logging refers to the unauthorized cutting or clearing of trees and forest resources without the required government approval. In the Mount Domadoway case, the Mines and Geosciences Bureau (MGB) confirmed that tree cutting occurred within a mining contract area and described the forestland clearing as not government approved.`,
-          `In Palawan, natural forests and other ecologically important areas receive legal protection. The Strategic Environmental Plan for Palawan (SEP) established a province-wide commercial logging ban and identifies natural forests, high-elevation areas, endangered-species habitats, and other ecologically important locations as protected areas where most activities are restricted.`,
+          `Illegal tree cutting has been documented near Mount Domadoway in southern Palawan. The affected location is within a 5,149-hectare mining contract area held by Pyramid Hill Mining and Industrial Corporation. The Mines and Geosciences Bureau (MGB) confirmed that illegal tree cutting occurred within this area and stated that the forestland clearing was not approved by the government.`,
+          `According to the MGB, its field office first reported the illegal tree cutting as early as November 2020. The situation shows that unauthorized forest clearing was occurring despite Palawan's environmental protections. Under the Strategic Environmental Plan for Palawan (SEP), commercial logging is prohibited across the province, while natural forests and other ecologically important areas can receive maximum protection.`,
+          `The case remains important because continued unauthorized tree cutting can contribute to forest degradation and threaten forest resources. However, while the illegal cutting occurred within Pyramid Hill's contract area, the report clearly states that there was no evidence linking the deforestation to Pyramid Hill. The MGB also formally reminded the company of its responsibility to monitor its concession area.`
           ],
         reference:
           "Fabro, K. A. S. (2021). Illegal logging in Philippines’ Palawan stokes fears of a mining resurgence.",
@@ -113,6 +114,24 @@ function Home() {
     }
   ]
   const SelectedStatusIcon = illegalLoggingStatus[selectedStatus].icon;
+  const researchQuestions = [
+    {
+      question: "Where was unauthorized cutting documented?",
+      why: "This establishes that the issue occurred and identifies the place to examine.",
+    },
+    {
+      question: "Who depends on the affected forest?",
+      why: "This shows whose resources and culturally important places could be affected.",
+    },
+    {
+      question: "Is the problem becoming less widespread?",
+      why: "Comparing hotspot counts helps distinguish progress from the end of the problem.",
+    },
+    {
+      question: "What are enforcement operations still finding?",
+      why: "Seizure records show continuing illegal forest-product activity despite fewer hotspots.",
+    },
+  ];
   return (
     <>
     <section id="status-illegal-logging" className="w-full border-t-[1px] text-teal-8">
@@ -161,7 +180,7 @@ function Home() {
               </button>
             ))}
           </div>
-          <div id="detailStatus" className="w-full border-t border-gray-200 !px-6 !py-8 text-teal-8">
+          <div id="detailStatus" className="w-full border-t border-gray-200 !mt-5 !px-6 !py-10 text-teal-8">
             <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:gap-8">
               <div className="flex min-w-0 flex-col gap-2">
                 <img src={detailsStatus[selectedStatus].image} alt={detailsStatus[selectedStatus].imageAlt || detailsStatus[selectedStatus].title} className="aspect-[3/2] w-full rounded-md object-cover" />
@@ -181,11 +200,27 @@ function Home() {
                     </p>
                   </div>
                 </div>
+                <div className="border-y border-gray-200 !py-3">
+                  <h3 className="text-sm font-semibold text-teal-8">{researchQuestions[selectedStatus].question}</h3>
+                  <p className="!mt-1 text-sm leading-relaxed text-gray-700">
+                    Why this information matters: {researchQuestions[selectedStatus].why}
+                  </p>
+                </div>
                 {detailsStatus[selectedStatus].details.map((detail, index) => (
                   <p key={index} className="text-sm  leading-relaxed text-gray-700 !mt-5">
                     {detail.trim()}
                   </p>
                 ))}
+                {selectedStatus === 0 && (
+                  <p className="text-xs leading-relaxed text-gray-600">
+                    The 5,149 hectares describe the mining contract area, not the area logged.
+                  </p>
+                )}
+                {selectedStatus === 3 && (
+                  <p className="text-xs leading-relaxed text-gray-600">
+                    The 364,904 board feet are seized lumber, not a measure of all illegal lumber in Caraga.
+                  </p>
+                )}
                 <a
                   href={detailsStatus[selectedStatus].referenceUrl}
                   target="_blank"
@@ -198,9 +233,6 @@ function Home() {
 
             </div>
           </div>
-        </section>
-        <section id="status-section">
-
         </section>
       </>
   )
