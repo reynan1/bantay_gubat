@@ -6,6 +6,7 @@ const emailJsConfig = {
   templateId: "template_ntmgy05",
   publicKey: "zHlPWdeEDkK05iM7i",
 };
+const petitionUploadUrl = import.meta.env.VITE_PETITION_UPLOAD_URL;
 
 type ProtectForestProps = {
   isOpen: boolean;
@@ -21,6 +22,7 @@ function ProtectForest({ isOpen, onClose }: ProtectForestProps) {
   const [signatureError, setSignatureError] = useState(false);
   const [sending, setSending] = useState(false);
   const [sendError, setSendError] = useState("");
+  const [emailSent, setEmailSent] = useState(false);
   const signatureRef = useRef<HTMLCanvasElement>(null);
   const drawingRef = useRef(false);
 
@@ -30,6 +32,7 @@ function ProtectForest({ isOpen, onClose }: ProtectForestProps) {
     setSignatureError(false);
     setSending(false);
     setSendError("");
+    setEmailSent(false);
     onClose();
   }, [onClose]);
 
@@ -63,10 +66,40 @@ function ProtectForest({ isOpen, onClose }: ProtectForestProps) {
     const formData = new FormData(event.currentTarget);
     const toEmail = String(formData.get("email") ?? "").trim();
     const firstName = String(formData.get("firstName") ?? "").trim();
+    const signature = signatureRef.current?.toDataURL("image/png");
+    if (!signature) {
+      setSendError("Could not read your signature. Please try again.");
+      return;
+    }
+    if (!petitionUploadUrl) {
+      setSendError("Petition storage is not configured. Please contact the site administrator.");
+      return;
+    }
     setSending(true);
     setSendError("");
 
     try {
+      const archiveResponse = await fetch(petitionUploadUrl, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({
+          surname: String(formData.get("surname") ?? "").trim(),
+          firstName,
+          middleName: String(formData.get("middleName") ?? "").trim(),
+          email: toEmail,
+          address: String(formData.get("address") ?? "").trim(),
+          reason: String(formData.get("reason") ?? "").trim(),
+          signature,
+          submittedAt: new Date().toISOString(),
+          supportsProtection: formData.has("supportsProtection"),
+          understandsEducationalProject: formData.has("understandsEducationalProject"),
+        }),
+      });
+      if (!archiveResponse.ok) throw new Error("Could not save the petition. Please try again.");
+      const archiveResult: { ok?: boolean } = await archiveResponse.json();
+      if (archiveResult.ok !== true) throw new Error("Could not save the petition. Please try again.");
+
+      setSupported(true);
       const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -78,10 +111,9 @@ function ProtectForest({ isOpen, onClose }: ProtectForestProps) {
         }),
       });
       if (!response.ok) {
-        const message = await response.text();
-        throw new Error(`EmailJS ${response.status}: ${message || response.statusText}`);
+        throw new Error("Your petition was saved, but the confirmation email could not be sent.");
       }
-      setSupported(true);
+      setEmailSent(true);
     } catch (error) {
       setSendError(error instanceof Error ? error.message : "Please try again.");
     } finally {
@@ -181,7 +213,7 @@ function ProtectForest({ isOpen, onClose }: ProtectForestProps) {
                 </span>
                 <h3 className="text-xl font-bold text-gray-900">Thank you for your support</h3>
                 <p className="mx-auto !mt-2 max-w-sm text-sm text-gray-600">
-                  Your confirmation email was requested. Check your inbox and spam folder. This educational demo does not store petition signatures.
+                  Your signed petition was saved as a PDF in Bantay Gubat's Google Drive. {emailSent ? "Check your inbox and spam folder for a confirmation email." : sendError || "Sending your confirmation email..."}
                 </p>
                 <button
                   type="button"
@@ -312,7 +344,7 @@ function ProtectForest({ isOpen, onClose }: ProtectForestProps) {
                 </label>
               </div>
 
-              <p className="text-xs text-gray-500">Your first name and email are sent to EmailJS for confirmation. Other petition details and your signature are not stored or sent.</p>
+              <p className="text-xs text-gray-500">Your petition details and signature will be saved as a PDF in Bantay Gubat's Google Drive. Your first name and email are sent to EmailJS for confirmation.</p>
             </form>
             <div className="
                       sticky
@@ -333,7 +365,7 @@ function ProtectForest({ isOpen, onClose }: ProtectForestProps) {
                       sm:!px-7">
                 {sendError && (
                   <p role="alert" className="self-center break-words text-sm text-red-700 sm:mr-auto">
-                    Could not send confirmation: {sendError}
+                    {sendError}
                   </p>
                 )}
                 <button
@@ -349,7 +381,7 @@ function ProtectForest({ isOpen, onClose }: ProtectForestProps) {
                   disabled={sending}
                   className="cursor-pointer rounded-md bg-teal-8 !px-6 !py-2.5 text-sm font-semibold text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  {sending ? "Sending..." : "Support the Petition"}
+                  {sending ? "Submitting..." : "Support the Petition"}
                 </button>
             </div>
           </> 

@@ -13,7 +13,7 @@ function App() {
     <Router>
       <Header />
       <Hero />
-       <main className='w-4/5 mx-auto'>
+       <main className='w-[83%] !mx-auto '>
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />

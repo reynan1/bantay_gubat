@@ -64,7 +64,7 @@ function Footer() {
 
           <div>
             <h3 className="!mb-4 text-sm font-bold uppercase tracking-wide text-green-100">
-              Take Action
+              Contact Information
             </h3>
             <ul className="grid gap-3 text-sm text-green-50">
               {focusAreas.map((area) => (
@@ -92,11 +92,11 @@ function Footer() {
               Philippines
             </span>
             <a
-              href="mailto:report@bantaygubat.ph"
+              href="mailto:aksyonkalikasan@denr.gov.ph"
               className="inline-flex items-center gap-2 !text-green-100 transition hover:!text-white"
             >
               <FaEnvelope className="text-green-200" />
-              report@bantaygubat.ph
+              aksyonkalikasan@denr.gov.ph
             </a>
             <a
               href="https://www.facebook.com/DENROfficial"

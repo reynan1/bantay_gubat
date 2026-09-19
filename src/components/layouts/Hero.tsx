@@ -55,33 +55,6 @@ const slides = [
   },
 ];
 
-const illegalLoggingStatus = [
-  {
-    value: "2,500",
-    title: "Indigenous Population",
-    description:
-      "Around 2,500 Pala’wan people from communities surrounding Mount Domadoway rely on this forest landscape.",
-  },
-  {
-    value: "12",
-    title: "Pala’wan Villages",
-    description:
-      "Twelve Pala’wan villages are located around Mount Domadoway.",
-  },
-  {
-    value: "5,149",
-    title: "Mining Contract Area",
-    description:
-      "The mining contract covers 5,149 hectares where illegal tree cutting was reported within the concession.",
-  },
-  {
-    value: "2020",
-    title: "Cutting First Reported",
-    description:
-      "The MGB said illegal tree cutting in the contract area was first reported in November 2020.",
-  },
-];
-
 function Hero() {
   const [activeSlide, setActiveSlide] = useState(0)
 
@@ -102,7 +75,7 @@ function Hero() {
       setActiveSlide((current) =>
         current === slides.length - 1 ? 0 : current + 1,
       )
-    }, 1000000)
+    }, 30000)
 
     return () => window.clearInterval(slideTimer)
   }, [])
@@ -118,7 +91,7 @@ function Hero() {
             key={slide.title}
             aria-hidden={activeSlide !== index}
             inert={activeSlide !== index}
-            className={` flex justify-center items-center col-start-1 row-start-1 mx-auto w-full transition-all delay-1000 duration-[2000ms] ease-in-out motion-reduce:transition-none ${
+            className={` flex justify-center items-center col-start-1 row-start-1 mx-auto w-full transition-all delay-500 duration-[500ms] ease-in-out motion-reduce:transition-none ${
               activeSlide === index
                 ? 'translate-y-0 opacity-100'
                 : 'pointer-events-none translate-y-4 opacity-0'
@@ -189,59 +162,7 @@ function Hero() {
           ))}
         </div>
       </section>
-      <section id="status-illegal-logging" className="w-full flex justify-center border-t-[1px] text-teal-8">
-        <div className="grid items-center grid-cols-1 md:grid-cols-2 xl:grid-cols-4 w-[85%] gap-6 !py-5 px-6">
-          {illegalLoggingStatus.map((status, index) => (
-           <div key={index}
-                className="
-                  group
-                  flex items-center gap-4 min-w-0
-                  rounded-xl border border-gray-200
-                  p-4 shadow-sm !py-8 !px-5
-                  transition-all duration-300
-                  hover:bg-teal-8
-                  hover:border-teal-8
-                  hover:shadow-md
-                  cursor-pointer
-              "
-            >
-              <span
-                className="
-                  text-xl font-bold text-teal-8 shrink-0
-                  transition-colors duration-300
-                  group-hover:text-white
-                "
-              >
-                {status.value}
-              </span>
-
-              <div className="flex flex-col min-w-0">
-                <span
-                  className="
-                    text-sm font-semibold truncate
-                    transition-colors duration-300
-                    group-hover:text-white
-                  "
-                >
-                  {status.title}
-                </span>
-
-                <span
-                  className="
-                    text-sm text-gray-600 truncate
-                    transition-colors duration-300
-                    group-hover:text-white
-                  "
-                  title={status.description}
-                >
-                  {status.description}
-                </span>
-              </div>
-            </div>
-          ))}
-
-        </div>
-      </section>
+    
     </>
   )
 }
