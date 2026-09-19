@@ -1,6 +1,7 @@
 import bantayGubatLogo from "../../assets/logo/bantay-gubat.png";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { FaClipboardList, FaTree } from "react-icons/fa";
 import JoinSurvey from "../modal/JoinSurvey";
 import ProtectForest from "../modal/ProtectForest";
 
@@ -34,7 +35,7 @@ function Header() {
             type="button"
             onClick={() => setIsSurveyOpen(true)}
             className="
-              rounded-lg
+              inline-flex items-center gap-2 rounded-lg
               border-2 border-teal-8
               !px-5 !py-2.5
               text-sm font-semibold text-teal-8
@@ -44,6 +45,7 @@ function Header() {
               cursor-pointer
             "
           >
+            <FaClipboardList aria-hidden="true" />
             Join the Survey
           </button>
 
@@ -52,7 +54,7 @@ function Header() {
             type="button"
             onClick={() => setIsPetitionOpen(true)}
             className="
-              rounded-lg
+              inline-flex items-center gap-2 rounded-lg
               bg-teal-8
               !px-5 !py-3
               text-sm font-semibold text-white
@@ -64,6 +66,7 @@ function Header() {
               cursor-pointer
             "
           >
+            <FaTree aria-hidden="true" />
             Protect Our Forests
           </button>
         </div>
@@ -88,7 +91,7 @@ function Header() {
             </NavLink>
           </li>
 
-          <li>
+{/*           <li>
             <NavLink
               to="/definition"
               end
@@ -101,7 +104,7 @@ function Header() {
             >
               Definition
             </NavLink>
-          </li>
+          </li> */}
 
           <li>
             <NavLink

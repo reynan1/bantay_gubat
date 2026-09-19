@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaCubes, FaExclamationTriangle, FaMapMarkerAlt, FaTree, FaUsers } from "react-icons/fa";
+import { FaCubes, FaExclamationTriangle, FaLeaf, FaMapMarkerAlt, FaTree, FaUsers } from "react-icons/fa";
 import indegenous from '../assets/images/indegenous/indegenous_final.png'
 
 function Home() {
@@ -115,7 +115,13 @@ function Home() {
   return (
     <>
     <section id="status-illegal-logging" className="w-full border-t-[1px] text-teal-8">
-        <div className="grid grid-cols-1 gap-3 !px-6 !py-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-4 w-full flex justify-center items-center !mt-6 !py-5">
+          <h1 className="flex items-center gap-2 !text-2xl !text-teal-8 font-semibold">
+            <FaLeaf aria-hidden="true" className="shrink-0" />
+            Definition and Current Status
+          </h1>
+        </div>
+        <div className="grid grid-cols-1 gap-3 !px-6 !py-6 sm:grid-cols-2 lg:grid-cols-4">
             {illegalLoggingStatus.map((status, index) => (
             <button key={status.title}
                   type="button"
@@ -149,9 +155,13 @@ function Home() {
               </button>
             ))}
           </div>
-          <div id="detailStatus" className="w-full border-t border-gray-200 !px-6 !py-8 text-teal-8">
+          <div id="detailStatus" className="w-full border-t border-gray-200 !px-6 !py-8 text-teal-8">           
             <div className="flex justify-between">
-              <div className="!space-y-3 w-[100%]">
+              <div className="w-[40%] flex items-center justify-center flex-col gap-3">
+                <img src={detailsStatus[selectedStatus].image} alt={`image of ${detailsStatus[selectedStatus].title}`} className='w-120 h-80 rounded-md'/>
+                <span className="text-sm text-center text-gray-900"> {detailsStatus[selectedStatus].photoSource}</span>
+              </div>  
+              <div className="!space-y-3 w-[55%]">
                 <h2 className="text-lg font-semibold">{detailsStatus[selectedStatus].title}</h2>
                 {detailsStatus[selectedStatus].details.map((detail, index) => (
                   <p key={index} className="text-sm leading-relaxed text-gray-700">
@@ -167,10 +177,7 @@ function Home() {
                   {detailsStatus[selectedStatus].reference}
                 </a>
               </div>
-    {/*           <div className="w-45% flex flex-col gap-3">
-                  <img src={detailsStatus[selectedStatus].image} alt={`image of ${detailsStatus[selectedStatus].title}`} className='w-90 h-68 rounded-md'/>
-                  <span className="text-sm text-center text-gray-900"> {detailsStatus[selectedStatus].photoSource}</span>
-              </div> */}
+
             </div>
           </div>
         </section>
