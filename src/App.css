@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.cardHighlight{
+    min-height: 100%;
+}
+
+@theme {
+  --color-primary: #166534;
+  --color-secondary: #22c55e;
+  --color-accent: #84cc16;
+  --color-dark: #14532d;
+  --color-light: #f0fdf4;
+  --color-teal-8: #087f5b
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
