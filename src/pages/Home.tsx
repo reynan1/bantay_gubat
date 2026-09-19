@@ -1,6 +1,10 @@
 import { useState } from "react";
-import { FaCubes, FaExclamationTriangle, FaLeaf, FaMapMarkerAlt, FaTree, FaUsers } from "react-icons/fa";
+import { FaBullhorn, FaCubes, FaExclamationTriangle, FaFileAlt, FaHistory, FaLeaf, FaMapMarkerAlt, FaShieldAlt, FaTree, FaUsers } from "react-icons/fa";
+import philippines from '../assets/images/indegenous/philippines.png'
 import indegenous from '../assets/images/indegenous/indegenous_final.png'
+import caraigaImg from '../assets/images/indegenous/caraiga_img.png'
+import illegalLumber from '../assets/images/indegenous/illegal_lumber4.png'
+import palawanTimeline from '../assets/images/indegenous/palawan-timeline.png'
 
 function Home() {
   const [selectedStatus, setSelectedStatus] = useState(0);
@@ -8,6 +12,7 @@ function Home() {
     {
       value: "5,149",
       title: "Illegal Tree Cutting in Mount Domadoway",
+      problemRefer: "Current Status",
       icon: FaTree,
       problem: "Unauthorized tree cutting can harm natural forests, destroy wildlife habitats, and reduce forest resources that people and wildlife depend on.",
       description:
@@ -16,6 +21,7 @@ function Home() {
     {
       value: "2,500",
       title: "Indigenous Pala’wan People",
+      problemRefer: "Affected Community",
       icon: FaUsers,
       problem: "Forest destruction can affect Pala’wan communities by reducing the food, water, medicinal plants, and culturally important places they depend on.",
       description:
@@ -24,6 +30,7 @@ function Home() {
     {
       value: "6",
       title: "Illegal Logging Hotspots",
+      problemRefer: "Ongoing Concern",
       icon: FaMapMarkerAlt,
       problem: "Illegal logging remains a problem in parts of Caraga. Even though the number of hotspots has decreased, illegal forest activities are still occurring in some areas.",
       description:
@@ -32,6 +39,7 @@ function Home() {
     {
       value: "364,904",
       title: "Board Feet of Illegal Lumber",
+      problemRefer: "Board Feet of Illegal Lumber",
       icon: FaCubes,
       problem: "Illegal cutting and transportation of forest products continue to threaten Caraga's forests, requiring regular monitoring and enforcement operations.",
       description:
@@ -43,9 +51,9 @@ function Home() {
     {
         value: "5,149",
         title: "Illegal Tree Cutting Reported in Mount Domadoway",
-        image: indegenous,
+        image: philippines,
         imageAlt: "",
-        photoSource: "Images of Indigenous Pala’wan people living",
+        photoSource: "Palawan and its surrounding islands are among the most forested and biodiverse parts of the Philippines / Credit: Mongabay via Mapbox.",
         description:
           "Unauthorized tree cutting damages natural forests and threatens protected forest resources.",
         details:[
@@ -63,7 +71,7 @@ function Home() {
       title: "Pala’wan Villages",
       image: indegenous,
       imageAlt: "",
-      photoSource: "",
+      photoSource: "Indegenous people in palawan around Mount Domadoway",
       description:
         "Twelve Pala’wan villages are located around Mount Domadoway.",
       details:[
@@ -78,9 +86,9 @@ function Home() {
     {
       value: "5,149",
       title: "Illegal Logging Hotspots Reduced to Six",
-      image: indegenous,
+      image: caraigaImg,
       imageAlt: "",
-      photoSource: "",
+      photoSource: "DENR Caraga reported that identified illegal logging hotspots images",
       description:
         "DENR Caraga reported that identified illegal logging hotspots fell from 17 to six by 2024.",
       details:[
@@ -97,9 +105,9 @@ function Home() {
     {
       value: "2020",
       title: "Hundreds of Illegal Logging Apprehensions and Large Lumber Seizures",
-      image: indegenous,
+      image: illegalLumber,
       imageAlt: "",
-      photoSource: "",
+      photoSource: "Enforcement operations in Caraga seized 364,904 board feet of illegal lumber in 2025 images",
       description:
         "Enforcement operations in Caraga seized 364,904 board feet of illegal lumber in 2025.",
       details:[
@@ -130,6 +138,131 @@ function Home() {
     {
       question: "What are enforcement operations still finding?",
       why: "Seizure records show continuing illegal forest-product activity despite fewer hotspots.",
+    },
+  ];
+  const palawanReportUrl = "https://news.mongabay.com/2021/06/illegal-logging-in-philippines-palawan-stokes-fears-of-a-mining-resurgence/";
+  const denrStudyUrl = "https://faspselib.denr.gov.ph/Materials/Detail/d3aad246-e7c5-4579-8eda-88c1b1b5e709";
+  const denrStudyPdfUrl = "https://faspselib.denr.gov.ph/uploads/materials/d3aad246-e7c5-4579-8eda-88c1b1b5e709/55f6c391-6f48-4843-b8a9-957b722c9261.pdf";
+  const timelineEvents = [
+    {
+      date: "1934",
+      title: "Philippine Forest Cover Baseline",
+      icon: FaTree,
+      metric: "17.8 million hectares / about 60% of land area",
+      description: "A DENR-hosted study estimates Philippine forest cover at 17.8 million hectares in 1934. By 2011, it had declined to about 7.168 million hectares.",
+      why: "Provides a national baseline for understanding long-term forest loss.",
+      supports: "Definition + Current Status",
+      conclusion: "This measures overall forest-cover change, not forest loss caused only by illegal logging.",
+      source: "DENR FASPS E-Library",
+      sourceUrl: denrStudyUrl,
+    },
+    {
+      date: "1970-1992",
+      title: "Major Forest Decline in Palawan",
+      icon: FaTree,
+      metric: "1.3 million to 789,488 hectares",
+      description: "Palawan's forest cover fell from about 1.3 million hectares in 1970 to 789,488 hectares in 1992. The report also cites a loss rate of about 19,000 hectares per year from 1979 to 1984.",
+      why: "Narrows the national issue to Palawan, where Mount Domadoway is located.",
+      supports: "Current Status + Effects",
+      conclusion: "Palawan experienced substantial historical forest loss; the entire decline cannot be attributed to illegal logging.",
+      source: "Fabro, Mongabay (2021)",
+      sourceUrl: palawanReportUrl,
+    },
+    {
+      date: "1992",
+      title: "Palawan Strengthens Forest Protection",
+      icon: FaShieldAlt,
+      metric: "Strategic Environmental Plan for Palawan",
+      description: "The SEP established stronger forest protection, including a commercial logging ban and maximum-protection zones for natural forests, endangered-species habitats, and other ecologically important areas.",
+      why: "Shows what protections existed before the later unauthorized cutting.",
+      supports: "Definition + Current Status",
+      conclusion: "Stronger protection responded to environmental pressure but did not eliminate illegal forest activity.",
+      source: "Fabro, Mongabay (2021)",
+      sourceUrl: palawanReportUrl,
+    },
+    {
+      date: "1992-2010",
+      title: "Forest Loss Continued at a Lower Rate",
+      icon: FaTree,
+      metric: "About 5,500 hectares per year",
+      description: "The Mount Domadoway report says Palawan's annual deforestation rate declined to about 5,500 hectares after the SEP through 2010, but timber poaching did not stop.",
+      why: "Shows that legal protection alone did not end forest degradation.",
+      supports: "Current Status + Causes",
+      conclusion: "The reported rate was lower than the 1979-1984 rate, but not all remaining loss was caused by illegal logging.",
+      source: "Fabro, Mongabay (2021)",
+      sourceUrl: palawanReportUrl,
+    },
+    {
+      date: "2011",
+      title: "Philippine Forest Cover",
+      icon: FaTree,
+      metric: "7.168 million hectares / 23.89% of land area",
+      description: "The DENR-hosted study reports about 7.168 million hectares of Philippine forest cover in 2011, compared with 17.8 million hectares in 1934.",
+      why: "Quantifies the national scale of long-term forest-cover change.",
+      supports: "Current Status",
+      conclusion: "Forest decline extends beyond Palawan, but this national figure does not isolate illegal logging.",
+      source: "DENR FASPS E-Library",
+      sourceUrl: denrStudyUrl,
+    },
+    {
+      date: "2013 study",
+      title: "Major Drivers Identified",
+      icon: FaFileAlt,
+      metric: "40.58% cited logging and timber poaching",
+      description: "Key informants cited legal or illegal logging and poaching (40.58%), kaingin (16.98%), biophysical factors (12.73%), mining (8.49%), and charcoal making (8.15%).",
+      why: "Provides research evidence for discussing the causes of forest degradation.",
+      supports: "Causes",
+      conclusion: "These are shares of informant responses, not percentages of Philippine forest loss caused by each activity.",
+      source: "DENR-hosted REDD+ drivers study",
+      sourceUrl: denrStudyPdfUrl,
+    },
+    {
+      date: "2015",
+      title: "Remaining Palawan Forest Cover",
+      icon: FaTree,
+      metric: "About 694,000 hectares",
+      description: "The Mount Domadoway report cites approximately 694,000 hectares of remaining forest cover in Palawan as of 2015, the latest official figure available to that report.",
+      why: "Provides another measurable indicator of Palawan's forest condition.",
+      supports: "Current Status + Effects",
+      conclusion: "The remaining forest is an important environmental resource requiring continued protection.",
+      source: "Fabro, Mongabay (2021)",
+      sourceUrl: palawanReportUrl,
+    },
+    {
+      date: "2020 context",
+      title: "5,149-Hectare Contract Area",
+      icon: FaFileAlt,
+      metric: "Mining contract area, not logged area",
+      description: "Pyramid Hill's mineral production sharing agreement covered 5,149 hectares. Illegal tree cutting was documented within that area.",
+      why: "Identifies where the reported cutting occurred without overstating its extent.",
+      supports: "Current Status",
+      conclusion: "5,149 hectares is not the amount of forest illegally logged. The report found no evidence linking the deforestation to Pyramid Hill.",
+      source: "Fabro, Mongabay (2021)",
+      sourceUrl: palawanReportUrl,
+    },
+    {
+      date: "November 2020",
+      title: "Illegal Tree Cutting Documented",
+      icon: FaBullhorn,
+      metric: "Government-confirmed case",
+      description: "The Mines and Geosciences Bureau said its field office first reported illegal cutting within the Mount Domadoway contract area as early as November 2020. The clearing was not government approved.",
+      why: "Moves the research from broad trends to a documented case of unauthorized cutting.",
+      supports: "Definition + Current Status",
+      conclusion: "Unauthorized tree cutting was documented within the contract area.",
+      source: "Fabro, Mongabay (2021)",
+      sourceUrl: palawanReportUrl,
+    },
+    {
+      date: "2021",
+      title: "Effects on Indigenous Pala'wan Communities",
+      icon: FaUsers,
+      metric: "About 2,500 people across 12 villages",
+      description: "The surrounding forest provides wild food, medicinal herbs, water, land for subsistence crops, and culturally important places to nearby Pala'wan communities.",
+      why: "Identifies who may be affected and which resources are at risk.",
+      supports: "Effects",
+      conclusion: "Continued degradation could affect resources and places relied upon by these communities.",
+      source: "Fabro, Mongabay (2021)",
+      sourceUrl: palawanReportUrl,
     },
   ];
   return (
@@ -171,7 +304,7 @@ function Home() {
                 </div>
                 <div className={`!mt-2 w-full flex-1 rounded-bl-md rounded-br-md  !py-3 !px-4 transition-colors ${selectedStatus === index ? "bg-green-50 " : "bg-green-50 group-hover:border-teal-8 "}`}>
                   <span className="flex items-center gap-2 text-xs font-bold text-teal-8">
-                    <FaExclamationTriangle aria-hidden="true" /> Problem
+                     <FaExclamationTriangle aria-hidden="true" /> { status.problemRefer }
                   </span>
                   <span className={`!mt-2 block text-xs leading-relaxed  ${selectedStatus === index ? "text-gray-700" : "text-gray-700 "}`}>
                     {status.problem}
@@ -192,7 +325,7 @@ function Home() {
                 <div className="flex items-center gap-3">
                   <SelectedStatusIcon aria-hidden="true" className="mt-0.5 shrink-0 text-xl" />
                   <div className="min-w-0">
-                    <h2 className="text-base font-bold leading-tight !mb-0 !text-teal-8">
+                    <h2 className="text-base !text-xl font-bold leading-tight !mb-0 !text-teal-8">
                       {detailsStatus[selectedStatus].title}
                     </h2>
                     <p className="!mt-1 text-xs leading-snug text-gray-600">
@@ -230,7 +363,45 @@ function Home() {
                   {detailsStatus[selectedStatus].reference}
                 </a>
               </div>
-
+            </div>
+          </div>
+        </section>
+        <section id="timeline-events" className="border-t border-gray-200 !w-full !px-6 !py-10 text-gray-800">
+          
+          <div className="text-center">
+            <h2 className="flex items-center justify-center gap-2 !text-xl font-bold !text-teal-8">
+              <FaHistory aria-hidden="true" className="shrink-0" />
+              Timeline of Key Events
+            </h2>
+            <p className="!mt-1 text-sm text-gray-600">From national forest trends to the Mount Domadoway case</p>
+          </div>
+          <ol className="relative !mx-auto !mt-9 max-w-5xl before:absolute before:bottom-0 before:left-5 before:top-0 before:w-px before:bg-teal-300 md:before:left-1/2">
+            {timelineEvents.map((event, index) => (
+              <li key={event.date} className={`relative flex !pb-10 last:!pb-0 ${index % 2 === 0 ? "md:justify-start" : "md:justify-end"}`}>
+                <span className="absolute left-5 top-0 z-10 grid h-10 w-10 -translate-x-1/2 place-items-center rounded-full border border-teal-200 bg-green-50 text-base text-teal-8 shadow-sm md:left-1/2" aria-hidden="true">
+                  <event.icon />
+                </span>
+                <div className={`min-w-0 w-full !pl-14 md:w-[calc(50%-2.5rem)] md:!pl-0 ${index % 2 === 0 ? "md:pr-4 md:text-right" : ""}`}>
+                  <p className="text-sm font-bold text-gray-900">{event.date}</p>
+                  <h3 className="!mt-1 text-base font-semibold leading-snug text-teal-8">{event.title}</h3>
+                  <p className="!mt-1 text-sm font-semibold text-gray-900">{event.metric}</p>
+                  <p className="!mt-2 text-sm leading-relaxed text-gray-700">{event.description}</p>
+                  <p className="!mt-2 text-xs leading-relaxed text-gray-700"><span className="font-semibold">Why needed:</span> {event.why}</p>
+                  <p className="!mt-1 text-xs leading-relaxed text-gray-700"><span className="font-semibold">Supports:</span> {event.supports}</p>
+                  <p className="!mt-1 text-xs leading-relaxed text-gray-700"><span className="font-semibold">Conclusion:</span> {event.conclusion}</p>
+                  <a href={event.sourceUrl} target="_blank" rel="noopener noreferrer" className="!mt-2 inline-block text-xs font-medium text-teal-8 underline underline-offset-2 hover:text-teal-700">
+                    {event.source}
+                  </a>
+                </div>
+              </li>
+            ))}
+          </ol>
+          <div className="!mx-auto w-full !mt-10 max-w-3xl border-t border-gray-200 !pt-6">
+            <div className="">
+              <h3 className="text-base font-semibold text-teal-8">What the evidence shows?</h3>
+              <p className="!mt-2 text-sm leading-relaxed text-gray-700">
+                Illegal logging is part of a broader pattern of deforestation and forest degradation in the Philippines. Historical forest-cover figures show long-term decline, while DENR research identifies logging, agriculture, mining, charcoal production, and other drivers. At Mount Domadoway, unauthorized tree cutting was documented within a 5,149-hectare contract area as early as November 2020. The surrounding forest supports about 2,500 Indigenous Pala'wan people across 12 villages, so continued degradation could affect both ecosystems and forest-dependent communities.
+              </p>
             </div>
           </div>
         </section>

@@ -14,7 +14,7 @@ type ProtectForestProps = {
 };
 
 const inputClass =
-  "!mt-2 w-full rounded-md border border-gray-300 bg-white !px-3 !py-2.5 text-gray-800 outline-none transition placeholder:text-gray-400 focus:border-teal-700 focus:ring-2 focus:ring-teal-700/15";
+  "!mt-2 w-full !font-normal rounded-md border border-gray-300 bg-white !px-3 !py-2.5 text-gray-800 outline-none transition placeholder:text-gray-400 focus:border-teal-700 focus:ring-2 focus:ring-teal-700/15";
 
 function ProtectForest({ isOpen, onClose }: ProtectForestProps) {
   const [supported, setSupported] = useState(false);
