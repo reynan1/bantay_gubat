@@ -1,6 +1,6 @@
 import bantayGubatLogo from "../../assets/logo/bantay-gubat.png";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import JoinSurvey from "../modal/JoinSurvey";
 import ProtectForest from "../modal/ProtectForest";
 
@@ -74,87 +74,103 @@ function Header() {
         <ul className="flex items-center justify-center gap-5">
           
           <li>
-            <Link
+            <NavLink
               to="/"
-              className="
-                font-medium
+              end
+              className={({ isActive }) => `
+                ${isActive ? "font-bold" : "font-normal"}
                 !text-white
                 transition-colors duration-200
                 hover:!text-green-200
-              "
+              `}
             >
               Home
-            </Link>
+            </NavLink>
           </li>
 
           <li>
-            <Link
-              to="/causes"
-              className="
-                font-normal
+            <NavLink
+              to="/definition"
+              end
+              className={({ isActive }) => `
+                ${isActive ? "font-bold" : "font-normal"}
                 !text-white
                 transition-colors duration-200
                 hover:!text-green-200
-              "
+              `}
+            >
+              Definition
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              to="/causes"
+              className={({ isActive }) => `
+                ${isActive ? "font-bold" : "font-normal"}
+                !text-white
+                transition-colors duration-200
+                hover:!text-green-200
+              `}
             >
               Causes
-            </Link>
+            </NavLink>
           </li>
 
           <li>
-            <Link
+            <NavLink
               to="/effects"
-              className="
-                font-normal
+              className={({ isActive }) => `
+                ${isActive ? "font-bold" : "font-normal"}
                 !text-white
                 transition-colors duration-200
                 hover:!text-green-200
-              "
+              `}
             >
               Effects
-            </Link>
+            </NavLink>
           </li>
 
           <li>
-            <Link
-              to="/effects"
-              className="
-                font-normal
+            <NavLink
+              to="/stakeholders"
+              className={({ isActive }) => `
+                ${isActive ? "font-bold" : "font-normal"}
                 !text-white
                 transition-colors duration-200
                 hover:!text-green-200
-              "
+              `}
             >
               Stakeholders
-            </Link>
+            </NavLink>
           </li>
 
           <li>
-            <Link
+            <NavLink
               to="/gallery"
-              className="
-                font-normal
+              className={({ isActive }) => `
+                ${isActive ? "font-bold" : "font-normal"}
                 !text-white
                 transition-colors duration-200
                 hover:!text-green-200
-              "
+              `}
             >
               Gallery
-            </Link>
+            </NavLink>
           </li>
 
           <li>
-            <Link
+            <NavLink
               to="/about"
-              className="
-                font-normal
+              className={({ isActive }) => `
+                ${isActive ? "font-bold" : "font-normal"}
                 !text-white
                 transition-colors duration-200
                 hover:!text-green-200
-              "
+              `}
             >
               About
-            </Link>
+            </NavLink>
           </li>
 
         </ul>

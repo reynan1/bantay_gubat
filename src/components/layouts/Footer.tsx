@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import {
   FaEnvelope,
   FaFacebookF,
@@ -73,16 +73,17 @@ function Footer() {
             <ul className="space-y-3">
               {footerLinks.map((link) => (
                 <li key={link.label}>
-                  <Link
+                  <NavLink
                     to={link.to}
-                    className="
-                      text-sm font-medium !text-white
+                    end={link.to === "/"}
+                    className={({ isActive }) => `
+                      text-sm ${isActive ? "font-bold" : "font-medium"} !text-white
                       transition-colors duration-200
                       hover:!text-green-200
-                    "
+                    `}
                   >
                     {link.label}
-                  </Link>
+                  </NavLink>
                 </li>
               ))}
             </ul>

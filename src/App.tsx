@@ -1,9 +1,11 @@
 import './App.css'
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from './components/layouts/Header';
 import Hero from './components/layouts/Hero';
 import Footer from './components/layouts/Footer';
 import Home from './pages/Home';
+import Definition from './pages/Definition';
+import Causes from './pages/Causes';
 import About from './pages/About';
 import Effect from './pages/Effect';
 import StakeHolders from './pages/StakeHolders';
@@ -18,7 +20,8 @@ function App() {
        <main className='w-[83%] !mx-auto '>
         <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/causes" element={<Navigate to="/" replace />} />
+            <Route path="/definition" element={<Definition />} />
+            <Route path="/causes" element={<Causes/>} />
             <Route path="/effects" element={<Effect />} />
             <Route path="/stakeholders" element={<StakeHolders />} />
             <Route path="/gallery" element={<Gallery />} />
