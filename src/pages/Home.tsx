@@ -81,7 +81,7 @@ function Home() {
       imageAlt: "",
       photoSource: "",
       description:
-        "The mining contract covers 5,149 hectares where illegal tree cutting was reported within the concession.",
+        "DENR Caraga reported that identified illegal logging hotspots fell from 17 to six by 2024.",
       details:[
         `
         DENR Caraga reported progress in reducing areas identified as illegal logging hotspots. At the height of the implementation of Executive Order No. 23, the region had 17 identified illegal logging hotspots. Through enforcement operations, surveillance, and legal action, DENR Caraga reported that this number had fallen to six hotspots in 2024. These remaining hotspots included areas in Loreto, Talacogon, La Paz, and Esperanza in Agusan del Sur, as well as Lianga and Lingig in Surigao del Sur.`,
@@ -100,7 +100,7 @@ function Home() {
       imageAlt: "",
       photoSource: "",
       description:
-        "The MGB said illegal tree cutting in the contract area was first reported in November 2020.",
+        "Enforcement operations in Caraga seized 364,904 board feet of illegal lumber in 2025.",
       details:[
         "Despite the reduction in hotspots, DENR Caraga continued to record substantial enforcement activity in 2025. From January to May 2025, the agency recorded 148 anti-illegal logging apprehensions and confiscated more than 310,000 board feet of undocumented forest products, along with 30 conveyances used to illegally transport lumber.",
         "During the same period, DENR also reported 132 additional cases that resulted in the confiscation of 364,904 board feet of illegal lumber and another 42 conveyances. These figures show that illegal forest-product activities continued to require significant enforcement action even as the number of identified hotspots declined. DENR worked with the Philippine Army, Philippine National Police, Department of Justice, and local government units to conduct forest patrols and strengthen surveillance.",
@@ -112,14 +112,20 @@ function Home() {
         "https://pia.gov.ph/news/denr-slashes-number-of-illegal-logging-hotspots-across-caraga/",
     }
   ]
+  const SelectedStatusIcon = illegalLoggingStatus[selectedStatus].icon;
   return (
     <>
     <section id="status-illegal-logging" className="w-full border-t-[1px] text-teal-8">
-        <div className="mt-4 w-full flex justify-center items-center !mt-6 !py-5">
-          <h1 className="flex items-center gap-2 !text-2xl !text-teal-8 font-semibold">
-            <FaLeaf aria-hidden="true" className="shrink-0" />
-            Definition and Current Status
-          </h1>
+        <div className="flex w-full items-center gap-4 !px-6 !pt-8 !pb-2">
+          <span className="h-px flex-1 bg-gray-200" aria-hidden="true" />
+          <div className="text-center">
+            <h1 className="flex items-center justify-center gap-2 !text-xl font-bold !text-teal-8">
+              <FaLeaf aria-hidden="true" className="shrink-0" />
+              Definition and Current Status
+            </h1>
+            <p className="!mt-1 text-xs text-gray-600">Documented forest cases in Palawan and Caraga</p>
+          </div>
+          <span className="h-px flex-1 bg-gray-200" aria-hidden="true" />
         </div>
         <div className="grid grid-cols-1 gap-3 !px-6 !py-6 sm:grid-cols-2 lg:grid-cols-4">
             {illegalLoggingStatus.map((status, index) => (
@@ -155,16 +161,28 @@ function Home() {
               </button>
             ))}
           </div>
-          <div id="detailStatus" className="w-full border-t border-gray-200 !px-6 !py-8 text-teal-8">           
-            <div className="flex justify-between">
-              <div className="w-[40%] flex items-center justify-center flex-col gap-3">
-                <img src={detailsStatus[selectedStatus].image} alt={`image of ${detailsStatus[selectedStatus].title}`} className='w-120 h-80 rounded-md'/>
-                <span className="text-sm text-center text-gray-900"> {detailsStatus[selectedStatus].photoSource}</span>
-              </div>  
-              <div className="!space-y-3 w-[55%]">
-                <h2 className="text-lg font-semibold">{detailsStatus[selectedStatus].title}</h2>
+          <div id="detailStatus" className="w-full border-t border-gray-200 !px-6 !py-8 text-teal-8">
+            <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:gap-8">
+              <div className="flex min-w-0 flex-col gap-2">
+                <img src={detailsStatus[selectedStatus].image} alt={detailsStatus[selectedStatus].imageAlt || detailsStatus[selectedStatus].title} className="aspect-[3/2] w-full rounded-md object-cover" />
+                {detailsStatus[selectedStatus].photoSource && (
+                  <span className="text-xs text-gray-600">{detailsStatus[selectedStatus].photoSource}</span>
+                )}
+              </div>
+              <div className="min-w-0 !space-y-3">
+                <div className="flex items-center gap-3">
+                  <SelectedStatusIcon aria-hidden="true" className="mt-0.5 shrink-0 text-xl" />
+                  <div className="min-w-0">
+                    <h2 className="text-base font-bold leading-tight !mb-0 !text-teal-8">
+                      {detailsStatus[selectedStatus].title}
+                    </h2>
+                    <p className="!mt-1 text-xs leading-snug text-gray-600">
+                      {detailsStatus[selectedStatus].description}
+                    </p>
+                  </div>
+                </div>
                 {detailsStatus[selectedStatus].details.map((detail, index) => (
-                  <p key={index} className="text-sm leading-relaxed text-gray-700">
+                  <p key={index} className="text-sm  leading-relaxed text-gray-700 !mt-5">
                     {detail.trim()}
                   </p>
                 ))}
