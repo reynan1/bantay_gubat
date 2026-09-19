@@ -71,7 +71,7 @@ function Header() {
 
       {/* Navigation */}
       <nav className="w-full !py-2 bg-teal-8 flex items-center justify-center !h-13">
-        <ul className="flex items-center justify-center gap-8">
+        <ul className="flex items-center justify-center gap-5">
           
           <li>
             <Link
@@ -112,6 +112,34 @@ function Header() {
               "
             >
               Effects
+            </Link>
+          </li>
+
+          <li>
+            <Link
+              to="/effects"
+              className="
+                font-normal
+                !text-white
+                transition-colors duration-200
+                hover:!text-green-200
+              "
+            >
+              Stakeholders
+            </Link>
+          </li>
+
+          <li>
+            <Link
+              to="/gallery"
+              className="
+                font-normal
+                !text-white
+                transition-colors duration-200
+                hover:!text-green-200
+              "
+            >
+              Gallery
             </Link>
           </li>
 
