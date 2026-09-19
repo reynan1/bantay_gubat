@@ -4,7 +4,7 @@ import philippines from '../assets/images/indegenous/philippines.png'
 import indegenous from '../assets/images/indegenous/indegenous_final.png'
 import caraigaImg from '../assets/images/indegenous/caraiga_img.png'
 import illegalLumber from '../assets/images/indegenous/illegal_lumber4.png'
-import palawanTimeline from '../assets/images/indegenous/palawan-timeline.png'
+
 
 function Home() {
   const [selectedStatus, setSelectedStatus] = useState(0);
