@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaCubes, FaExclamationTriangle, FaMapMarkerAlt, FaTree, FaUsers } from "react-icons/fa";
 import indegenous from '../assets/images/indegenous/indegenous_final.png'
 
 function Home() {
@@ -6,25 +7,33 @@ function Home() {
   const illegalLoggingStatus = [
     {
       value: "5,149",
-      title: "Hectares Area",
+      title: "Illegal Tree Cutting in Mount Domadoway",
+      icon: FaTree,
+      problem: "Unauthorized tree cutting can harm natural forests, destroy wildlife habitats, and reduce forest resources that people and wildlife depend on.",
       description:
         "Illegal tree cutting was documented within the 5,149-hectare mining contract area near Mount Domadoway in southern Palawan.",
     },
     {
       value: "2,500",
-      title: "Indigenous Pala’wan",
+      title: "Indigenous Pala’wan People",
+      icon: FaUsers,
+      problem: "Forest destruction can affect Pala’wan communities by reducing the food, water, medicinal plants, and culturally important places they depend on.",
       description:
         "Around 2,500 Indigenous Pala’wan people from 12 rurunganen (villages) live around Mount Domadoway.",
     },
     {
-      value: "17",
-      title: "illegal lumber",
+      value: "6",
+      title: "Illegal Logging Hotspots",
+      icon: FaMapMarkerAlt,
+      problem: "Illegal logging remains a problem in parts of Caraga. Even though the number of hotspots has decreased, illegal forest activities are still occurring in some areas.",
       description:
         "DENR Caraga reported progress in reducing areas identified as illegal logging hotspots. At the height of the implementation of Executive Order No. 23, the region had 17 identified illegal logging hotspots.",
     },
     {
       value: "364,904",
-      title: "Cutting First Reported",
+      title: "Board Feet of Illegal Lumber",
+      icon: FaCubes,
+      problem: "Illegal cutting and transportation of forest products continue to threaten Caraga's forests, requiring regular monitoring and enforcement operations.",
       description:
         "Despite the reduction in hotspots, DENR Caraga continued to record substantial enforcement activity in 2025.",
     },
@@ -38,10 +47,10 @@ function Home() {
         imageAlt: "",
         photoSource: "Images of Indigenous Pala’wan people living",
         description:
-          "Around 2,500 Pala’wan people from communities surrounding Mount Domadoway rely on this forest landscape.",
+          "Unauthorized tree cutting damages natural forests and threatens protected forest resources.",
         details:[
-          `Illegal tree cutting was documented within the 5,149-hectare mining contract area near Mount Domadoway in southern Palawan. According to the Mines and Geosciences Bureau (MGB), its field office first reported the illegal cutting as early as November 2020. MGB Regional Director Glenn Marcelo Noble stated that the forest clearing was not approved by the government and was not initiated by Pyramid Hill Mining.`,
-          `The reported cutting provides evidence that unauthorized forest clearing was occurring within the concession area. The MGB also reminded the mining company of its responsibility to monitor its concession. Although the tree cutting occurred within the mining contract area, the report states that there was no evidence linking the deforestation to Pyramid Hill.`
+          `Illegal logging refers to the unauthorized cutting or clearing of trees and forest resources without the required government approval. In the Mount Domadoway case, the Mines and Geosciences Bureau (MGB) confirmed that tree cutting occurred within a mining contract area and described the forestland clearing as not government approved.`,
+          `In Palawan, natural forests and other ecologically important areas receive legal protection. The Strategic Environmental Plan for Palawan (SEP) established a province-wide commercial logging ban and identifies natural forests, high-elevation areas, endangered-species habitats, and other ecologically important locations as protected areas where most activities are restricted.`,
           ],
         reference:
           "Fabro, K. A. S. (2021). Illegal logging in Philippines’ Palawan stokes fears of a mining resurgence.",
@@ -106,7 +115,7 @@ function Home() {
   return (
     <>
     <section id="status-illegal-logging" className="w-full border-t-[1px] text-teal-8">
-        <div className="grid items-center grid-cols-1 md:grid-cols-2 xl:grid-cols-4 w-[100%] gap-6 !py-5 px-6">
+        <div className="grid grid-cols-1 gap-3 !px-6 !py-5 sm:grid-cols-2 lg:grid-cols-4">
             {illegalLoggingStatus.map((status, index) => (
             <button key={status.title}
                   type="button"
@@ -114,51 +123,27 @@ function Home() {
                   aria-pressed={selectedStatus === index}
                   aria-controls="detailStatus"
                   className={`
-                    group
-                    flex w-full items-center gap-4 min-w-0 text-left
-                    rounded-xl border border-gray-200
-                    p-4 shadow-sm !py-8 !px-5
-                    transition-all duration-300
-                    hover:bg-teal-8
-                    hover:border-teal-8
-                    hover:shadow-md
-                    cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700
-                    ${selectedStatus === index ? "bg-teal-8 border-teal-8 shadow-md" : ""}
+                    group flex h-full min-w-0 cursor-pointer flex-col rounded-md border p-3 text-left shadow-sm
+                    transition-colors duration-200 hover:border-teal-700 hover:bg-teal-8 hover:text-white
+                    focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700
+                    ${selectedStatus === index ? "border-teal-8 !rounded-md text-teal-8 bg-teal-8 text-white" : "border-gray-200 bg-white text-teal-8"}
                 `}
               >
-                <span
-                  className={`
-                    text-xl font-bold shrink-0
-                    transition-colors duration-300
-                    group-hover:text-white
-                    ${selectedStatus === index ? "text-white" : "text-teal-8"}
-                  `}
-                >
-                  {status.value}
-                </span>
-
-                <div className="flex flex-col min-w-0">
-                  <span
-                    className={`
-                      text-sm font-semibold truncate
-                      transition-colors duration-300
-                      group-hover:text-white
-                      ${selectedStatus === index ? "text-white" : "text-teal-8"}
-                    `}
-                  >
-                    {status.title}
+                <div className="flex min-h-20 w-full items-start gap-3 !py-3 !px-2">
+                  <span className={`grid h-12 w-12 !shrink-0 place-items-center rounded-full text-xl ${selectedStatus === index ? "bg-white text-teal-8" : "bg-green-50 text-teal-8"}`}>
+                    <status.icon aria-hidden="true" />
                   </span>
-
-                  <span
-                    className={`
-                      text-sm truncate
-                      transition-colors duration-300
-                      group-hover:text-white
-                      ${selectedStatus === index ? "text-white" : "text-gray-600"}
-                    `}
-                    title={status.description}
-                  >
-                    {status.description}
+                  <div className="!min-w-0">
+                    <span className="block text-2xl font-bold leading-tight">{status.value}</span>
+                    <span className="!mt-1 block text-xs font-semibold leading-snug">{status.title}</span>
+                  </div>
+                </div>
+                <div className={`!mt-2 w-full flex-1 rounded-bl-md rounded-br-md  !py-3 !px-4 transition-colors ${selectedStatus === index ? "bg-green-50 " : "bg-green-50 group-hover:border-teal-8 "}`}>
+                  <span className="flex items-center gap-2 text-xs font-bold text-teal-8">
+                    <FaExclamationTriangle aria-hidden="true" /> Problem
+                  </span>
+                  <span className={`!mt-2 block text-xs leading-relaxed  ${selectedStatus === index ? "text-gray-700" : "text-gray-700 "}`}>
+                    {status.problem}
                   </span>
                 </div>
               </button>
@@ -188,6 +173,9 @@ function Home() {
               </div> */}
             </div>
           </div>
+        </section>
+        <section id="status-section">
+
         </section>
       </>
   )
