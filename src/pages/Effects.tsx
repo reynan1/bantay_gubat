@@ -15,7 +15,31 @@ import {
   FaWater,
   FaArrowRight,
 } from "react-icons/fa";
-import impactIllustrations from "../assets/images/effects-impact-illustrations.png";
+import forestImpact1 from "../assets/images/effect-forest-1.png";
+import forestImpact2 from "../assets/images/effect-forest-2.png";
+import forestImpact3 from "../assets/images/effect-forest-3.png";
+import forestImpact4 from "../assets/images/effect-forest-4.png";
+import forestImpact5 from "../assets/images/effect-forest-5.png";
+import habitatImpact1 from "../assets/images/effect-habitat-1.png";
+import habitatImpact2 from "../assets/images/effect-habitat-2.png";
+import habitatImpact3 from "../assets/images/effect-habitat-3.png";
+import habitatImpact4 from "../assets/images/effect-habitat-4.png";
+import habitatImpact5 from "../assets/images/effect-habitat-5.png";
+import waterImpact1 from "../assets/images/effect-water-1.png";
+import waterImpact2 from "../assets/images/effect-water-2.png";
+import waterImpact3 from "../assets/images/effect-water-3.png";
+import waterImpact4 from "../assets/images/effect-water-4.png";
+import waterImpact5 from "../assets/images/effect-water-5.png";
+import climateImpact1 from "../assets/images/effect-climate-1.png";
+import climateImpact2 from "../assets/images/effect-climate-2.png";
+import climateImpact3 from "../assets/images/effect-climate-3.png";
+import climateImpact4 from "../assets/images/effect-climate-4.png";
+import climateImpact5 from "../assets/images/effect-climate-5.png";
+import communityImpact1 from "../assets/images/effect-community-1.png";
+import communityImpact2 from "../assets/images/effect-community-2.png";
+import communityImpact3 from "../assets/images/effect-community-3.png";
+import communityImpact4 from "../assets/images/effect-community-4.png";
+import communityImpact5 from "../assets/images/effect-community-5.png";
 
 function Effects() {
   const [selectedStatus, setSelectedStatus] = useState(0);
@@ -65,13 +89,6 @@ function Effects() {
   ];
 
   const SelectedStatusIcon = illegalLoggingEffects[selectedStatus].icon;
-  const impactImageAlts = [
-    "Cut logs and a stump in a forest",
-    "Exposed roots and soil on a cleared slope",
-    "Sediment flowing through a river below a damaged hillside",
-    "A family beside a home affected by floodwater",
-    "Young trees growing in a recovering forest",
-  ];
   const detailEffects = [
     {
       value: "01",
@@ -81,26 +98,31 @@ function Effects() {
       impactChain: [
         {
           question: "What happens after trees are removed?",
+          image: forestImpact1,
           answer:
             "Forest cover becomes thinner or disappears entirely. The remaining forest is more fragmented, which makes it harder for seedlings, wildlife, and forest processes to recover.",
         },
         {
           question: "Why does degradation continue after cutting?",
+          image: forestImpact2,
           answer:
             "Roads, trails, repeated timber removal, and exposed edges can keep disturbing the area even after the first trees are gone.",
         },
         {
           question: "Why does this matter for nearby communities?",
+          image: forestImpact3,
           answer:
             "Degraded forests provide fewer resources, less shade, weaker slope protection, and less reliable water regulation for people living nearby.",
         },
         {
           question: "How does fragmentation affect recovery?",
+          image: forestImpact4,
           answer:
             "Smaller, isolated patches have fewer seed sources and more exposed edges, making natural regeneration harder.",
         },
         {
           question: "What can happen after repeated cutting?",
+          image: forestImpact5,
           answer:
             "Repeated disturbance can prevent young trees from maturing and leave the forest with less diverse vegetation.",
         },
@@ -129,26 +151,31 @@ function Effects() {
       impactChain: [
         {
           question: "What happens to wildlife habitat?",
+          image: habitatImpact1,
           answer:
             "Nesting trees, food sources, shade, and travel corridors are reduced. Wildlife may be pushed into smaller patches where competition and exposure increase.",
         },
         {
           question: "Why does fragmentation add pressure?",
+          image: habitatImpact2,
           answer:
             "A forest broken into smaller pieces has more exposed edges and fewer continuous routes for wildlife movement, feeding, and reproduction.",
         },
         {
           question: "Why are sensitive areas at higher risk?",
+          image: habitatImpact3,
           answer:
             "Places with high biodiversity or endangered species can lose ecological value quickly because many species depend on specific forest conditions.",
         },
         {
           question: "What happens when food sources disappear?",
+          image: habitatImpact4,
           answer:
             "Animals may travel farther to feed or compete for fewer resources, increasing their exposure to disturbance.",
         },
         {
           question: "How can plant diversity change?",
+          image: habitatImpact5,
           answer:
             "Species that need a shaded, stable forest floor may decline as canopy gaps alter light and moisture.",
         },
@@ -177,26 +204,31 @@ function Effects() {
       impactChain: [
         {
           question: "What happens to soil after trees are removed?",
+          image: waterImpact1,
           answer:
             "Soil loses root support and canopy protection. Rain can strike the ground harder, loosen topsoil, and carry sediment downhill.",
         },
         {
           question: "How does this affect rivers and settlements?",
+          image: waterImpact2,
           answer:
             "More runoff and sediment can raise flood risk, muddy waterways, reduce water quality, and damage farms or homes downstream.",
         },
         {
           question: "Why are mountain forests important?",
+          image: waterImpact3,
           answer:
             "Mountain forests help regulate watersheds. When slopes are degraded, heavy rain can move faster through the landscape.",
         },
         {
           question: "What happens to topsoil?",
+          image: waterImpact4,
           answer:
             "Rain can wash away nutrient-rich topsoil, making it harder for new plants to establish on exposed ground.",
         },
         {
           question: "How does sediment affect waterways?",
+          image: waterImpact5,
           answer:
             "Sediment can cloud rivers and accumulate downstream, affecting aquatic habitats and the use of water by communities.",
         },
@@ -225,26 +257,31 @@ function Effects() {
       impactChain: [
         {
           question: "What happens to carbon stored in trees?",
+          image: climateImpact1,
           answer:
             "Cutting removes living carbon stores. Some of that carbon can return to the atmosphere as wood and debris decay or burn.",
         },
         {
           question: "Why does recovery matter?",
+          image: climateImpact2,
           answer:
             "A degraded forest may take years to regain its carbon stocks, and repeated cutting can delay that recovery.",
         },
         {
           question: "How does this affect climate action?",
+          image: climateImpact3,
           answer:
             "Protecting and restoring forests helps preserve carbon storage and supports efforts to limit emissions.",
         },
         {
           question: "What happens when cut wood decays or burns?",
+          image: climateImpact4,
           answer:
             "Some of the carbon stored in harvested wood and debris returns to the atmosphere as carbon dioxide.",
         },
         {
           question: "Why does continued forest loss matter?",
+          image: climateImpact5,
           answer:
             "Fewer mature trees mean less living biomass available to store carbon while the forest regrows.",
         },
@@ -273,26 +310,31 @@ function Effects() {
       impactChain: [
         {
           question: "What resources can communities lose?",
+          image: communityImpact1,
           answer:
             "Forest damage can reduce access to non-timber products, clean water, and other resources used for food and income.",
         },
         {
           question: "Who feels these changes first?",
+          image: communityImpact2,
           answer:
             "Forest-dependent households and Indigenous communities may face the effects directly when familiar sources of food, materials, or livelihood become less reliable.",
         },
         {
           question: "What happens beyond the forest?",
+          image: communityImpact3,
           answer:
             "Erosion and changes to watersheds can also affect farms and settlements downstream.",
         },
         {
           question: "How can income be affected?",
+          image: communityImpact4,
           answer:
             "When forest products become harder to collect, households may lose a source of food, materials, or income.",
         },
         {
           question: "Why does community participation matter?",
+          image: communityImpact5,
           answer:
             "Local knowledge and participation help identify changes in forest resources and support restoration that meets community needs.",
         },
@@ -398,12 +440,7 @@ function Effects() {
                       aria-controls="selected-impact-detail"
                       className={`flex h-full w-full cursor-pointer flex-col items-start border-b-2 !px-1 !pb-3 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700 ${selectedImpact === index ? "border-teal-700" : "border-transparent hover:border-teal-300"}`}
                     >
-                      <span
-                        role="img"
-                        aria-label={impactImageAlts[index]}
-                        className="block aspect-[4/3] w-full bg-no-repeat"
-                        style={{ backgroundImage: `url(${impactIllustrations})`, backgroundSize: "500% auto", backgroundPosition: `${index * 25}% 45%` }}
-                      />
+                      <img src={step.image} alt="" className="block aspect-[4/3] w-full object-contain" />
                       <span className="!mt-2 text-xs font-bold leading-snug text-teal-8">{index + 1}. {step.question}</span>
                       <span className="!mt-1 line-clamp-3 text-xs leading-relaxed text-gray-600">{step.answer}</span>
                     </button>
