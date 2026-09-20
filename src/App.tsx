@@ -7,7 +7,7 @@ import Home from './pages/Home';
 import Definition from './pages/Definition';
 import Causes from './pages/Causes';
 import About from './pages/About';
-import Effect from './pages/Effect';
+import Effects from './pages/Effects';
 import StakeHolders from './pages/StakeHolders';
 import Gallery from './pages/Gallery';
 
@@ -22,7 +22,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/definition" element={<Definition />} />
             <Route path="/causes" element={<Causes/>} />
-            <Route path="/effects" element={<Effect />} />
+            <Route path="/effects" element={<Effects />} />
             <Route path="/stakeholders" element={<StakeHolders />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/about" element={<About />} />
