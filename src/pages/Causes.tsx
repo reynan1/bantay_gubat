@@ -1,5 +1,5 @@
 
-import { FaUserCog, FaExclamationTriangle, FaTree, FaShieldAlt, FaMapMarkerAlt, FaCubes} from "react-icons/fa";
+import { FaUserCog, FaExclamationTriangle, FaTree, FaShieldAlt, FaMapMarkerAlt, FaCubes, FaChevronDown} from "react-icons/fa";
 import { useState } from "react";
 import timberDemand from '../assets/images/causes/timbers.png'
 import livelihood from '../assets/images/causes/poverty.png'
@@ -8,6 +8,7 @@ import enforcement from '../assets/images/causes/weak-enforcement.png'
 
 function Causes() {
   const [selectedStatus, setSelectedStatus] = useState(0);
+  const [openWhy, setOpenWhy] = useState<number | null>(null);
   const illegalLoggingCauses = [
       {
         value: "01",
@@ -21,13 +22,13 @@ function Causes() {
       },
       {
         value: "02",
-        title: "Timber Poaching",
+        title: "Limited Livelihoods",
         problemRefer: "Cause",
         icon: FaCubes,
         problem:
-          "Timber poaching involves cutting or collecting trees and forest products from protected or regulated forest areas without legal authorization.",
+          "Poverty and limited livelihood options can increase reliance on forest products for household needs or income.",
         description:
-          "Unauthorized extraction of timber damages natural forests and can reduce forest resources, wildlife habitats, and biodiversity.",
+          "This pressure can contribute to unauthorized extraction, though relying on a forest does not itself mean logging illegally.",
       },
       {
         value: "03",
@@ -51,24 +52,6 @@ function Causes() {
       },
   ];
 
-  const researchQuestions = [
-    {
-      question: "Why does demand for timber lead to illegal logging? How does market demand encourage cutting without permits, and why does that cause forest loss?",
-      why: "Buyers create income from timber; unauthorized cutting supplies some of that demand. The DENR analysis identifies demand as an underlying driver and illegal logging and timber poaching as direct drivers of forest degradation.",
-    },
-    {
-      question: "Why can limited livelihood options put pressure on forests? How can reliance on forest products lead to unauthorized extraction, and why does that degrade forests?",
-      why: "Few income alternatives can increase reliance on timber, fuelwood, and charcoal. The DENR analysis lists poverty among underlying drivers of forest loss; the narrative explains how extraction can become a direct pressure without assuming every forest-dependent household logs illegally.",
-    },
-    {
-      question: "Why is more land cleared for farming? How do kaingin and agricultural expansion remove trees, and why does that result in forest loss?",
-      why: "Creating fields and settlements removes existing vegetation. The DENR analysis identifies kaingin and forest conversion for agriculture as direct drivers of deforestation.",
-    },
-    {
-      question: "Why can illegal logging continue under weak enforcement? How do gaps in monitoring allow timber cutting and transport, and why does that increase forest degradation?",
-      why: "Limited monitoring makes unauthorized extraction harder to detect and stop. The DENR analysis identifies weak governance as an underlying driver, while the narrative connects it to continuing timber poaching.",
-    },
-  ];
     const SelectedStatusIcon = illegalLoggingCauses[selectedStatus].icon;
   
     const detailsCauses = [
@@ -80,13 +63,18 @@ function Causes() {
       photoSource: "DENR",
       description:
         "Demand for timber and other forest products creates an economic incentive for unauthorized harvesting and timber poaching.",
-      details: [
-        `One underlying cause of illegal logging is the demand for timber and other forest products. Wood is used for construction, furniture, fuel, and other products. When there is a market willing to buy timber, harvesting trees can provide income to loggers, traders, and other people involved in the timber supply chain.`,
-
-        `The problem occurs when timber is harvested outside legal permits, approved areas, or forest-management rules. Instead of obtaining forest products only from authorized sources, some individuals may engage in timber poaching or unauthorized cutting to supply market demand. This creates a direct connection between economic demand and illegal forest extraction.`,
-
-        `DENR's analysis of the drivers of deforestation and forest degradation identifies economic and market factors, including high demand for wood and forest products, as underlying drivers. The same study identifies legal and illegal logging and timber poaching under forest-product extraction as direct drivers of forest degradation. This makes timber demand an important economic reason behind continued illegal forest extraction.`,
+      fiveWhys: [
+        { question: "Why are trees cut for timber?", answer: "Wood is used in construction, furniture, fuel, and other products. Supplying these uses requires harvesting trees, whether from legal sources or, in some cases, from forests where cutting is unauthorized." },
+        { question: "Why does that demand encourage harvesting?", answer: "Buyers give timber a sale value. That value creates income for people who cut, move, process, or sell wood, so stronger demand can increase the incentive to extract forest products." },
+        { question: "Why might some supply come from unauthorized cutting?", answer: "Demand does not make logging illegal by itself. The harm arises when suppliers cut trees without authorization or take timber from areas outside approved forest-management rules to meet that demand." },
+        { question: "Why does unauthorized cutting damage forests?", answer: "Cutting removes trees and reduces the forest resources available for natural regeneration, habitat, and future use. DENR treats illegal logging and timber poaching as direct forms of forest-product extraction that degrade forests." },
+        { question: "Why is timber demand considered an underlying cause?", answer: "DENR separates the immediate activity from the pressure behind it: illegal logging and timber poaching directly remove forest products, while high demand for wood helps explain why people may keep supplying them. The source identifies market demand as an underlying driver, not proof that every timber sale is illegal." },
       ],
+      informationNeeded: "Evidence of demand for wood, how timber is supplied, and whether extraction is authorized is needed to connect a market incentive to illegal forest removal.",
+      evidence: "The DENR drivers analysis names high demand for wood as an underlying market factor and illegal logging and timber poaching as direct forest-product extraction. A separate assessment in Eastern Samar and Davao Oriental also identifies timber demand and poaching among the pressures observed at its study sites.",
+      conclusion: "The two studies support a demand-to-extraction pathway. They do not measure how much Philippine forest loss is caused by demand alone, and legal timber sales should not be counted as illegal logging.",
+      supportingReference: "GIZ and DENR - REDD+ site assessment, Eastern Samar and Davao Oriental (2016)",
+      supportingUrl: "https://faspselib.denr.gov.ph/Materials/Detail/0189a073-3be4-45bd-abbc-e07829b3c76a",
       reference:
         "DENR — REDD+ Analysis of Key Drivers of Deforestation and Forest Degradation in the Philippines",
       referenceUrl:
@@ -101,13 +89,18 @@ function Causes() {
       photoSource: "DENR",
       description:
         "Limited sources of income can increase dependence on forests for timber, fuelwood, charcoal, and other products.",
-      details: [
-        `Poverty and limited livelihood opportunities are underlying factors that can contribute to illegal forest activities. Some communities living near forest areas depend on natural resources for subsistence or additional income. Forest products can provide materials for household use or products that can be sold for cash.`,
-
-        `This becomes a cause of forest degradation when people have few alternative sources of livelihood and turn to activities such as unauthorized timber harvesting, fuelwood gathering, or charcoal production. The economic need does not automatically mean that forest-dependent communities engage in illegal logging, but limited livelihood options can increase pressure on forest resources.`,
-
-        `DENR's analysis identifies poverty, landlessness, and population pressure among the socio-demographic factors underlying deforestation and forest degradation. A separate assessment in Eastern Samar and Davao Oriental also identifies poverty and limited livelihood opportunities among factors associated with activities such as timber poaching and forest-product extraction.`,
+      fiveWhys: [
+        { question: "Why do some households rely on forest products?", answer: "Nearby forests can supply fuelwood and other materials for daily use. Timber, charcoal, and other products may also be gathered or produced for cash income when households need to meet basic expenses." },
+        { question: "Why can that reliance become stronger?", answer: "Poverty, landlessness, and limited work or farming opportunities can narrow the alternatives available to a household. DENR lists these social pressures among the underlying factors that can move people into forestlands for subsistence or income." },
+        { question: "Why can this put pressure on forests?", answer: "When more needs are met through forest products, collection may intensify. Fuelwood gathering, charcoal making, and timber extraction are distinct activities, but DENR groups them as direct forms of forest-product extraction that can affect forest condition." },
+        { question: "Why can some extraction become a cause of degradation?", answer: "Repeated removal of wood can reduce forest resources, especially when extraction exceeds what can recover. Unauthorized timber cutting adds a legal and management problem; using forest resources for subsistence does not mean every forest-dependent household logs illegally." },
+        { question: "Why are livelihoods an underlying cause?", answer: "Poverty does not cut a tree on its own. It can increase dependence on forest products, which may lead to direct extraction when other income options are scarce. DENR therefore treats poverty and landlessness as underlying pressures rather than as proof of illegal activity by a particular community." },
       ],
+      informationNeeded: "Evidence about household income options, dependence on forest products, and the type of extraction is needed to distinguish livelihood pressure from an allegation of illegal logging.",
+      evidence: "The DENR drivers analysis lists poverty and landlessness among underlying pressures. The Eastern Samar and Davao Oriental assessment separately identifies limited livelihoods alongside fuelwood collection, charcoal making, and timber poaching at its project sites.",
+      conclusion: "These findings support a link between limited options and pressure on forests, but neither study shows that every forest-dependent household takes timber illegally.",
+      supportingReference: "GIZ and DENR - REDD+ site assessment, Eastern Samar and Davao Oriental (2016)",
+      supportingUrl: "https://faspselib.denr.gov.ph/Materials/Detail/0189a073-3be4-45bd-abbc-e07829b3c76a",
       reference:
         "DENR — REDD+ Analysis of Key Drivers of Deforestation and Forest Degradation in the Philippines",
       referenceUrl:
@@ -122,13 +115,18 @@ function Causes() {
       photoSource: "DENR",
       description:
         "Forests may be cleared to create farmland, settlements, plantations, or areas for agricultural production.",
-      details: [
-        `Agricultural expansion is another major cause of forest loss in the Philippines. Forest areas may be cleared to create space for crops, settlements, plantations, and other agricultural activities. Kaingin, or slash-and-burn cultivation, is one form of agricultural expansion identified in Philippine forest studies.`,
-
-        `The process directly removes forest vegetation. Trees and other plants are cut, and in some cases the remaining vegetation is burned so the land can be cultivated. When farmers need additional land because existing plots have become less productive or are insufficient for their needs, clearing can expand into other forest areas.`,
-
-        `DENR's study identified kaingin as an important direct driver of deforestation. Its assessment describes agricultural expansion as including kaingin, shifting cultivation, and conversion of forestlands into settlements and plantations. Therefore, agricultural expansion contributes to forest loss because creating new agricultural land can require removing existing forest cover.`,
+      fiveWhys: [
+        { question: "Why are forest areas cleared?", answer: "Trees may be removed to make room for crops, settlements, or plantations. This changes land from forest cover to another use, so the clearing itself is a direct cause of deforestation." },
+        { question: "Why does expansion move into forested land?", answer: "The DENR analysis links pressure on forestland to needs for subsistence and income, as well as to low farm productivity and landlessness. These pressures can make new land attractive when existing farmland is limited or less productive." },
+        { question: "Why does kaingin remove forest cover?", answer: "Kaingin prepares a plot by cutting vegetation and, in slash-and-burn practice, burning what remains. The trees and other plants that formed the original forest cover are removed before crops are planted." },
+        { question: "Why can clearing continue across more land?", answer: "Shifting cultivation can move cultivation to another plot, while settlements or plantations can convert forestland for longer-term use. Each new clearing extends the area from which forest vegetation has been removed." },
+        { question: "Why is agriculture a documented cause of forest loss?", answer: "DENR identifies kaingin, shifting cultivation, and conversion to settlements or plantations as direct agricultural drivers. Its study reports that informants ranked kaingin as a major driver of deforestation; that finding concerns the study sites and should not be read as a measured share of all Philippine forest loss." },
       ],
+      informationNeeded: "Land-use changes, where clearing occurred, and whether forest cover was replaced by farms or settlements are needed to establish agricultural expansion as a direct cause.",
+      evidence: "The DENR drivers analysis identifies kaingin, shifting cultivation, and conversion to settlements or plantations. The Eastern Samar and Davao Oriental site assessment also lists upland agriculture expansion among its observed direct drivers.",
+      conclusion: "Both studies connect clearing for cultivation with forest loss. Their site findings cannot be used as a national percentage of deforestation caused by agriculture.",
+      supportingReference: "GIZ and DENR - REDD+ site assessment, Eastern Samar and Davao Oriental (2016)",
+      supportingUrl: "https://faspselib.denr.gov.ph/Materials/Detail/0189a073-3be4-45bd-abbc-e07829b3c76a",
       reference:
         "DENR — REDD+ Analysis of Key Drivers of Deforestation and Forest Degradation in the Philippines",
       referenceUrl:
@@ -143,13 +141,18 @@ function Causes() {
       photoSource: "DENR",
       description:
         "Gaps in forest governance, monitoring, and enforcement can make unauthorized forest activities more difficult to prevent.",
-      details: [
-        `Illegal logging can continue when forest governance and enforcement are insufficient to prevent unauthorized activities. Philippine forests cover large and sometimes remote areas, making regular monitoring and protection important for detecting illegal tree cutting and timber transportation.`,
-
-        `When monitoring is inadequate or rules are poorly enforced, people involved in unauthorized logging may have more opportunities to cut, transport, or trade timber without being immediately detected. Governance problems can therefore enable direct causes such as timber poaching and illegal forest-product extraction to continue.`,
-
-        `DENR's analysis identifies weak policies and governance among the underlying causes of deforestation and forest degradation. Studies of Philippine REDD+ sites also recommend stronger forest law enforcement, increased capacity for forest guards, and stricter implementation of forest protection laws. This shows that governance and enforcement affect how effectively illegal forest activities can be prevented and controlled.`,
+      fiveWhys: [
+        { question: "Why can unauthorized tree cutting continue?", answer: "Rules protect forests only when unauthorized cutting is detected and addressed. Weak enforcement can leave more opportunities for people to cut, transport, or sell timber without timely intervention." },
+        { question: "Why is monitoring difficult?", answer: "Forest protection requires people, coordination, and reliable information across large areas. DENR also describes conflicting responsibilities among agencies and unstable forest policies as governance problems that can complicate consistent action." },
+        { question: "Why do gaps in monitoring matter?", answer: "If cutting or transport is not noticed, authorities have less opportunity to stop the activity or check whether the timber was lawfully obtained. Inconsistent oversight can allow unauthorized forest-product extraction to continue." },
+        { question: "Why can undetected activity degrade forests?", answer: "Repeated timber poaching takes wood from forests without the controls intended to manage extraction. DENR classifies illegal logging and timber poaching as direct drivers of forest degradation because they remove forest products." },
+        { question: "Why is weak governance an underlying cause?", answer: "Weak policies or conflicting agency mandates do not directly remove trees. They can make it harder to prevent and respond to the activities that do. DENR identifies governance as an underlying driver and recommends clearer policy and stronger forest management to address it." },
       ],
+      informationNeeded: "Records of monitoring, apprehensions, and remaining hotspots are needed to judge whether enforcement gaps allow unauthorized extraction to persist.",
+      evidence: "DENR identifies weak governance as an underlying cause. In Caraga, DENR reported that identified illegal-logging hotspots fell from 17 to six by 2024, yet recorded 148 apprehensions and more than 310,000 board feet of undocumented forest products seized from January to May 2025.",
+      conclusion: "The hotspot count suggests progress while the seizures show continued enforcement activity. These figures do not measure the total volume of illegal logging or prove that weak enforcement caused any particular seizure.",
+      supportingReference: "Philippine Information Agency - DENR Caraga enforcement report (2025)",
+      supportingUrl: "https://pia.gov.ph/news/denr-slashes-number-of-illegal-logging-hotspots-across-caraga/",
       reference:
         "DENR — REDD+ Analysis of Key Drivers of Deforestation and Forest Degradation in the Philippines",
       referenceUrl:
@@ -166,7 +169,7 @@ function Causes() {
               <FaUserCog aria-hidden="true" className="shrink-0" />
                 Main Human Activities That Cause Forest Loss
             </h1>
-            <p className="!mt-1 text-xs text-gray-600">Documented forest cases in Palawan and Caraga</p>
+            <p className="!mt-1 text-xs text-gray-600">Research on direct and underlying drivers of forest loss</p>
           </div>
           <span className="h-px flex-1 bg-gray-200" aria-hidden="true" />
         </div>
@@ -175,7 +178,10 @@ function Causes() {
             {illegalLoggingCauses.map((status, index) => (
              <button key={status.title}
                       type="button"
-                      onClick={() => setSelectedStatus(index)}
+                      onClick={() => {
+                        setSelectedStatus(index);
+                        setOpenWhy(null);
+                      }}
                       aria-pressed={selectedStatus === index}
                       aria-controls="detailStatus"
                       className={`
@@ -226,17 +232,43 @@ function Causes() {
                     </p>
                 </div>
               </div>
-              <div className="border-y border-gray-200 !py-3">
-                <h3 className="text-sm font-semibold text-teal-8">{researchQuestions[selectedStatus].question}</h3>
-                <p className="!mt-1 text-sm leading-relaxed text-gray-700">
-                  Evidence: {researchQuestions[selectedStatus].why}
-                </p>
-              </div>
-                {detailsCauses[selectedStatus].details.map((detail, index) => (
-                  <p key={index} className="text-sm  leading-relaxed text-gray-700 !mt-5">
-                    {detail.trim()}
-                  </p>
+              <ol className="!mt-5 divide-y divide-gray-200 border-y border-gray-200">
+                {detailsCauses[selectedStatus].fiveWhys.map((step, index) => (
+                  <li key={step.question} className="text-sm leading-relaxed">
+                    <h3>
+                      <button
+                        type="button"
+                        aria-expanded={openWhy === index}
+                        aria-controls={`cause-why-${selectedStatus}-${index}`}
+                        onClick={() => setOpenWhy(openWhy === index ? null : index)}
+                        className="flex w-full cursor-pointer items-center justify-between gap-3 !py-3 text-left font-semibold text-teal-8 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
+                      >
+                        <span>{index + 1}. {step.question}</span>
+                        <FaChevronDown aria-hidden="true" className={`shrink-0 transition-transform ${openWhy === index ? "rotate-180" : ""}`} />
+                      </button>
+                    </h3>
+                    <div id={`cause-why-${selectedStatus}-${index}`} hidden={openWhy !== index}>
+                      <p className="!pb-3 text-gray-700">
+                        {step.answer}{" "}
+                 {/*        <a
+                          href={detailsCauses[selectedStatus].referenceUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-teal-8 underline underline-offset-2 hover:text-teal-700"
+                          aria-label={`Source for why ${index + 1}: ${step.question}`}
+                        >
+                          Source
+                        </a> */}
+                      </p>
+                    </div>
+                  </li>
                 ))}
+              </ol>
+                <div className="!space-y-2 !py-3 text-sm leading-relaxed text-gray-700">
+                  <p><span className="font-semibold text-teal-8">Information needed:</span> {detailsCauses[selectedStatus].informationNeeded}</p>
+                  <p><span className="font-semibold text-teal-8">Evidence:</span> {detailsCauses[selectedStatus].evidence}</p>
+                  <p><span className="font-semibold text-teal-8">Conclusion and limit:</span> {detailsCauses[selectedStatus].conclusion}</p>
+                </div>
                 <a
                   href={detailsCauses[selectedStatus].referenceUrl}
                   target="_blank"
@@ -244,6 +276,15 @@ function Causes() {
                   className="inline-block break-words text-sm text-teal-8 underline underline-offset-2 hover:text-teal-700"
                 >
                   {detailsCauses[selectedStatus].reference}
+                </a>
+                <br />
+                <a
+                  href={detailsCauses[selectedStatus].supportingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block break-words text-sm text-teal-8 underline underline-offset-2 hover:text-teal-700"
+                >
+                  {detailsCauses[selectedStatus].supportingReference}
                 </a>
               </div>
             </div>

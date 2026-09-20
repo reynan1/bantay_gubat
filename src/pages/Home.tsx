@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaBullhorn, FaCubes, FaExclamationTriangle, FaFileAlt, FaHistory, FaLeaf, FaMapMarkerAlt, FaShieldAlt, FaTree, FaUsers } from "react-icons/fa";
+import { FaBullhorn, FaChevronDown, FaCubes, FaExclamationTriangle, FaFileAlt, FaHistory, FaLeaf, FaMapMarkerAlt, FaShieldAlt, FaTree, FaUsers } from "react-icons/fa";
 import philippines from '../assets/images/indegenous/philippines.png'
 import indegenous from '../assets/images/indegenous/indegenous_final.png'
 import caraigaImg from '../assets/images/indegenous/caraiga_img.png'
@@ -8,6 +8,7 @@ import illegalLumber from '../assets/images/indegenous/illegal_lumber4.png'
 
 function Home() {
   const [selectedStatus, setSelectedStatus] = useState(0);
+  const [questionOpen, setQuestionOpen] = useState(false);
   const illegalLoggingStatus = [
     {
       value: "5,149",
@@ -57,9 +58,8 @@ function Home() {
         description:
           "Unauthorized tree cutting damages natural forests and threatens protected forest resources.",
         details:[
-          `Illegal tree cutting has been documented near Mount Domadoway in southern Palawan. The affected location is within a 5,149-hectare mining contract area held by Pyramid Hill Mining and Industrial Corporation. The Mines and Geosciences Bureau (MGB) confirmed that illegal tree cutting occurred within this area and stated that the forestland clearing was not approved by the government.`,
-          `According to the MGB, its field office first reported the illegal tree cutting as early as November 2020. The situation shows that unauthorized forest clearing was occurring despite Palawan's environmental protections. Under the Strategic Environmental Plan for Palawan (SEP), commercial logging is prohibited across the province, while natural forests and other ecologically important areas can receive maximum protection.`,
-          `The case remains important because continued unauthorized tree cutting can contribute to forest degradation and threaten forest resources. However, while the illegal cutting occurred within Pyramid Hill's contract area, the report clearly states that there was no evidence linking the deforestation to Pyramid Hill. The MGB also formally reminded the company of its responsibility to monitor its concession area.`
+          `Illegal tree cutting was documented near Mount Domadoway in southern Palawan, within a 5,149-hectare mining contract area held by Pyramid Hill Mining and Industrial Corporation. According to the Mines and Geosciences Bureau (MGB), its field office first reported the unauthorized cutting in November 2020, and the forest clearing had not been approved by the government. The incident provides documented evidence of unauthorized forest clearing in Palawan despite provincial environmental protections, including the Strategic Environmental Plan for Palawan (SEP), which restricts commercial logging and provides protection for natural forests and ecologically important areas.`,
+          `The incident highlights how unauthorized tree cutting can contribute to forest degradation and the loss of valuable forest resources if it continues. However, the location of the clearing should not be interpreted as evidence that the mining company caused it. The report found no evidence linking Pyramid Hill Mining to the deforestation, although the MGB reminded the company of its responsibility to monitor activities within its concession area. This distinction is important because it presents the documented environmental issue while avoiding an unsupported conclusion about who was responsible.`,
           ],
         reference:
           "Fabro, K. A. S. (2021). Illegal logging in Philippines’ Palawan stokes fears of a mining resurgence.",
@@ -75,16 +75,15 @@ function Home() {
       description:
         "Twelve Pala’wan villages are located around Mount Domadoway.",
       details:[
-       `Around Mount Domadoway in Palawan, approximately 2,500 Indigenous Pala’wan people live across 12 villages. These communities have a close relationship with the surrounding forest, which provides important resources such as food and water. The forest is also connected to their cultural traditions and way of life, making it more than just a source of natural resources.`,
-       `Illegal tree cutting can place these forest-dependent communities at risk by damaging the environment they rely on. Continued forest loss can reduce the availability of natural resources and disturb areas that have cultural importance to the Pala’wan people. Because multiple villages surround Mount Domadoway, environmental damage in the area has the potential to affect many community members rather than only the location where trees are cut.`,
-       `The presence of 12 Pala’wan villages also shows why Indigenous communities are important stakeholders in forest protection. Protecting Mount Domadoway helps conserve its forest ecosystem while safeguarding resources and culturally significant areas used by surrounding communities. Their connection to the land makes their experiences and concerns important when addressing illegal logging and other activities that may threaten the forest.`,
+       `Around Mount Domadoway in southern Palawan, approximately 2,500 Indigenous Pala’wan people live in 12 surrounding villages. These communities depend on the forest for essential resources, including food and water, while the area also holds cultural importance connected to their traditions and way of life. These figures show the potential scale of the human impact: forest degradation in Mount Domadoway could affect not only the ecosystem but also thousands of people whose daily needs and cultural practices are closely connected to the surrounding forest.`,
+       `Continued illegal tree cutting and forest loss could reduce access to natural resources, damage habitats, and disturb culturally significant areas used by Pala’wan communities. The presence of 12 villages and about 2,500 residents therefore makes Indigenous communities important stakeholders in protecting Mount Domadoway. Conserving the forest helps preserve biodiversity and forest resources while also protecting the livelihoods, well-being, and cultural connections of communities that depend on the land.`,
       ],
       reference: "Fabro, K. A. S. (2021). Illegal logging in Philippines’ Palawan stokes fears of a mining resurgence.",
       referenceUrl:
               "https://earthjournalism.net/stories/illegal-logging-in-philippines-palawan-stokes-fears-of-a-mining-resurgence",
     },
     {
-      value: "5,149",
+      value: "6",
       title: "Illegal Logging Hotspots Reduced to Six",
       image: caraigaImg,
       imageAlt: "",
@@ -103,7 +102,7 @@ function Home() {
         "https://pia.gov.ph/news/denr-slashes-number-of-illegal-logging-hotspots-across-caraga/",
     },
     {
-      value: "2020",
+      value: "364,904",
       title: "Hundreds of Illegal Logging Apprehensions and Large Lumber Seizures",
       image: illegalLumber,
       imageAlt: "",
@@ -125,19 +124,27 @@ function Home() {
   const researchQuestions = [
     {
       question: "Where was unauthorized cutting documented?",
-      why: "This establishes that the issue occurred and identifies the place to examine.",
+      needed: "The location, date, government finding, and area actually cleared are needed to verify the incident without overstating its size or assigning blame.",
+      answer: "The Mines and Geosciences Bureau confirmed unauthorized tree cutting within the Mount Domadoway contract area in southern Palawan, first reported by its field office in November 2020. The 5,149 hectares describe the mining contract area, not the area logged.",
+      conclusion: "This is a documented cutting case, but the report gives no measured area of loss and found no evidence linking the cutting to Pyramid Hill.",
     },
     {
       question: "Who depends on the affected forest?",
-      why: "This shows whose resources and culturally important places could be affected.",
+      needed: "The number of nearby residents, the communities' forest uses, and their own accounts are needed to judge who could be affected.",
+      answer: "The Mount Domadoway report identifies about 2,500 Indigenous Pala'wan people in 12 surrounding villages. It describes the forest as a source of wild food, medicinal plants, water, and culturally important places.",
+      conclusion: "Forest degradation could put these resources and places at risk. The population figure describes nearby communities; it is not a count of people already harmed.",
     },
     {
       question: "Is the problem becoming less widespread?",
-      why: "Comparing hotspot counts helps distinguish progress from the end of the problem.",
+      needed: "Comparable hotspot counts and their dates are needed to test the reported trend, while the remaining locations show whether the problem persists.",
+      answer: "DENR Caraga reported 17 identified illegal logging hotspots at the height of Executive Order No. 23 implementation and six remaining in 2024, a decrease of 11 identified hotspots. The six were in parts of Agusan del Sur and Surigao del Sur.",
+      conclusion: "The reported count shows fewer identified hotspots, not the end of illegal logging or a measured 11-site reduction in forest loss.",
     },
     {
       question: "What are enforcement operations still finding?",
-      why: "Seizure records show continuing illegal forest-product activity despite fewer hotspots.",
+      needed: "The reporting period, number of cases, amount of lumber seized, and whether figures describe separate operations are needed to interpret enforcement records accurately.",
+      answer: "For January to May 2025, DENR Caraga reported 148 apprehensions and more than 310,000 board feet of undocumented forest products seized. It also reported 132 additional cases involving 364,904 board feet of illegal lumber.",
+      conclusion: "These records show continuing enforcement activity despite fewer hotspots. Seized volume is not an estimate of all illegally cut or traded lumber in Caraga.",
     },
   ];
   const palawanReportUrl = "https://news.mongabay.com/2021/06/illegal-logging-in-philippines-palawan-stokes-fears-of-a-mining-resurgence/";
@@ -284,7 +291,10 @@ function Home() {
             {illegalLoggingStatus.map((status, index) => (
             <button key={status.title}
                   type="button"
-                  onClick={() => setSelectedStatus(index)}
+                  onClick={() => {
+                    setSelectedStatus(index);
+                    setQuestionOpen(false);
+                  }}
                   aria-pressed={selectedStatus === index}
                   aria-controls="detailStatus"
                   className={`
@@ -336,11 +346,34 @@ function Home() {
                     </p>
                 </div>
               </div>
-              <div className="border-y border-gray-200 !py-3">
-                <h3 className="text-sm font-semibold text-teal-8">{researchQuestions[selectedStatus].question}</h3>
-                <p className="!mt-1 text-sm leading-relaxed text-gray-700">
-                  Why this information matters: {researchQuestions[selectedStatus].why}
-                </p>
+              <div className="border-y border-gray-200">
+                <h3>
+                  <button
+                    type="button"
+                    aria-expanded={questionOpen}
+                    aria-controls="home-question-answer"
+                    onClick={() => setQuestionOpen(!questionOpen)}
+                    className="flex w-full cursor-pointer items-center justify-between gap-3 !py-3 text-left text-sm font-semibold text-teal-8 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
+                  >
+                    <span>{researchQuestions[selectedStatus].question}</span>
+                    <FaChevronDown aria-hidden="true" className={`shrink-0 transition-transform ${questionOpen ? "rotate-180" : ""}`} />
+                  </button>
+                </h3>
+                <div id="home-question-answer" hidden={!questionOpen}>
+                  <div className="!space-y-2 !pb-3 text-sm leading-relaxed text-gray-700">
+                    <p><span className="font-semibold text-teal-8">Information needed and why:</span> {researchQuestions[selectedStatus].needed}</p>
+    {/*                 <p><span className="font-semibold text-teal-8">Evidence:</span> {researchQuestions[selectedStatus].answer}</p>
+                    <p><span className="font-semibold text-teal-8">Conclusion and limit:</span> {researchQuestions[selectedStatus].conclusion}</p>
+                    <a
+                      href={detailsStatus[selectedStatus].referenceUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-block text-teal-8 underline underline-offset-2 hover:text-teal-700"
+                    >
+                      Source: {detailsStatus[selectedStatus].reference}
+                    </a> */}
+                  </div>
+                </div>
               </div>
                 {detailsStatus[selectedStatus].details.map((detail, index) => (
                   <p key={index} className="text-sm  leading-relaxed text-gray-700 !mt-5">
