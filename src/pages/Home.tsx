@@ -279,6 +279,7 @@ function Home() {
           </div>
           <span className="h-px flex-1 bg-gray-200" aria-hidden="true" />
         </div>
+        
         <div className="grid grid-cols-1 gap-3 !px-6 !py-6 sm:grid-cols-2 lg:grid-cols-4">
             {illegalLoggingStatus.map((status, index) => (
             <button key={status.title}
@@ -312,33 +313,35 @@ function Home() {
                 </div>
               </button>
             ))}
-          </div>
-          <div id="detailStatus" className="w-full border-t border-gray-200 !mt-5 !px-6 !py-10 text-teal-8">
-            <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:gap-8">
-              <div className="flex min-w-0 flex-col gap-2">
-                <img src={detailsStatus[selectedStatus].image} alt={detailsStatus[selectedStatus].imageAlt || detailsStatus[selectedStatus].title} className="aspect-[3/2] w-full rounded-md object-cover" />
+        </div>
+        
+        <div id="detailStatus" className="w-full border-t border-gray-200 !mt-5 !px-6 !py-10 text-teal-8">
+          <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:gap-8">
+            <div className="flex min-w-0 flex-col gap-2">
+              <img src={detailsStatus[selectedStatus].image} alt={detailsStatus[selectedStatus].imageAlt || detailsStatus[selectedStatus].title} className="aspect-[3/2] w-full rounded-md object-cover" />
                 {detailsStatus[selectedStatus].photoSource && (
                   <span className="text-xs text-gray-600">{detailsStatus[selectedStatus].photoSource}</span>
-                )}
-              </div>
-              <div className="min-w-0 !space-y-3">
-                <div className="flex items-center gap-3">
-                  <SelectedStatusIcon aria-hidden="true" className="mt-0.5 shrink-0 text-xl" />
-                  <div className="min-w-0">
+              )}
+            </div>
+            
+            <div className="min-w-0 !space-y-3">
+              <div className="flex items-center gap-3">
+                <SelectedStatusIcon aria-hidden="true" className="mt-0.5 shrink-0 text-xl" />
+                <div className="min-w-0">
                     <h2 className="text-base !text-xl font-bold leading-tight !mb-0 !text-teal-8">
                       {detailsStatus[selectedStatus].title}
                     </h2>
                     <p className="!mt-1 text-xs leading-snug text-gray-600">
                       {detailsStatus[selectedStatus].description}
                     </p>
-                  </div>
                 </div>
-                <div className="border-y border-gray-200 !py-3">
-                  <h3 className="text-sm font-semibold text-teal-8">{researchQuestions[selectedStatus].question}</h3>
-                  <p className="!mt-1 text-sm leading-relaxed text-gray-700">
-                    Why this information matters: {researchQuestions[selectedStatus].why}
-                  </p>
-                </div>
+              </div>
+              <div className="border-y border-gray-200 !py-3">
+                <h3 className="text-sm font-semibold text-teal-8">{researchQuestions[selectedStatus].question}</h3>
+                <p className="!mt-1 text-sm leading-relaxed text-gray-700">
+                  Why this information matters: {researchQuestions[selectedStatus].why}
+                </p>
+              </div>
                 {detailsStatus[selectedStatus].details.map((detail, index) => (
                   <p key={index} className="text-sm  leading-relaxed text-gray-700 !mt-5">
                     {detail.trim()}
@@ -364,9 +367,9 @@ function Home() {
                 </a>
               </div>
             </div>
-          </div>
-        </section>
-        <section id="timeline-events" className="border-t border-gray-200 !w-full !px-6 !py-10 text-gray-800">
+        </div>
+      </section>
+      <section id="timeline-events" className="border-t border-gray-200 !w-full !px-6 !py-10 text-gray-800">
           
           <div className="text-center">
             <h2 className="flex items-center justify-center gap-2 !text-xl font-bold !text-teal-8">
