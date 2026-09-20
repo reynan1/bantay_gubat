@@ -1,5 +1,5 @@
 
-import { FaUserCog, FaExclamationTriangle, FaTree, FaShieldAlt, FaMapMarkerAlt, FaCubes, FaChevronDown} from "react-icons/fa";
+import { FaUserCog, FaExclamationTriangle, FaTree, FaShieldAlt, FaMapMarkerAlt, FaCubes, FaChevronDown, FaBullseye, FaSearch, FaFileAlt, FaChartBar, FaBookOpen, FaExternalLinkAlt } from "react-icons/fa";
 import { useState } from "react";
 import timberDemand from '../assets/images/causes/timbers.png'
 import livelihood from '../assets/images/causes/poverty.png'
@@ -70,6 +70,7 @@ function Causes() {
         { question: "Why does unauthorized cutting damage forests?", answer: "Cutting removes trees and reduces the forest resources available for natural regeneration, habitat, and future use. DENR treats illegal logging and timber poaching as direct forms of forest-product extraction that degrade forests." },
         { question: "Why is timber demand considered an underlying cause?", answer: "DENR separates the immediate activity from the pressure behind it: illegal logging and timber poaching directly remove forest products, while high demand for wood helps explain why people may keep supplying them. The source identifies market demand as an underlying driver, not proof that every timber sale is illegal." },
       ],
+      rootCause: "A strong market demand for wood creates an economic incentive for timber poaching and unauthorized harvesting when legal supply, monitoring, or compliance controls are weak.",
       informationNeeded: "Evidence of demand for wood, how timber is supplied, and whether extraction is authorized is needed to connect a market incentive to illegal forest removal.",
       evidence: "The DENR drivers analysis names high demand for wood as an underlying market factor and illegal logging and timber poaching as direct forest-product extraction. A separate assessment in Eastern Samar and Davao Oriental also identifies timber demand and poaching among the pressures observed at its study sites.",
       conclusion: "The two studies support a demand-to-extraction pathway. They do not measure how much Philippine forest loss is caused by demand alone, and legal timber sales should not be counted as illegal logging.",
@@ -96,6 +97,7 @@ function Causes() {
         { question: "Why can some extraction become a cause of degradation?", answer: "Repeated removal of wood can reduce forest resources, especially when extraction exceeds what can recover. Unauthorized timber cutting adds a legal and management problem; using forest resources for subsistence does not mean every forest-dependent household logs illegally." },
         { question: "Why are livelihoods an underlying cause?", answer: "Poverty does not cut a tree on its own. It can increase dependence on forest products, which may lead to direct extraction when other income options are scarce. DENR therefore treats poverty and landlessness as underlying pressures rather than as proof of illegal activity by a particular community." },
       ],
+      rootCause: "Poverty, landlessness, and few livelihood alternatives can push households toward forest-product extraction for basic needs or income, increasing pressure on forests.",
       informationNeeded: "Evidence about household income options, dependence on forest products, and the type of extraction is needed to distinguish livelihood pressure from an allegation of illegal logging.",
       evidence: "The DENR drivers analysis lists poverty and landlessness among underlying pressures. The Eastern Samar and Davao Oriental assessment separately identifies limited livelihoods alongside fuelwood collection, charcoal making, and timber poaching at its project sites.",
       conclusion: "These findings support a link between limited options and pressure on forests, but neither study shows that every forest-dependent household takes timber illegally.",
@@ -122,6 +124,7 @@ function Causes() {
         { question: "Why can clearing continue across more land?", answer: "Shifting cultivation can move cultivation to another plot, while settlements or plantations can convert forestland for longer-term use. Each new clearing extends the area from which forest vegetation has been removed." },
         { question: "Why is agriculture a documented cause of forest loss?", answer: "DENR identifies kaingin, shifting cultivation, and conversion to settlements or plantations as direct agricultural drivers. Its study reports that informants ranked kaingin as a major driver of deforestation; that finding concerns the study sites and should not be read as a measured share of all Philippine forest loss." },
       ],
+      rootCause: "Need for land, income, and food production can drive forest conversion when existing farmland is limited, unproductive, or poorly controlled by land-use planning.",
       informationNeeded: "Land-use changes, where clearing occurred, and whether forest cover was replaced by farms or settlements are needed to establish agricultural expansion as a direct cause.",
       evidence: "The DENR drivers analysis identifies kaingin, shifting cultivation, and conversion to settlements or plantations. The Eastern Samar and Davao Oriental site assessment also lists upland agriculture expansion among its observed direct drivers.",
       conclusion: "Both studies connect clearing for cultivation with forest loss. Their site findings cannot be used as a national percentage of deforestation caused by agriculture.",
@@ -148,6 +151,7 @@ function Causes() {
         { question: "Why can undetected activity degrade forests?", answer: "Repeated timber poaching takes wood from forests without the controls intended to manage extraction. DENR classifies illegal logging and timber poaching as direct drivers of forest degradation because they remove forest products." },
         { question: "Why is weak governance an underlying cause?", answer: "Weak policies or conflicting agency mandates do not directly remove trees. They can make it harder to prevent and respond to the activities that do. DENR identifies governance as an underlying driver and recommends clearer policy and stronger forest management to address it." },
       ],
+      rootCause: "Insufficient monitoring capacity, unclear responsibilities, and inconsistent enforcement weaken forest governance and allow unauthorized extraction to continue.",
       informationNeeded: "Records of monitoring, apprehensions, and remaining hotspots are needed to judge whether enforcement gaps allow unauthorized extraction to persist.",
       evidence: "DENR identifies weak governance as an underlying cause. In Caraga, DENR reported that identified illegal-logging hotspots fell from 17 to six by 2024, yet recorded 148 apprehensions and more than 310,000 board feet of undocumented forest products seized from January to May 2025.",
       conclusion: "The hotspot count suggests progress while the seizures show continued enforcement activity. These figures do not measure the total volume of illegal logging or prove that weak enforcement caused any particular seizure.",
@@ -264,28 +268,44 @@ function Causes() {
                   </li>
                 ))}
               </ol>
-                <div className="!space-y-2 !py-3 text-sm leading-relaxed text-gray-700">
-                  <p><span className="font-semibold text-teal-8">Information needed:</span> {detailsCauses[selectedStatus].informationNeeded}</p>
-                  <p><span className="font-semibold text-teal-8">Evidence:</span> {detailsCauses[selectedStatus].evidence}</p>
-                  <p><span className="font-semibold text-teal-8">Conclusion and limit:</span> {detailsCauses[selectedStatus].conclusion}</p>
+              </div>
+            </div>
+            <div className="!mt-8 grid gap-2 sm:grid-cols-2 xl:grid-cols-[1.35fr_1fr_1.35fr_1fr]">
+              {[
+                { title: "Root cause", content: detailsCauses[selectedStatus].rootCause, icon: FaBullseye },
+                { title: "Information needed", content: detailsCauses[selectedStatus].informationNeeded, icon: FaSearch },
+                { title: "Evidence", content: detailsCauses[selectedStatus].evidence, icon: FaFileAlt },
+                { title: "Conclusion and limit", content: detailsCauses[selectedStatus].conclusion, icon: FaChartBar },
+              ].map(({ title, content, icon: Icon }) => (
+                <div key={title} className="group min-w-0 cursor-pointer rounded-md border border-teal-100 bg-white !p-4 transition-all duration-200 hover:border-teal-700 hover:bg-green-50 hover:shadow-md">
+                  <h3 className="flex items-center gap-2 text-sm font-bold text-teal-8">
+                    <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-green-50 text-lg text-teal-8 transition-colors duration-200 group-hover:bg-white"><Icon aria-hidden="true" /></span>
+                    {title}
+                  </h3>
+                  <p className="!mt-3 text-xs leading-relaxed text-gray-700">{content}</p>
                 </div>
-                <a
-                  href={detailsCauses[selectedStatus].referenceUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block break-words text-sm text-teal-8 underline underline-offset-2 hover:text-teal-700"
-                >
-                  {detailsCauses[selectedStatus].reference}
-                </a>
-                <br />
-                <a
-                  href={detailsCauses[selectedStatus].supportingUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block break-words text-sm text-teal-8 underline underline-offset-2 hover:text-teal-700"
-                >
-                  {detailsCauses[selectedStatus].supportingReference}
-                </a>
+              ))}
+            </div>
+            <div className="!mt-5">
+              <h3 className="flex items-center gap-2 text-base font-bold text-teal-8">
+                <FaBookOpen aria-hidden="true" className="text-xl" /> References
+              </h3>
+              <div className="!mt-2 grid gap-4 sm:grid-cols-2">
+                {[
+                  { label: detailsCauses[selectedStatus].reference, url: detailsCauses[selectedStatus].referenceUrl },
+                  { label: detailsCauses[selectedStatus].supportingReference, url: detailsCauses[selectedStatus].supportingUrl },
+                ].map(({ label, url }) => (
+                  <div key={url} className="flex min-w-0 items-start gap-3 text-xs leading-relaxed">
+                    <FaFileAlt aria-hidden="true" className="mt-0.5 shrink-0 text-teal-8" />
+                    <div className="min-w-0">
+                      <p className="font-medium text-gray-800">{label}</p>
+                      <a href={url} target="_blank" rel="noopener noreferrer" className="inline-flex max-w-full items-center gap-1 text-blue-700 hover:underline">
+                        <span className="min-w-0 break-all">{url}</span>
+                        <FaExternalLinkAlt aria-hidden="true" className="shrink-0" />
+                      </a>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
         </div>    

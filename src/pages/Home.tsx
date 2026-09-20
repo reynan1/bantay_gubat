@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaBullhorn, FaChevronDown, FaCubes, FaExclamationTriangle, FaFileAlt, FaHistory, FaLeaf, FaMapMarkerAlt, FaShieldAlt, FaTree, FaUsers } from "react-icons/fa";
+import { FaBullhorn, FaBookOpen, FaChartBar, FaCubes, FaExclamationTriangle, FaExternalLinkAlt, FaFileAlt, FaHistory, FaLeaf, FaMapMarkerAlt, FaSearch, FaShieldAlt, FaTree, FaUsers } from "react-icons/fa";
 import philippines from '../assets/images/indegenous/philippines.png'
 import indegenous from '../assets/images/indegenous/indegenous_final.png'
 import caraigaImg from '../assets/images/indegenous/caraiga_img.png'
@@ -8,7 +8,6 @@ import illegalLumber from '../assets/images/indegenous/illegal_lumber4.png'
 
 function Home() {
   const [selectedStatus, setSelectedStatus] = useState(0);
-  const [questionOpen, setQuestionOpen] = useState(false);
   const illegalLoggingStatus = [
     {
       value: "5,149",
@@ -293,7 +292,6 @@ function Home() {
                   type="button"
                   onClick={() => {
                     setSelectedStatus(index);
-                    setQuestionOpen(false);
                   }}
                   aria-pressed={selectedStatus === index}
                   aria-controls="detailStatus"
@@ -328,7 +326,20 @@ function Home() {
         <div id="detailStatus" className="w-full border-t border-gray-200 !mt-5 !px-6 !py-10 text-teal-8">
           <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:gap-8">
             <div className="flex min-w-0 flex-col gap-2">
-              <img src={detailsStatus[selectedStatus].image} alt={detailsStatus[selectedStatus].imageAlt || detailsStatus[selectedStatus].title} className="aspect-[3/2] w-full rounded-md object-cover" />
+              <div className={`relative aspect-[3/2] w-full overflow-hidden rounded-md lg:aspect-auto lg:min-h-0 lg:flex-1 ${selectedStatus === 0 ? "border border-teal-100 bg-green-50" : "bg-green-50"}`}>
+                {selectedStatus === 0 && (
+                  <div className="absolute inset-x-0 top-0 z-10 flex h-10 items-center gap-2 border-b border-teal-100 bg-white !px-4 text-xs font-semibold text-teal-8">
+                    <FaMapMarkerAlt aria-hidden="true" /> Palawan, Philippines
+                  </div>
+                )}
+                <img
+                  src={detailsStatus[selectedStatus].image}
+                  alt={detailsStatus[selectedStatus].imageAlt || detailsStatus[selectedStatus].title}
+                  className={selectedStatus === 0
+                    ? "absolute inset-x-3 bottom-3 top-13 h-[calc(100%-4rem)] w-[calc(100%-1.5rem)] rounded border border-teal-100 bg-white object-contain shadow-sm"
+                    : "absolute inset-0 h-full w-full object-cover"}
+                />
+              </div>
                 {detailsStatus[selectedStatus].photoSource && (
                   <span className="text-xs text-gray-600">{detailsStatus[selectedStatus].photoSource}</span>
               )}
@@ -346,35 +357,9 @@ function Home() {
                     </p>
                 </div>
               </div>
-              <div className="border-y border-gray-200">
-                <h3>
-                  <button
-                    type="button"
-                    aria-expanded={questionOpen}
-                    aria-controls="home-question-answer"
-                    onClick={() => setQuestionOpen(!questionOpen)}
-                    className="flex w-full cursor-pointer items-center justify-between gap-3 !py-3 text-left text-sm font-semibold text-teal-8 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
-                  >
-                    <span>{researchQuestions[selectedStatus].question}</span>
-                    <FaChevronDown aria-hidden="true" className={`shrink-0 transition-transform ${questionOpen ? "rotate-180" : ""}`} />
-                  </button>
-                </h3>
-                <div id="home-question-answer" hidden={!questionOpen}>
-                  <div className="!space-y-2 !pb-3 text-sm leading-relaxed text-gray-700">
-                    <p><span className="font-semibold text-teal-8">Information needed and why:</span> {researchQuestions[selectedStatus].needed}</p>
-    {/*                 <p><span className="font-semibold text-teal-8">Evidence:</span> {researchQuestions[selectedStatus].answer}</p>
-                    <p><span className="font-semibold text-teal-8">Conclusion and limit:</span> {researchQuestions[selectedStatus].conclusion}</p>
-                    <a
-                      href={detailsStatus[selectedStatus].referenceUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-block text-teal-8 underline underline-offset-2 hover:text-teal-700"
-                    >
-                      Source: {detailsStatus[selectedStatus].reference}
-                    </a> */}
-                  </div>
-                </div>
-              </div>
+              <h3 className="border-y border-gray-200 !py-3 text-sm font-semibold text-teal-8">
+                {researchQuestions[selectedStatus].question}
+              </h3>
                 {detailsStatus[selectedStatus].details.map((detail, index) => (
                   <p key={index} className="text-sm  leading-relaxed text-gray-700 !mt-5">
                     {detail.trim()}
@@ -390,14 +375,36 @@ function Home() {
                     The 364,904 board feet are seized lumber, not a measure of all illegal lumber in Caraga.
                   </p>
                 )}
-                <a
-                  href={detailsStatus[selectedStatus].referenceUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block break-words text-sm text-teal-8 underline underline-offset-2 hover:text-teal-700"
-                >
-                  {detailsStatus[selectedStatus].reference}
-                </a>
+              </div>
+            </div>
+            <div className="!mt-8 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                { title: "Information needed", content: researchQuestions[selectedStatus].needed, icon: FaSearch },
+                { title: "Evidence", content: researchQuestions[selectedStatus].answer, icon: FaFileAlt },
+                { title: "Conclusion and limit", content: researchQuestions[selectedStatus].conclusion, icon: FaChartBar },
+              ].map(({ title, content, icon: Icon }) => (
+                <div key={title} className="group min-w-0 cursor-pointer rounded-md border border-teal-100 bg-white !p-4 transition-all duration-200 hover:border-teal-700 hover:bg-green-50 hover:shadow-md">
+                  <h3 className="flex items-center gap-2 text-sm font-bold text-teal-8">
+                    <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-green-50 text-lg text-teal-8 transition-colors duration-200 group-hover:bg-white"><Icon aria-hidden="true" /></span>
+                    {title}
+                  </h3>
+                  <p className="!mt-3 text-xs leading-relaxed text-gray-700">{content}</p>
+                </div>
+              ))}
+            </div>
+            <div className="!mt-5">
+              <h3 className="flex items-center gap-2 text-base font-bold text-teal-8">
+                <FaBookOpen aria-hidden="true" className="text-xl" /> References
+              </h3>
+              <div className="!mt-2 flex min-w-0 items-start gap-3 text-xs leading-relaxed">
+                <FaFileAlt aria-hidden="true" className="mt-0.5 shrink-0 text-teal-8" />
+                <div className="min-w-0">
+                  <p className="font-medium text-gray-800">{detailsStatus[selectedStatus].reference}</p>
+                  <a href={detailsStatus[selectedStatus].referenceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex max-w-full items-center gap-1 text-blue-700 hover:underline">
+                    <span className="min-w-0 break-all">{detailsStatus[selectedStatus].referenceUrl}</span>
+                    <FaExternalLinkAlt aria-hidden="true" className="shrink-0" />
+                  </a>
+                </div>
               </div>
             </div>
         </div>
