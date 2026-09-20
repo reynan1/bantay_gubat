@@ -7,10 +7,9 @@ import surigao from '../../assets/images/illegal-logging-surigao.png'
 const slides = [
   {
     title: 'Illegal Logging Threatens Palawan Forests',
-    text: `A July 2021 report documented illegal tree cutting near Mount Domadoway in Palawan. The forest is important to indigenous Pala'wan communities because it provides food, water, and supports cultural traditions. The case shows how illegal logging continues to threaten important forest areas in the Philippines.`,
+    text: `A July 2021 report documented illegal tree cutting near Mount Domadoway in Palawan. The forest is important to indigenous Pala'wan communities because it provides food, water, and supports cultural traditions. `,
     image: palawanIllegalLogging,
-    imageAlt:
-      "Environmental para-enforcer inspecting an illegally felled tree in Palawan",
+    imageAlt: "Environmental para-enforcer inspecting an illegally felled tree in Palawan",
     photoSource: "Teofilo Tredez / PNNI via Earth Journalism Network",
     reference: "Keith Anthony S. Fabro, Mongabay / EJN, July 7, 2021",
     referenceUrl:
@@ -19,37 +18,31 @@ const slides = [
 
   {
     title: 'Anti-Illegal Logging Operations in Caraga',
-    text: `From January to May 2025, DENR Caraga recorded 148 anti-illegal-logging apprehensions. More than 310,000 board feet of undocumented forest products were confiscated. These enforcement activities show that illegal forest-product extraction remains an environmental concern in the region.`,
+    text: `From January to May 2025, DENR Caraga recorded 148 anti-illegal-logging apprehensions. More than 310,000 board feet of undocumented forest products were confiscated.`,
     image: DENR,
-    imageAlt:
-      "Confiscated undocumented forest products during an anti-illegal logging operation",
+    imageAlt:"Confiscated undocumented forest products during an anti-illegal logging operation",
     photoSource: "Philippine Information Agency / DENR Caraga",
-    reference:
-      "Philippine Information Agency — DENR anti-illegal logging operations in Caraga, 2025",
+    reference: "PIA — Anti-illegal logging operations in Caraga, 2025",
     referenceUrl: "https://pia.gov.ph/news/denr-slashes-number-of-illegal-logging-hotspots-across-caraga/", 
   },
 
   {
     title: 'Illegal Logging Incidents Recorded in Quirino',
-    text: `In 2025, authorities recorded 13 illegal-logging incidents in Quirino. Enforcement operations resulted in the seizure of more than 19,600 board feet of forest products. These documented incidents provide recent evidence that illegal logging continues to occur in parts of the Philippines.`,
+    text: `In 2025, authorities recorded 13 illegal-logging incidents in Quirino. Enforcement operations resulted in the seizure of more than 19,600 board feet of forest products.`,
     image: cariaga,
-    imageAlt:
-      "Authorities conducting an anti-illegal logging operation in Quirino",
+    imageAlt:"Authorities conducting an anti-illegal logging operation in Quirino",
     photoSource: "AI generated photo base on the information of Illegal logging Incidents Recorded in Quirino", 
-    reference:
-      "Philippine Information Agency — Illegal logging incidents in Quirino, 2025",
+    reference: "PIA — Illegal logging in Quirino, 2025",
     referenceUrl: "https://newsinfo.inquirer.net/972512/4-farmers-nabbed-for-illegal-logging-in-quirino", 
   },
 
   {
     title: 'PNP and DENR Intensify Action Against Illegal Logging',
-    text: `In June 2026, the Philippine National Police directed regional commanders to strengthen coordination with the DENR and intensify operations against illegal logging and mining. The directive shows that illegal logging remains an environmental concern requiring continued government monitoring, coordination, and enforcement.`,
+    text: `In June 2026, the Philippine National Police directed regional commanders to strengthen coordination with the DENR and intensify operations against illegal logging and mining.`,
     image: surigao,
-    imageAlt:
-      "Philippine authorities conducting an environmental law enforcement operation",
+    imageAlt:"Philippine authorities conducting an environmental law enforcement operation",
     photoSource: "Photo courtesy of the Philippine National Police (PNP) via the Philippine News Agency (PNA).",
-    reference:
-      "Philippine News Agency — PNP orders crackdown with DENR vs. illegal logging, mining, June 28, 2026",
+    reference:"PNA — PNP-DENR crackdown on illegal logging, June 2026",
     referenceUrl:
       "https://www.pna.gov.ph/articles/1278206",
   },
@@ -97,25 +90,28 @@ function Hero() {
                 : 'pointer-events-none translate-y-4 opacity-0'
             }`}
           >
-            <div className='w-[45%] '>
+            <div className='w-[45%] flex flex-col items-start'>
 {/*                 <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] !mb-2 text-green-200 sm:text-sm">
                   status of {slide.title} 
                 </p> */}
-                <h1 className="!max-w-2xl !text-2xl !font-black !font-semibold !leading-tight !mb-6 !text-white sm:!text-4xl lg:!text-3xl text-center !w-[90%]">
+                <h1 className="!max-w-2xl text-left !font-black !font-semibold !leading-tight !mb-6 !text-white sm:!text-4xl lg:!text-2xl text-center !w-[90%]">
                   {slide.title}
                 </h1>
-                <p className="mx-auto mt-4 max-w-xl text-sm font-medium leading-6 text-green-50 sm:text-base !mb-8 !text-center  !w-[100%]">
+                <p className="mx-auto mt-4 max-w-xl !text-sm font-medium leading-6 text-green-50 sm:text-base !mb-8 !text-left  !w-[100%]">
                   {slide.text}
                 </p>
-                  
-                <a
-                  href={slide.referenceUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-5 inline-flex max-w-full rounded-md bg-white/95 !px-4 !py-2.5 !text-center text-sm font-bold text-green-950 transition hover:bg-green-100 !mb-2"
-                >
-                  Reference: {slide.reference}
-                </a>
+
+               
+               <div className="bg-white/90  rounded-md !px-4 !py-2 hover:bg-green-100">
+                  <a
+                    href={slide.referenceUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-5 max-w-full rounded-md text-sm font-bold text-green-950 transition  !mb-2"
+                  >
+                    Reference: {slide.reference}
+                  </a>
+               </div>
             </div>
             <div className='w-[45%] flex items-center gap-5 flex-col'>
                 <img src={slide.image} alt={`image of ${slide.title}`} className='w-90 h-68 rounded-md'/>
