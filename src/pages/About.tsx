@@ -67,7 +67,7 @@ const researchFeatures = [
 function About() {
   return (
     <section className="w-full border-t border-gray-200 !pb-12 text-teal-8">
-      <div className="flex w-full items-center gap-4 !px-6 !pt-8 !pb-2">
+      <div className="flex w-full items-center gap-3 !px-3 !pt-7 !pb-2 sm:gap-4 sm:!px-6 sm:!pt-8">
         <span className="h-px flex-1 bg-gray-200" aria-hidden="true" />
         <div className="text-center">
           <h1 className="flex items-center justify-center gap-2 !text-xl font-bold !text-teal-8">
@@ -78,7 +78,7 @@ function About() {
         <span className="h-px flex-1 bg-gray-200" aria-hidden="true" />
       </div>
 
-      <div className="!mt-7 grid gap-7 !px-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch">
+      <div className="!mt-7 grid gap-7 !px-3 sm:!px-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch">
         <div className="flex min-w-0 flex-col justify-center">
           <p className="text-xs font-bold uppercase tracking-normal text-teal-8">About Bantay Gubat</p>
           <h2 className="!mt-2 max-w-xl text-2xl font-bold leading-tight text-teal-8">Understanding the forest is the first step toward protecting it.</h2>
@@ -99,7 +99,7 @@ function About() {
         </figure>
       </div>
 
-      <div className="!px-6 !py-10">
+      <div className="!px-3 !py-8 sm:!px-6 sm:!py-10">
         <div className="flex items-center gap-4">
           <span className="h-px flex-1 bg-teal-200" aria-hidden="true" />
           <div className="text-center">
@@ -121,7 +121,7 @@ function About() {
         </div>
       </div>
 
-      <div className="border-y border-teal-100 bg-green-50 !px-6 !py-10">
+      <div className="border-y border-teal-100 bg-green-50 !px-3 !py-8 sm:!px-6 sm:!py-10">
         <div className="flex items-center gap-4">
           <span className="h-px flex-1 bg-teal-200" aria-hidden="true" />
           <div className="text-center">

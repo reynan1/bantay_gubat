@@ -166,7 +166,7 @@ function Causes() {
 
   return (
     <section id="status-illegal-logging" className="w-full border-t-[1px] text-teal-8">
-        <div className="flex w-full items-center gap-4 !px-6 !pt-8 !pb-2">
+        <div className="flex w-full items-center gap-3 !px-3 !pt-7 !pb-2 sm:gap-4 sm:!px-6 sm:!pt-8">
           <span className="h-px flex-1 bg-gray-200" aria-hidden="true" />
           <div className="text-center">
             <h1 className="flex items-center justify-center gap-2 !text-xl font-bold !text-teal-8">
@@ -178,7 +178,7 @@ function Causes() {
           <span className="h-px flex-1 bg-gray-200" aria-hidden="true" />
         </div>
 
-        <div className="grid grid-cols-1 gap-3 !px-6 !py-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-3 !px-3 !py-5 sm:grid-cols-2 sm:!px-6 sm:!py-6 lg:grid-cols-4">
             {illegalLoggingCauses.map((status, index) => (
              <button key={status.title}
                       type="button"
@@ -215,7 +215,7 @@ function Causes() {
                 ))}
           </div>
 
-         <div id="detailStatus" className="w-full border-t border-gray-200 !mt-5 !px-6 !py-10 text-teal-8">
+         <div id="detailStatus" className="!mt-5 w-full border-t border-gray-200 !px-3 !py-8 text-teal-8 sm:!px-6 sm:!py-10">
           <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:gap-8">
             <div className="flex min-w-0 flex-col gap-2">
               <img src={detailsCauses[selectedStatus].image} alt={detailsCauses[selectedStatus].imageAlt || detailsCauses[selectedStatus].title} className="aspect-[3/2] w-full rounded-md object-cover" />

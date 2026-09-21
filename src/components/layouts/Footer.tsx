@@ -30,7 +30,7 @@ function Footer() {
   return (
     <>
     <footer className="w-full bg-teal-8 text-white">
-      <div className="!mx-auto w-[86%] !py-10">
+      <div className="!mx-auto w-[92%] max-w-[1600px] !py-8 sm:!py-10 xl:w-[86%]">
         <div className="flex flex-col gap-10 sm:flex-row sm:flex-wrap lg:flex-nowrap">
           <section
             aria-labelledby="footer-brand-title"

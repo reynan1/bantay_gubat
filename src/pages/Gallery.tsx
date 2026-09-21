@@ -188,7 +188,7 @@ function Gallery() {
 
   return (
     <section className="w-full border-t border-gray-200 !pb-12 text-teal-8">
-      <div className="flex w-full items-center gap-4 !px-6 !pt-8 !pb-2">
+      <div className="flex w-full items-center gap-3 !px-3 !pt-7 !pb-2 sm:gap-4 sm:!px-6 sm:!pt-8">
         <span className="h-px flex-1 bg-gray-200" aria-hidden="true" />
         <div className="text-center">
           <h1 className="flex items-center justify-center gap-2 !text-xl font-bold !text-teal-8"><FaImages aria-hidden="true" /> Forest Gallery</h1>
@@ -197,7 +197,7 @@ function Gallery() {
         <span className="h-px flex-1 bg-gray-200" aria-hidden="true" />
       </div>
 
-      <div className="flex flex-wrap justify-center gap-2 !px-6 !py-6" aria-label="Gallery categories">
+      <div className="flex flex-wrap justify-center gap-2 !px-3 !py-5 sm:!px-6 sm:!py-6" aria-label="Gallery categories">
         {categories.map((category) => (
           <button key={category} type="button" onClick={() => { setSelectedCategory(category); setSelectedIndex(null); }} aria-pressed={selectedCategory === category} className={`cursor-pointer rounded-md border !px-4 !py-2 text-xs font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700 ${selectedCategory === category ? "border-teal-8 bg-teal-8 text-white" : "border-gray-200 bg-white text-teal-8 hover:border-teal-700 hover:bg-green-50"}`}>
             {category}
@@ -205,7 +205,7 @@ function Gallery() {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 gap-4 !px-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 !px-3 sm:grid-cols-2 sm:!px-6 lg:grid-cols-3">
         {visibleItems.map((item, index) => (
           <button key={`${item.title}-${item.location}`} type="button" onClick={() => setSelectedIndex(index)} className="group min-w-0 cursor-pointer overflow-hidden rounded-md border border-gray-200 bg-white text-left shadow-sm transition-all duration-200 hover:border-teal-700 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700" aria-label={`Open image: ${item.title}`}>
             <div className="relative aspect-[4/3] overflow-hidden bg-green-50">
@@ -260,7 +260,7 @@ function Gallery() {
                 </>
               )}
             </div>
-            <div className="flex items-start justify-between gap-4 !px-4 !py-3">
+            <div className="flex flex-col items-start justify-between gap-3 !px-4 !py-3 sm:flex-row sm:gap-4">
               <div className="min-w-0">
                 <p className="text-xs leading-relaxed text-gray-700">{visibleItems[selectedIndex].description}</p>
                 {visibleItems[selectedIndex].sourceUrl && (

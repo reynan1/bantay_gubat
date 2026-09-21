@@ -17,7 +17,7 @@ function App() {
     <Router>
       <Header />
       <Hero />
-       <main className='w-[83%] !mx-auto '>
+       <main className="!mx-auto w-full max-w-[1600px] !px-3 sm:!px-5 md:w-[92%] md:!px-0 xl:w-[86%] 2xl:w-[82%]">
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/definition" element={<Definition />} />

@@ -22,4 +22,11 @@
 
 body {
   font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+
+img,
+video,
+canvas {
+  max-width: 100%;
 }

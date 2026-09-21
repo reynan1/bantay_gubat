@@ -359,7 +359,7 @@ function Effects() {
 
   return (
     <section id="effects-illegal-logging" className="w-full border-t-[1px] text-teal-8">
-      <div className="flex w-full items-center gap-4 !px-6 !pt-8 !pb-2">
+      <div className="flex w-full items-center gap-3 !px-3 !pt-7 !pb-2 sm:gap-4 sm:!px-6 sm:!pt-8">
         <span className="h-px flex-1 bg-gray-200" aria-hidden="true" />
         <div className="text-center">
           <h1 className="flex items-center justify-center gap-2 !text-xl font-bold !text-teal-8">
@@ -373,7 +373,7 @@ function Effects() {
         <span className="h-px flex-1 bg-gray-200" aria-hidden="true" />
       </div>
 
-      <div className="flex items-stretch gap-3 overflow-x-auto !px-6 !py-6">
+      <div className="flex snap-x snap-mandatory items-stretch gap-3 overflow-x-auto !px-3 !py-5 sm:!px-6 sm:!py-6">
         {illegalLoggingEffects.map((status, index) => (
           <button
             key={status.title}
@@ -385,7 +385,7 @@ function Effects() {
             aria-pressed={selectedStatus === index}
             aria-controls="detailEffects"
             className={`
-              group flex min-w-[210px] flex-1 cursor-pointer flex-col rounded-md border p-3 text-left shadow-sm lg:min-w-0
+              group flex min-w-[82vw] snap-start flex-1 cursor-pointer flex-col rounded-md border p-3 text-left shadow-sm sm:min-w-[280px] lg:min-w-0
               transition-colors duration-200 hover:border-teal-700 hover:bg-teal-8 hover:text-white
               focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700
               ${selectedStatus === index ? "border-teal-8 !rounded-md bg-teal-8 text-white" : "border-gray-200 bg-white text-teal-8"}
@@ -412,7 +412,7 @@ function Effects() {
         ))}
       </div>
 
-      <div id="detailEffects" className="w-full border-t border-gray-200 !mt-5 !px-6 !py-10 text-teal-8">
+      <div id="detailEffects" className="!mt-5 w-full border-t border-gray-200 !px-3 !py-8 text-teal-8 sm:!px-6 sm:!py-10">
         <div className="min-w-0 !space-y-3">
             <div className="flex items-center gap-3">
               <SelectedStatusIcon aria-hidden="true" className="mt-0.5 shrink-0 text-xl" />

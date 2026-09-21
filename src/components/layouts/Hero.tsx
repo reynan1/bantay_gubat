@@ -75,47 +75,47 @@ function Hero() {
 
   return (
     <>
-      <section className="relative isolate h-[60vh] min-h-[430px] overflow-hidden bg-green-950 text-white shadow-2xl flex justify-center">
+      <section className="relative isolate flex min-h-[620px] justify-center overflow-hidden bg-green-950 text-white shadow-2xl sm:min-h-[680px] lg:h-[60vh] lg:min-h-[480px] lg:max-h-[680px]">
         <div className="absolute inset-0 -z-10 bg-black/60" />
 
-        <div className="grid h-full w-[85%]  place-items-center px-16 py-14 text-center sm:px-24 lg:px-28 ">
+        <div className="grid h-full w-full max-w-[1600px] place-items-center !px-12 !py-12 text-center sm:!px-20 lg:w-[86%] lg:!px-16 lg:!py-10 xl:!px-20">
           {slides.map((slide, index) => (
           <div
             key={slide.title}
             aria-hidden={activeSlide !== index}
             inert={activeSlide !== index}
-            className={` flex justify-center items-center col-start-1 row-start-1 mx-auto w-full transition-all delay-500 duration-[500ms] ease-in-out motion-reduce:transition-none ${
+            className={`col-start-1 row-start-1 mx-auto flex w-full flex-col items-center justify-center gap-6 transition-all delay-500 duration-[500ms] ease-in-out motion-reduce:transition-none lg:flex-row lg:gap-10 ${
               activeSlide === index
                 ? 'translate-y-0 opacity-100'
                 : 'pointer-events-none translate-y-4 opacity-0'
             }`}
           >
-            <div className='w-[45%] flex flex-col items-start'>
+            <div className="flex w-full max-w-2xl flex-col items-start lg:w-1/2">
 {/*                 <p className="mb-3 text-xs font-bold uppercase tracking-[0.18em] !mb-2 text-green-200 sm:text-sm">
                   status of {slide.title} 
                 </p> */}
-                <h1 className="!max-w-2xl text-left !font-black !font-semibold !leading-tight !mb-6 !text-white sm:!text-4xl lg:!text-2xl text-center !w-[90%]">
+                <h1 className="w-full !text-left !text-2xl !font-bold !leading-tight !text-white sm:!text-3xl lg:!text-4xl">
                   {slide.title}
                 </h1>
-                <p className="mx-auto mt-4 max-w-xl !text-sm font-medium leading-6 text-green-50 sm:text-base !mb-8 !text-left  !w-[100%]">
+                <p className="!mt-4 w-full !text-left text-sm font-medium leading-6 text-green-50 sm:text-base lg:!mt-5">
                   {slide.text}
                 </p>
 
                
-               <div className="bg-white/90  rounded-md !px-4 !py-2 hover:bg-green-100">
+               <div className="!mt-5 max-w-full rounded-md bg-white/90 !px-4 !py-2 hover:bg-green-100">
                   <a
                     href={slide.referenceUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="mt-5 max-w-full rounded-md text-sm font-bold text-green-950 transition  !mb-2"
+                    className="block max-w-full break-words text-left text-xs font-bold leading-5 text-green-950 transition sm:text-sm"
                   >
                     Reference: {slide.reference}
                   </a>
                </div>
             </div>
-            <div className='w-[45%] flex items-center gap-5 flex-col'>
-                <img src={slide.image} alt={`image of ${slide.title}`} className='w-90 h-68 rounded-md'/>
-                <p className="mt-3 text-xs text-green-100 w-[60%]">
+            <div className="flex w-full max-w-2xl flex-col items-start gap-2 lg:w-1/2">
+                <img src={slide.image} alt={slide.imageAlt} className="aspect-[16/9] w-full rounded-md object-cover shadow-lg" />
+                <p className="w-full text-left text-[11px] leading-4 text-green-100 sm:text-xs">
                   Photo:{slide.photoSource}
                 </p>
             </div>
@@ -124,11 +124,11 @@ function Hero() {
           ))}
         </div>
 
-        <div className="absolute inset-x-0 top-1/2 flex -translate-y-1/2 w-[95%] !mx-auto items-center justify-between px-[5%]">
+        <div className="pointer-events-none absolute inset-x-0 top-1/2 !mx-auto flex w-[98%] -translate-y-1/2 items-center justify-between sm:w-[96%]">
           <button
             type="button"
             onClick={showPreviousSlide}
-            className="grid h-11 w-11  cursor-pointer place-items-center rounded-full border border-white/40 bg-black/30 text-xl font-bold text-white backdrop-blur transition hover:bg-white hover:text-green-950"
+            className="pointer-events-auto grid h-9 w-9 cursor-pointer place-items-center rounded-full border border-white/40 bg-black/40 text-lg font-bold text-white backdrop-blur transition hover:bg-white hover:text-green-950 sm:h-11 sm:w-11 sm:text-xl"
             aria-label="Previous slide"
           >
             {'<'}
@@ -136,7 +136,7 @@ function Hero() {
           <button
             type="button"
             onClick={showNextSlide}
-            className="grid h-11 w-11  cursor-pointer place-items-center rounded-full border border-white/40 bg-black/30 text-xl font-bold text-white backdrop-blur transition hover:bg-white hover:text-green-950"
+            className="pointer-events-auto grid h-9 w-9 cursor-pointer place-items-center rounded-full border border-white/40 bg-black/40 text-lg font-bold text-white backdrop-blur transition hover:bg-white hover:text-green-950 sm:h-11 sm:w-11 sm:text-xl"
             aria-label="Next slide"
           >
             {'>'}
