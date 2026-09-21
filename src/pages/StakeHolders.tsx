@@ -278,6 +278,7 @@ function StakeHolders() {
           </div>
         </div>
       </div>
+
     </section>
   );
 }
