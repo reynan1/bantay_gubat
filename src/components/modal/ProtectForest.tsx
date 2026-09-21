@@ -6,8 +6,6 @@ const emailJsConfig = {
   templateId: "template_ntmgy05",
   publicKey: "zHlPWdeEDkK05iM7i",
 };
-const petitionUploadUrl = import.meta.env.VITE_PETITION_UPLOAD_URL;
-
 type ProtectForestProps = {
   isOpen: boolean;
   onClose: () => void;
@@ -71,15 +69,11 @@ function ProtectForest({ isOpen, onClose }: ProtectForestProps) {
       setSendError("Could not read your signature. Please try again.");
       return;
     }
-    if (!petitionUploadUrl) {
-      setSendError("Petition storage is not configured. Please contact the site administrator.");
-      return;
-    }
     setSending(true);
     setSendError("");
 
     try {
-      const archiveResponse = await fetch(petitionUploadUrl, {
+      const archiveResponse = await fetch("/api/petition", {
         method: "POST",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify({
