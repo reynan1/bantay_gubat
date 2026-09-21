@@ -285,6 +285,21 @@ function Home() {
           </div>
           <span className="h-px flex-1 bg-gray-200" aria-hidden="true" />
         </div>
+
+        <div className="!mx-3 !mt-5 border-l-4 border-teal-700 bg-green-50 !px-4 !py-4 sm:!mx-6 sm:!px-5">
+          <div className="flex items-start gap-3">
+            <FaBookOpen aria-hidden="true" className="!mt-1 shrink-0 text-lg text-teal-8" />
+            <div className="min-w-0">
+              <h2 className="!mb-1 text-base font-bold text-teal-8">What is illegal logging?</h2>
+              <p className="text-sm leading-relaxed text-gray-700">
+                Illegal logging is the cutting, harvesting, transporting, or selling of trees and forest products without the permits or government approval required by law. It can include removing trees from protected or restricted forest areas.
+              </p>
+              <p className="!mt-2 text-xs leading-relaxed text-gray-600">
+                The status figures below connect this definition to documented cases in Palawan and Caraga. They describe a contract area, nearby communities, remaining hotspots, and confiscated lumber; they do not represent one total measurement of forest illegally logged.
+              </p>
+            </div>
+          </div>
+        </div>
         
         <div className="grid grid-cols-1 gap-3 !px-3 !py-5 sm:grid-cols-2 sm:!px-6 sm:!py-6 lg:grid-cols-4">
             {illegalLoggingStatus.map((status, index) => (
