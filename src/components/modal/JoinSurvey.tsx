@@ -382,7 +382,7 @@ function JoinSurvey({ isOpen, onClose }: JoinSurveyProps) {
                     type="text"
                     name="location"
                     required
-                    placeholder="e.g. Palawan or Region IV-B"
+                    placeholder="e.g. Aurora, Rizal, Isabela, Cagayan, or Quezon"
                     className="
                       !mt-2
                       w-full
@@ -466,13 +466,13 @@ function JoinSurvey({ isOpen, onClose }: JoinSurveyProps) {
 
             <div className="!space-y-5">
               <RadioGroup
-                legend="Have you heard about illegal logging in the Philippines?"
+                legend="Have you heard about illegal logging in the Sierra Madre?"
                 name="awareOfIllegalLogging"
                 options={awarenessOptions}
               />
 
               <RadioGroup
-                legend="How serious do you think illegal logging is in the Philippines?"
+                legend="How serious do you think illegal logging is in the Sierra Madre?"
                 name="seriousness"
                 options={seriousnessOptions}
               />

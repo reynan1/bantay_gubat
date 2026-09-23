@@ -73,7 +73,7 @@ function About() {
           <h1 className="flex items-center justify-center gap-2 !text-xl font-bold !text-teal-8">
             <FaLeaf aria-hidden="true" /> About the Project
           </h1>
-          <p className="!mt-1 text-xs text-gray-600">Research, evidence, and public awareness about illegal logging in the Philippines</p>
+          <p className="!mt-1 text-xs text-gray-600">Research, evidence, and public awareness about illegal logging in the Sierra Madre</p>
         </div>
         <span className="h-px flex-1 bg-gray-200" aria-hidden="true" />
       </div>
@@ -84,10 +84,10 @@ function About() {
           <h2 className="!mt-2 max-w-xl text-2xl font-bold leading-tight text-teal-8">Understanding the forest is the first step toward protecting it.</h2>
           <div className="!mt-5 space-y-4 text-sm leading-relaxed text-gray-700">
             <p>
-              Bantay Gubat is a digital advocacy project that explores the impact of illegal logging in the Philippines. It brings together documented cases, data, and reliable sources to help visitors understand how unauthorized tree cutting affects forests, wildlife, natural resources, and forest-dependent communities.
+              Bantay Gubat is a digital advocacy project that explores the impact of illegal logging in the Sierra Madre. It brings together documented cases, data, and reliable sources to help visitors understand how unauthorized tree cutting affects forests, wildlife, watersheds, and forest-dependent communities along Luzon's eastern mountain range.
             </p>
             <p>
-              Through this website, visitors can explore the causes and effects of illegal logging, learn about the people and organizations involved in forest protection, and discover why protecting Philippine forests is important for both present and future generations.
+              Through this website, visitors can explore the causes and effects of illegal logging, learn about the people and organizations involved in forest protection, and discover why protecting the Sierra Madre is important for both present and future generations.
             </p>
             <p>
               Bantay Gubat aims to turn information into awareness and awareness into responsible action toward forest conservation.

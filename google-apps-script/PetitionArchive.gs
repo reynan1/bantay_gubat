@@ -50,7 +50,10 @@ function doPost(e) {
       .setMimeType(ContentService.MimeType.JSON);
   } catch (error) {
     console.error(error);
-    return ContentService.createTextOutput(JSON.stringify({ ok: false }))
+    return ContentService.createTextOutput(JSON.stringify({
+      ok: false,
+      error: error && error.message ? error.message : 'Petition could not be saved'
+    }))
       .setMimeType(ContentService.MimeType.JSON);
   }
 }

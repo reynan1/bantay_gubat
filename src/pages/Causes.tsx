@@ -59,7 +59,7 @@ function Causes() {
       value: "01",
       title: "High Demand for Timber and Forest Products",
       image: timberDemand,
-      imageAlt: "Timber and forest products from Philippine forests",
+      imageAlt: "Timber and forest products linked to Sierra Madre forest pressure",
       photoSource: "DENR",
       description:
         "Demand for timber and other forest products creates an economic incentive for unauthorized harvesting and timber poaching.",
@@ -72,10 +72,10 @@ function Causes() {
       ],
       rootCause: "A strong market demand for wood creates an economic incentive for timber poaching and unauthorized harvesting when legal supply, monitoring, or compliance controls are weak.",
       informationNeeded: "Evidence of demand for wood, how timber is supplied, and whether extraction is authorized is needed to connect a market incentive to illegal forest removal.",
-      evidence: "The DENR drivers analysis names high demand for wood as an underlying market factor and illegal logging and timber poaching as direct forest-product extraction. A separate assessment in Eastern Samar and Davao Oriental also identifies timber demand and poaching among the pressures observed at its study sites.",
+      evidence: "The DENR drivers analysis names high demand for wood as an underlying market factor and illegal logging and timber poaching as direct forest-product extraction. Sierra Madre enforcement reports also show that illegal timber can move from watershed forests into transport and market routes.",
       conclusion: "The two studies support a demand-to-extraction pathway. They do not measure how much Philippine forest loss is caused by demand alone, and legal timber sales should not be counted as illegal logging.",
-      supportingReference: "GIZ and DENR - REDD+ site assessment, Eastern Samar and Davao Oriental (2016)",
-      supportingUrl: "https://faspselib.denr.gov.ph/Materials/Detail/0189a073-3be4-45bd-abbc-e07829b3c76a",
+      supportingReference: "Philstar - hot logs seized in Sierra Madre watershed",
+      supportingUrl: "https://www.philstar.com/nation/2019/09/21/1953552/p17-million-hot-logs-seized-sierra-madre-watershed",
       reference:
         "DENR — REDD+ Analysis of Key Drivers of Deforestation and Forest Degradation in the Philippines",
       referenceUrl:
@@ -86,7 +86,7 @@ function Causes() {
       value: "02",
       title: "Poverty and Limited Livelihood Opportunities",
       image: livelihood,
-      imageAlt: "Forest-dependent community in the Philippines",
+      imageAlt: "Forest-dependent community in the Sierra Madre",
       photoSource: "DENR",
       description:
         "Limited sources of income can increase dependence on forests for timber, fuelwood, charcoal, and other products.",
@@ -99,10 +99,10 @@ function Causes() {
       ],
       rootCause: "Poverty, landlessness, and few livelihood alternatives can push households toward forest-product extraction for basic needs or income, increasing pressure on forests.",
       informationNeeded: "Evidence about household income options, dependence on forest products, and the type of extraction is needed to distinguish livelihood pressure from an allegation of illegal logging.",
-      evidence: "The DENR drivers analysis lists poverty and landlessness among underlying pressures. The Eastern Samar and Davao Oriental assessment separately identifies limited livelihoods alongside fuelwood collection, charcoal making, and timber poaching at its project sites.",
+      evidence: "The DENR drivers analysis lists poverty and landlessness among underlying pressures. Research in the Northern Sierra Madre also shows why conservation work must consider Indigenous and local community participation, livelihoods, and access to forest resources.",
       conclusion: "These findings support a link between limited options and pressure on forests, but neither study shows that every forest-dependent household takes timber illegally.",
-      supportingReference: "GIZ and DENR - REDD+ site assessment, Eastern Samar and Davao Oriental (2016)",
-      supportingUrl: "https://faspselib.denr.gov.ph/Materials/Detail/0189a073-3be4-45bd-abbc-e07829b3c76a",
+      supportingReference: "Limits to Indigenous Participation: The Agta and the Northern Sierra Madre Natural Park",
+      supportingUrl: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4194021/",
       reference:
         "DENR — REDD+ Analysis of Key Drivers of Deforestation and Forest Degradation in the Philippines",
       referenceUrl:
@@ -126,10 +126,10 @@ function Causes() {
       ],
       rootCause: "Need for land, income, and food production can drive forest conversion when existing farmland is limited, unproductive, or poorly controlled by land-use planning.",
       informationNeeded: "Land-use changes, where clearing occurred, and whether forest cover was replaced by farms or settlements are needed to establish agricultural expansion as a direct cause.",
-      evidence: "The DENR drivers analysis identifies kaingin, shifting cultivation, and conversion to settlements or plantations. The Eastern Samar and Davao Oriental site assessment also lists upland agriculture expansion among its observed direct drivers.",
+      evidence: "The DENR drivers analysis identifies kaingin, shifting cultivation, and conversion to settlements or plantations. In the Sierra Madre, these pressures matter because clearing on slopes can affect habitat, watersheds, and downstream communities.",
       conclusion: "Both studies connect clearing for cultivation with forest loss. Their site findings cannot be used as a national percentage of deforestation caused by agriculture.",
-      supportingReference: "GIZ and DENR - REDD+ site assessment, Eastern Samar and Davao Oriental (2016)",
-      supportingUrl: "https://faspselib.denr.gov.ph/Materials/Detail/0189a073-3be4-45bd-abbc-e07829b3c76a",
+      supportingReference: "GMA News - Sierra Madre and nature-based solutions against floods",
+      supportingUrl: "https://www.gmanetwork.com/news/lifestyle/content/1001970/explainer-why-are-the-sierra-madre-and-nature-based-solutions-important-vs-floods/story/",
       reference:
         "DENR — REDD+ Analysis of Key Drivers of Deforestation and Forest Degradation in the Philippines",
       referenceUrl:
@@ -153,10 +153,10 @@ function Causes() {
       ],
       rootCause: "Insufficient monitoring capacity, unclear responsibilities, and inconsistent enforcement weaken forest governance and allow unauthorized extraction to continue.",
       informationNeeded: "Records of monitoring, apprehensions, and remaining hotspots are needed to judge whether enforcement gaps allow unauthorized extraction to persist.",
-      evidence: "DENR identifies weak governance as an underlying cause. In Caraga, DENR reported that identified illegal-logging hotspots fell from 17 to six by 2024, yet recorded 148 apprehensions and more than 310,000 board feet of undocumented forest products seized from January to May 2025.",
+      evidence: "DENR identifies weak governance as an underlying cause. In the Sierra Madre watershed, reported seizures of hot logs show why field monitoring, checkpoints, case handling, and community reporting remain important.",
       conclusion: "The hotspot count suggests progress while the seizures show continued enforcement activity. These figures do not measure the total volume of illegal logging or prove that weak enforcement caused any particular seizure.",
-      supportingReference: "Philippine Information Agency - DENR Caraga enforcement report (2025)",
-      supportingUrl: "https://pia.gov.ph/news/denr-slashes-number-of-illegal-logging-hotspots-across-caraga/",
+      supportingReference: "Philstar - hot logs seized in Sierra Madre watershed",
+      supportingUrl: "https://www.philstar.com/nation/2019/09/21/1953552/p17-million-hot-logs-seized-sierra-madre-watershed",
       reference:
         "DENR — REDD+ Analysis of Key Drivers of Deforestation and Forest Degradation in the Philippines",
       referenceUrl:
@@ -173,7 +173,7 @@ function Causes() {
               <FaUserCog aria-hidden="true" className="shrink-0" />
                 Main Human Activities That Cause Forest Loss
             </h1>
-            <p className="!mt-1 text-xs text-gray-600">Research on direct and underlying drivers of forest loss</p>
+            <p className="!mt-1 text-xs text-gray-600">Research on direct and underlying drivers of Sierra Madre forest loss</p>
           </div>
           <span className="h-px flex-1 bg-gray-200" aria-hidden="true" />
         </div>

@@ -47,13 +47,13 @@ function Footer() {
                   Bantay Gubat
                 </h2>
                 <p className="!mt-1 text-sm font-medium leading-5 text-green-100">
-                  Evidence, awareness, and action for Philippine forests.
+                  Evidence, awareness, and action for the Sierra Madre.
                 </p>
               </div>
             </div>
             <p className="!mt-5 !max-w-md text-sm leading-6 text-green-50">
-              A digital advocacy project examining illegal logging through
-              documented cases, research, and community perspectives.
+              A digital advocacy project examining illegal logging in the
+              Sierra Madre through research and community perspectives.
             </p>
           </section>
 
@@ -123,7 +123,7 @@ function Footer() {
             <ul className="space-y-4 text-sm text-green-50">
               <li className="flex items-center gap-3">
                 <FaMapMarkerAlt className="shrink-0 text-green-200" aria-hidden="true" />
-                <span>Philippines</span>
+                <span>Sierra Madre, Luzon</span>
               </li>
               <li>
                 <a

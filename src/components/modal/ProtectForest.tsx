@@ -75,7 +75,7 @@ function ProtectForest({ isOpen, onClose }: ProtectForestProps) {
     try {
       const archiveResponse = await fetch("/api/petition", {
         method: "POST",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           surname: String(formData.get("surname") ?? "").trim(),
           firstName,
@@ -185,7 +185,7 @@ function ProtectForest({ isOpen, onClose }: ProtectForestProps) {
             <h2 id="petition-title" className="!mb-0 !text-xl !text-white">
               Bantay Gubat Petition
             </h2>
-            <p className="!mt-1 text-sm text-teal-50">Support the protection of Philippine forests.</p>
+            <p className="!mt-1 text-sm text-teal-50">Support the protection of the Sierra Madre.</p>
           </div>
           <button
             type="button"
@@ -330,7 +330,7 @@ function ProtectForest({ isOpen, onClose }: ProtectForestProps) {
               <div className="!space-y-3 border-t border-gray-200 !pt-5">
                 <label className="flex cursor-pointer items-start gap-3 text-sm text-gray-800">
                   <input type="checkbox" name="supportsProtection" required className="mt-1 shrink-0 accent-teal-700" />
-                  <span>I support the protection of Philippine forests against illegal logging.</span>
+                  <span>I support the protection of the Sierra Madre against illegal logging.</span>
                 </label>
                 <label className="flex cursor-pointer items-start gap-3 text-sm text-gray-800">
                   <input type="checkbox" name="understandsEducationalProject" required className="mt-1 shrink-0 accent-teal-700" />

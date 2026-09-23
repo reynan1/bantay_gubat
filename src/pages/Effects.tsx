@@ -127,11 +127,11 @@ function Effects() {
             "Repeated disturbance can prevent young trees from maturing and leave the forest with less diverse vegetation.",
         },
       ],
-      philippinesCase: "Nueva Ecija, Palawan, and Davao Oriental",
+      philippinesCase: "Sierra Madre forest cover and watersheds",
       informationNeeded:
         "Forest-cover maps, tree-cutting reports, permits, satellite images, and field validation are needed to separate illegal logging from other land-use changes.",
       evidence:
-        "Philippine forest assessments and reported illegal tree-cutting cases show that unauthorized removal contributes to forest degradation, especially when enforcement and land-use controls are weak.",
+        "Sierra Madre reports and forest assessments connect unauthorized removal, timber poaching, access roads, and land conversion with forest degradation, especially when enforcement and land-use controls are weak.",
       conclusion:
         "Forest loss is the first visible effect of illegal logging, but the deeper damage is the slower recovery of the whole forest system.",
       reference:
@@ -139,9 +139,9 @@ function Effects() {
       referenceUrl:
         "https://faspselib.denr.gov.ph/Materials/Detail/d3aad246-e7c5-4579-8eda-88c1b1b5e709",
       supportingReference:
-        "Mongabay - Illegal logging in Philippines' Palawan stokes fears of a mining resurgence",
+        "GMA News - Sierra Madre and nature-based solutions against floods",
       supportingUrl:
-        "https://news.mongabay.com/2021/06/illegal-logging-in-philippines-palawan-stokes-fears-of-a-mining-resurgence/",
+        "https://www.gmanetwork.com/news/lifestyle/content/1001970/explainer-why-are-the-sierra-madre-and-nature-based-solutions-important-vs-floods/story/",
     },
     {
       value: "02",
@@ -180,17 +180,17 @@ function Effects() {
             "Species that need a shaded, stable forest floor may decline as canopy gaps alter light and moisture.",
         },
       ],
-      philippinesCase: "El Nido, Palawan",
+      philippinesCase: "Northern Sierra Madre Natural Park",
       informationNeeded:
         "Species records, habitat maps, forest-cover change data, and site inspections are needed to measure how tree removal affects biodiversity.",
       evidence:
-        "Palawan reports connect forest disturbance with risks to ecological areas and communities that depend on intact forest systems.",
+        "Northern Sierra Madre sources describe a protected area with high biodiversity, endemic species, and Indigenous communities that depend on intact forest systems.",
       conclusion:
         "Habitat pressure is not only about losing trees; it is about breaking the living space that forest species need to survive.",
       reference:
-        "Mongabay - Illegal logging in Philippines' Palawan stokes fears of a mining resurgence",
+        "DENR-BMB PAIS - Northern Sierra Madre Natural Park",
       referenceUrl:
-        "https://news.mongabay.com/2021/06/illegal-logging-in-philippines-palawan-stokes-fears-of-a-mining-resurgence/",
+        "https://pais.bmb.gov.ph/home/info/WXTHTRUGGBP",
       supportingReference:
         "DENR - REDD+ Analysis of Key Drivers of Deforestation and Forest Degradation in the Philippines",
       supportingUrl:
@@ -245,9 +245,9 @@ function Effects() {
       referenceUrl:
         "https://faspselib.denr.gov.ph/Materials/Detail/d3aad246-e7c5-4579-8eda-88c1b1b5e709",
       supportingReference:
-        "Philippine Information Agency - DENR anti-illegal logging operations in Caraga, 2025",
+        "Philstar - hot logs seized in Sierra Madre watershed",
       supportingUrl:
-        "https://pia.gov.ph/news/denr-slashes-number-of-illegal-logging-hotspots-across-caraga/",
+        "https://www.philstar.com/nation/2019/09/21/1953552/p17-million-hot-logs-seized-sierra-madre-watershed",
     },
     {
       value: "04",
@@ -339,17 +339,17 @@ function Effects() {
             "Local knowledge and participation help identify changes in forest resources and support restoration that meets community needs.",
         },
       ],
-      philippinesCase: "Forest-dependent communities in Caraga",
+      philippinesCase: "Agta and Dumagat communities in the Sierra Madre",
       informationNeeded:
         "Community interviews, livelihood records, forest-use maps, and water-quality data are needed to identify local effects and distinguish them from other pressures.",
       evidence:
-        "FAO reports that forest degradation in the Philippines threatens the livelihoods of forest-dependent communities, particularly Indigenous Peoples.",
+        "Research on the Northern Sierra Madre and reporting from Dumagat ancestral lands show that forest protection is tied to Indigenous participation, livelihoods, and community rights.",
       conclusion:
         "The effects of illegal logging extend to the people whose livelihoods rely on healthy forests.",
       reference:
-        "FAO - The revival of a damaged Philippines watershed is helping improve nutrition and livelihoods of communities",
+        "Limits to Indigenous Participation: The Agta and the Northern Sierra Madre Natural Park",
       referenceUrl:
-        "https://www.fao.org/philippines/news/detail/fr/c/1651086/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4194021/",
       supportingReference:
         "FAO - Filipino timber producers gain new skills to enhance legal timber production and livelihood generation",
       supportingUrl:

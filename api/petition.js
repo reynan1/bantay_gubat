@@ -41,9 +41,10 @@ export default async function handler(request, response) {
     }
 
     if (!archiveResponse.ok || archiveResult?.ok !== true) {
+      console.error("Petition archive rejected the request:", archiveResult);
       return response.status(502).json({
         ok: false,
-        error: "Google Drive could not save the petition",
+        error: archiveResult?.error || "Google Drive could not save the petition",
       });
     }
 

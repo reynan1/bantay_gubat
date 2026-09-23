@@ -14,8 +14,11 @@ import {
 } from "react-icons/fa";
 import denrImage from "../assets/images/DENR.jpg";
 import timberImage from "../assets/images/causes/timbers.png";
-import caragaImage from "../assets/images/indegenous/caraiga_img.png";
-import communityImage from "../assets/images/indegenous/indegenous_final.png";
+
+const sierraMadrePanorama =
+  "https://pais.bmb.gov.ph/pas/bmb_assets2/uploads/pa_profile_pic/Screenshot_2025-06-30_130905.png";
+const sierraMadreRainforest =
+  "https://martinsandiego.ph/assets/uploads/2022/08/0001-Photojournalist-Martin-San-Diego-Philippine-Hawk-Eagle-Aurora-Dumagat-7MS04498-scaled.jpg";
 
 function StakeHolders() {
   const [selectedStakeholder, setSelectedStakeholder] = useState(0);
@@ -26,9 +29,9 @@ function StakeHolders() {
       title: "Indigenous and Forest Communities",
       role: "Most affected",
       icon: FaUsers,
-      image: communityImage,
-      imageAlt: "Indigenous community in Palawan",
-      photoSource: "Indigenous people in Palawan around Mount Domadoway",
+      image: sierraMadreRainforest,
+      imageAlt: "Sierra Madre rainforest connected to Dumagat ancestral domain",
+      photoSource: "Sierra Madre rainforest in Dumagat ancestral domain",
       description:
         "Communities living near forest areas depend on forest resources, water, food, medicine, and culturally important places.",
       whyTheyMatter:
@@ -40,9 +43,9 @@ function StakeHolders() {
       risk:
         "Forest loss can reduce access to water, food, medicinal plants, livelihood resources, and culturally important areas.",
       reference:
-        "Mongabay - Illegal logging in Philippines' Palawan stokes fears of a mining resurgence",
+        "Limits to Indigenous Participation: The Agta and the Northern Sierra Madre Natural Park",
       referenceUrl:
-        "https://news.mongabay.com/2021/06/illegal-logging-in-philippines-palawan-stokes-fears-of-a-mining-resurgence/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4194021/",
     },
     {
       value: "02",
@@ -63,18 +66,18 @@ function StakeHolders() {
       risk:
         "Weak coordination or limited field presence can allow unauthorized cutting, transport, and trading to continue.",
       reference:
-        "Philippine Information Agency - DENR anti-illegal logging operations in Caraga, 2025",
+        "Philstar - hot logs seized in Sierra Madre watershed",
       referenceUrl:
-        "https://pia.gov.ph/news/denr-slashes-number-of-illegal-logging-hotspots-across-caraga/",
+        "https://www.philstar.com/nation/2019/09/21/1953552/p17-million-hot-logs-seized-sierra-madre-watershed",
     },
     {
       value: "03",
       title: "LGUs and Barangays",
       role: "Local response",
       icon: FaMapMarkerAlt,
-      image: caragaImage,
-      imageAlt: "Forest landscape in Caraga",
-      photoSource: "Caraga forest landscape and local monitoring area",
+      image: sierraMadrePanorama,
+      imageAlt: "Northern Sierra Madre forest landscape",
+      photoSource: "Northern Sierra Madre forest landscape and local monitoring area",
       description:
         "Local governments and barangays connect national forest rules with local reporting, land-use planning, and community action.",
       whyTheyMatter:
@@ -86,9 +89,9 @@ function StakeHolders() {
       risk:
         "If local monitoring is weak, illegal transport routes and small-scale cutting can be missed until the damage grows.",
       reference:
-        "DENR - REDD+ Analysis of Key Drivers of Deforestation and Forest Degradation in the Philippines",
+        "DENR-BMB PAIS - Northern Sierra Madre Natural Park",
       referenceUrl:
-        "https://faspselib.denr.gov.ph/Materials/Detail/d3aad246-e7c5-4579-8eda-88c1b1b5e709",
+        "https://pais.bmb.gov.ph/home/info/WXTHTRUGGBP",
     },
     {
       value: "04",
@@ -109,9 +112,9 @@ function StakeHolders() {
       risk:
         "Without good evidence, the issue may be misunderstood, ignored, or reduced to claims that are difficult to act on.",
       reference:
-        "DENR - REDD+ Conceptual Approach to Measurement, Reporting, and Verification in the Philippines",
+        "Climate Change Commission - Save Sierra Madre Day statement",
       referenceUrl:
-        "https://faspselib.denr.gov.ph/Materials/Detail/1782c8cb-0656-4e61-a5a7-2e2d156da59e",
+        "https://www.climate.gov.ph/news/934",
     },
     {
       value: "05",
@@ -132,9 +135,9 @@ function StakeHolders() {
       risk:
         "Unchecked demand can reward illegal cutting, transport, and sale even when enforcement improves in hotspot areas.",
       reference:
-        "DENR - REDD+ Analysis of Key Drivers of Deforestation and Forest Degradation in the Philippines",
+        "GMA News - Sierra Madre and nature-based solutions against floods",
       referenceUrl:
-        "https://faspselib.denr.gov.ph/Materials/Detail/d3aad246-e7c5-4579-8eda-88c1b1b5e709",
+        "https://www.gmanetwork.com/news/lifestyle/content/1001970/explainer-why-are-the-sierra-madre-and-nature-based-solutions-important-vs-floods/story/",
     },
   ];
 
@@ -151,7 +154,7 @@ function StakeHolders() {
             Stakeholders in Forest Protection
           </h1>
           <p className="!mt-1 text-xs text-gray-600">
-            People and institutions connected to illegal logging response
+            People and institutions connected to Sierra Madre forest protection
           </p>
         </div>
         <span className="h-px flex-1 bg-gray-200" aria-hidden="true" />
