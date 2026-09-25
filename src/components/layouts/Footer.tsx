@@ -36,17 +36,21 @@ function Footer() {
             aria-labelledby="footer-brand-title"
             className="w-full sm:w-[calc(50%-1.25rem)] lg:w-auto lg:flex-[1.45_1_0]"
           >
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2">
               <img
                 src={bantayGubatLogo}
                 className="!h-16 !w-16 shrink-0 rounded-full bg-white object-contain !p-1"
                 alt="Bantay Gubat logo"
               />
               <div>
-                <h2 id="footer-brand-title" className="!text-xl font-bold !text-white">
+{/*                 <h2 id="footer-brand-title" className="!text-xl font-bold !text-white">
                   Bantay Gubat
-                </h2>
-                <p className="!mt-1 text-sm font-medium leading-5 text-green-100">
+                </h2> */}
+                <div className="flex flex-col justify-center gap-2 ">
+                  <h2 className="whitespace-nowrap !text-xl font-bold !text-white sm:!text-xl leading-1">Bantay Gubat</h2>
+                  <span className="font-semibold text-sm leading-0">Sierra Madre Chapter</span>
+                </div>
+                <p className="!mt-3 text-sm font-medium leading-5 text-green-100">
                   Evidence, awareness, and action for the Sierra Madre.
                 </p>
               </div>

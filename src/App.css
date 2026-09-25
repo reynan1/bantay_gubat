@@ -20,6 +20,102 @@
   --color-teal-8: #087f5b
 }
 
+@layer components {
+  .forest-selector-card {
+    position: relative;
+    overflow: hidden;
+    border-color: #dbe7df;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #073f33;
+    box-shadow: 0 6px 14px rgba(8, 63, 49, 0.08);
+  }
+
+  .forest-selector-card > div:first-child {
+    border-radius: 8px 8px 0 0;
+    background: transparent;
+    color: #087f5b;
+  }
+
+  .forest-selector-card[aria-pressed="true"] {
+    border-color: #087f5b;
+    background: #ffffff;
+    box-shadow: 0 8px 18px rgba(8, 127, 91, 0.16);
+  }
+
+  .forest-selector-card:hover {
+    border-color: #087f5b;
+    box-shadow: 0 10px 20px rgba(8, 63, 49, 0.12);
+  }
+
+  .forest-selector-card[aria-pressed="true"] > div:first-child {
+    background: #087f5b;
+  }
+
+  .forest-selector-card > div:first-child > div,
+  .forest-selector-card > div:first-child > div * {
+    color: #087f5b !important;
+  }
+
+  .forest-selector-card[aria-pressed="true"] > div:first-child > div,
+  .forest-selector-card[aria-pressed="true"] > div:first-child > div * {
+    color: #ffffff !important;
+  }
+
+  .forest-selector-card .forest-icon-badge {
+    border: 0;
+    background: #dff4e9;
+    color: #087f5b;
+    box-shadow: inset 0 0 0 1px rgba(8, 127, 91, 0.08);
+  }
+
+  .forest-selector-card[aria-pressed="true"] .forest-icon-badge {
+    background: #dff4e9;
+    color: #087f5b;
+  }
+
+  .forest-selector-panel {
+    position: static;
+    border-top: 1px solid #dbe7df;
+    background: #ecf9f1;
+  }
+
+  .forest-selector-card[aria-pressed="true"] .forest-selector-panel {
+    background: #ecf9f1;
+  }
+
+  .forest-selector-panel > span:first-child {
+    background: transparent;
+    color: #087f5b !important;
+  }
+
+  .forest-selector-card[aria-pressed="true"] .forest-selector-panel > span:first-child {
+    background: transparent;
+    color: #087f5b !important;
+  }
+
+  .forest-selector-card[aria-pressed="true"] .forest-selector-panel > span:last-child,
+  .forest-selector-card[aria-pressed="true"] .forest-selector-panel p {
+    color: #374151 !important;
+  }
+
+  .forest-info-card {
+    border-color: #d8c7a1;
+    background: #fffdf6;
+    box-shadow: 0 8px 22px rgba(8, 127, 91, 0.07);
+  }
+
+  .forest-info-card:hover {
+    border-color: #087f5b;
+    background: #f5efd8;
+  }
+
+  .forest-soft-panel {
+    border-color: #d8c7a1;
+    background: #f5efd8;
+  }
+}
+
 body {
   font-family: "Poppins", sans-serif;
   overflow-x: hidden;

@@ -23,9 +23,12 @@ function Header() {
     <>
       <header className="grid w-full place-items-center bg-white">
         <div className="flex min-h-16 w-[92%] max-w-[1600px] items-center justify-between gap-3 py-2 xl:w-[86%]">
-          <div className="flex min-w-0 items-center">
+          <div className="flex min-w-0 items-center justify-center">
             <img src={bantayGubatLogo} className="h-11 w-11 shrink-0 sm:h-13 sm:w-13" alt="Bantay Gubat logo" />
-            <h1 className="whitespace-nowrap !text-lg font-bold !text-teal-8 sm:!text-xl">Bantay Gubat</h1>
+            <div className="!ml-2 flex flex-col justify-center gap-4 ">
+              <h1 className="whitespace-nowrap !text-lg font-bold !text-teal-8 sm:!text-xl leading-1">Bantay Gubat</h1>
+              <span className="font-semibold text-sm leading-0">Sierra Madre Chapter</span>
+            </div>
           </div>
 
           <div className="hidden items-center gap-3 py-2 md:flex lg:gap-5">

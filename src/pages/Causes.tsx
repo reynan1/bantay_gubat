@@ -188,14 +188,9 @@ function Causes() {
                       }}
                       aria-pressed={selectedStatus === index}
                       aria-controls="detailStatus"
-                      className={`
-                        group flex h-full min-w-0 cursor-pointer flex-col rounded-md border p-3 text-left shadow-sm
-                        transition-colors duration-200 hover:border-teal-700 hover:bg-teal-8 hover:text-white
-                        focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700
-                        ${selectedStatus === index ? "border-teal-8 !rounded-md text-teal-8 bg-teal-8 text-white" : "border-gray-200 bg-white text-teal-8"}
-                    `}>
+                      className="forest-selector-card group flex h-full min-w-0 cursor-pointer flex-col rounded-md border p-3 text-left text-teal-8 shadow-sm transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700">
                   <div className="flex min-h-20 w-full items-start gap-3 !py-3 !px-2">
-                    <span className={`grid h-12 w-12 !shrink-0 place-items-center rounded-full text-xl ${selectedStatus === index ? "bg-white text-teal-8" : "bg-green-50 text-teal-8"}`}>
+                    <span className="forest-icon-badge grid h-12 w-12 !shrink-0 place-items-center rounded-full text-xl">
                       <status.icon aria-hidden="true" />
                     </span>
                     <div className="!min-w-0">
@@ -203,7 +198,7 @@ function Causes() {
                       <span className="!mt-1 block text-xs font-semibold leading-snug">{status.title}</span>
                     </div>
                   </div>
-                  <div className={`!mt-2 w-full flex-1 rounded-bl-md rounded-br-md  !py-3 !px-4 transition-colors ${selectedStatus === index ? "bg-green-50 " : "bg-green-50 group-hover:border-teal-8 "}`}>
+                  <div className="forest-selector-panel !mt-2 w-full flex-1 rounded-bl-md rounded-br-md !py-3 !px-4 transition-colors">
                       <span className="flex items-center gap-2 text-xs font-bold text-teal-8">
                          <FaExclamationTriangle aria-hidden="true" /> { status.problemRefer }
                       </span>
@@ -277,7 +272,7 @@ function Causes() {
                 { title: "Evidence", content: detailsCauses[selectedStatus].evidence, icon: FaFileAlt },
                 { title: "Conclusion and limit", content: detailsCauses[selectedStatus].conclusion, icon: FaChartBar },
               ].map(({ title, content, icon: Icon }) => (
-                <div key={title} className="group min-w-0 cursor-pointer rounded-md border border-teal-100 bg-white !p-4 transition-all duration-200 hover:border-teal-700 hover:bg-green-50 hover:shadow-md">
+                <div key={title} className="forest-info-card group min-w-0 cursor-pointer rounded-md border !p-4 transition-all duration-200 hover:shadow-md">
                   <h3 className="flex items-center gap-2 text-sm font-bold text-teal-8">
                     <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-green-50 text-lg text-teal-8 transition-colors duration-200 group-hover:bg-white"><Icon aria-hidden="true" /></span>
                     {title}

@@ -384,15 +384,10 @@ function Effects() {
             }}
             aria-pressed={selectedStatus === index}
             aria-controls="detailEffects"
-            className={`
-              group flex min-w-[82vw] snap-start flex-1 cursor-pointer flex-col rounded-md border p-3 text-left shadow-sm sm:min-w-[280px] lg:min-w-0
-              transition-colors duration-200 hover:border-teal-700 hover:bg-teal-8 hover:text-white
-              focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700
-              ${selectedStatus === index ? "border-teal-8 !rounded-md bg-teal-8 text-white" : "border-gray-200 bg-white text-teal-8"}
-            `}
+            className="forest-selector-card group flex min-w-[82vw] snap-start flex-1 cursor-pointer flex-col rounded-md border p-3 text-left text-teal-8 shadow-sm transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700 sm:min-w-[280px] lg:min-w-0"
           >
             <div className="flex min-h-20 w-full items-start gap-3 !py-3 !px-2">
-              <span className={`grid h-12 w-12 !shrink-0 place-items-center rounded-full text-xl ${selectedStatus === index ? "bg-white text-teal-8" : "bg-green-50 text-teal-8"}`}>
+              <span className="forest-icon-badge grid h-12 w-12 !shrink-0 place-items-center rounded-full text-xl">
                 <status.icon aria-hidden="true" />
               </span>
               <div className="!min-w-0">
@@ -400,7 +395,7 @@ function Effects() {
                 <span className="!mt-1 block text-xs font-semibold leading-snug">{status.title}</span>
               </div>
             </div>
-            <div className="!mt-2 w-full flex-1 rounded-bl-md rounded-br-md bg-green-50 !py-3 !px-4 transition-colors">
+            <div className="forest-selector-panel !mt-2 w-full flex-1 rounded-bl-md rounded-br-md !py-3 !px-4 transition-colors">
               <span className="flex items-center gap-2 text-xs font-bold text-teal-8">
                 <FaExclamationTriangle aria-hidden="true" /> {status.problemRefer}
               </span>
@@ -449,7 +444,7 @@ function Effects() {
                 );
               })}
             </ol>
-            <div id="selected-impact-detail" className="!mt-5 border-l-4 border-teal-700 bg-green-50 !px-5 !py-4" aria-live="polite">
+            <div id="selected-impact-detail" className="forest-soft-panel !mt-5 border-l-4 border-teal-700 !px-5 !py-4" aria-live="polite">
               <span className="text-xs font-bold uppercase text-teal-700">Impact {selectedImpact + 1} of 5</span>
               <h3 className="!mt-1 text-base font-bold text-teal-8">{detailEffects[selectedStatus].impactChain[selectedImpact].question}</h3>
               <p className="!mt-2 text-sm leading-relaxed text-gray-700">{detailEffects[selectedStatus].impactChain[selectedImpact].answer}</p>
@@ -463,7 +458,7 @@ function Effects() {
             { title: "Evidence", content: detailEffects[selectedStatus].evidence, icon: FaFileAlt },
             { title: "Conclusion", content: detailEffects[selectedStatus].conclusion, icon: FaChartBar },
           ].map(({ title, content, icon: Icon }) => (
-            <div key={title} className="group min-w-0 cursor-pointer rounded-md border border-teal-100 bg-white !p-4 transition-all duration-200 hover:border-teal-700 hover:bg-green-50 hover:shadow-md">
+            <div key={title} className="forest-info-card group min-w-0 cursor-pointer rounded-md border !p-4 transition-all duration-200 hover:shadow-md">
               <h3 className="flex items-center gap-2 text-sm font-bold text-teal-8">
                 <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-green-50 text-lg text-teal-8 transition-colors duration-200 group-hover:bg-white">
                   <Icon aria-hidden="true" />

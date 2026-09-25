@@ -168,15 +168,10 @@ function StakeHolders() {
             onClick={() => setSelectedStakeholder(index)}
             aria-pressed={selectedStakeholder === index}
             aria-controls="stakeholder-detail"
-            className={`
-              group flex min-w-[82vw] snap-start flex-1 cursor-pointer flex-col rounded-md border text-left shadow-sm sm:min-w-[280px] lg:min-w-0
-              transition-colors duration-200 hover:border-teal-700 hover:bg-teal-8 hover:text-white
-              focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700
-              ${selectedStakeholder === index ? "border-teal-8 bg-teal-8 text-white" : "border-gray-200 bg-white text-teal-8"}
-            `}
+            className="forest-selector-card group flex min-w-[82vw] snap-start flex-1 cursor-pointer flex-col rounded-md border text-left text-teal-8 shadow-sm transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700 sm:min-w-[280px] lg:min-w-0"
           >
             <div className="flex min-h-20 w-full items-start gap-3 !px-2 !py-3">
-              <span className={`grid h-12 w-12 shrink-0 place-items-center rounded-full text-xl ${selectedStakeholder === index ? "bg-white text-teal-8" : "bg-green-50 text-teal-8"}`}>
+              <span className="forest-icon-badge grid h-12 w-12 shrink-0 place-items-center rounded-full text-xl">
                 <stakeholder.icon aria-hidden="true" />
               </span>
               <div className="min-w-0">
@@ -184,7 +179,7 @@ function StakeHolders() {
                 <span className="!mt-1 block text-xs font-semibold leading-snug">{stakeholder.title}</span>
               </div>
             </div>
-            <div className="!mt-2 w-full flex-1 rounded-b-md bg-green-50 !px-4 !py-3">
+            <div className="forest-selector-panel !mt-2 w-full flex-1 rounded-b-md !px-4 !py-3 transition-colors">
               <span className="flex items-center gap-2 text-xs font-bold text-teal-8">
                 <FaHandshake aria-hidden="true" /> Role
               </span>
@@ -235,11 +230,11 @@ function StakeHolders() {
             </div>
 
             <div className="grid gap-2 sm:grid-cols-2">
-              <div className="rounded-md border border-teal-100 bg-green-50 !p-4">
+              <div className="forest-soft-panel rounded-md border !p-4">
                 <h3 className="text-sm font-bold text-teal-8">What they need</h3>
                 <p className="!mt-2 text-xs leading-relaxed text-gray-700">{selected.needs}</p>
               </div>
-              <div className="rounded-md border border-teal-100 bg-white !p-4">
+              <div className="forest-info-card rounded-md border !p-4">
                 <h3 className="text-sm font-bold text-teal-8">What they contribute</h3>
                 <p className="!mt-2 text-xs leading-relaxed text-gray-700">{selected.contribution}</p>
               </div>
@@ -253,7 +248,7 @@ function StakeHolders() {
             { title: "Shared action", content: "The strongest response combines local reporting, verified evidence, enforcement, responsible markets, and restoration work.", icon: FaHandshake },
             { title: "Information needed", content: "Useful evidence includes community reports, permit records, seizure data, maps, photos, site visits, and livelihood impacts.", icon: FaSearch },
           ].map(({ title, content, icon: Icon }) => (
-            <div key={title} className="group min-w-0 cursor-pointer rounded-md border border-teal-100 bg-white !p-4 transition-all duration-200 hover:border-teal-700 hover:bg-green-50 hover:shadow-md">
+            <div key={title} className="forest-info-card group min-w-0 cursor-pointer rounded-md border !p-4 transition-all duration-200 hover:shadow-md">
               <h3 className="flex items-center gap-2 text-sm font-bold text-teal-8">
                 <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-green-50 text-lg text-teal-8 transition-colors duration-200 group-hover:bg-white">
                   <Icon aria-hidden="true" />
