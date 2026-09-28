@@ -13,14 +13,13 @@ import {
   FaShieldAlt,
   FaTree,
   FaUsers,
-  FaWater,
 } from "react-icons/fa";
 
 const sierraMadreImages = {
   locationMap: sierraMadreScope,
-  rainforest: "https://martinsandiego.ph/assets/uploads/2022/08/0001-Photojournalist-Martin-San-Diego-Philippine-Hawk-Eagle-Aurora-Dumagat-7MS04498-scaled.jpg",
-  deforestation: "https://i0.wp.com/feed.org.ph/wp-content/uploads/2019/05/sierramadre-deforestation.jpg?resize=584%2C391&ssl=1",
-  seizedLogs: "https://media.philstar.com/photos/2019/09/20/nat4-illegal-logs-afp_2019-09-20_21-08-03.jpg",
+  rainforest: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr5T5QNaqGHTAxHHZ09wWb94-8ZQHQdHbLlK8Q5DJTcLZpqGAe8mFq8B8&s=10",
+  deforestation: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRo2a5GlANnu430iyCGx1CY_6Femmu6QO8XPufrZ1Ai_CHLSf41PA22fNT&s=10",
+  seizedLogs: "https://newsinfo.inquirer.net/files/2018/07/12yoyong.jpg",
 };
 
 function Home() {
@@ -63,32 +62,44 @@ function Home() {
     },
     {
       value: "03",
-      title: "Watershed and Slope Degradation",
-      label: "Environmental risk",
-      icon: FaWater,
+      title: "Illegal Mining and Quarrying",
+      label: "Land degradation",
+      icon: FaMountain,
       image: sierraMadreImages.deforestation,
-      imageAlt: "Cleared forest area in the Sierra Madre",
-      photoSource: "FEED Inc. / Sierra Madre forest restoration reporting",
-      summary: "Deforestation weakens the forest's ability to absorb rainfall, hold soil, regulate river flow, and protect slopes from erosion.",
+      imageAlt: "Quarrying activity in the Sierra Madre area of Rizal",
+      photoSource: "National Bureau of Investigation / Illegal mining enforcement report",
+      summary:
+        "Illegal mining and quarrying remain environmental concerns in parts of Rizal near the Sierra Madre. In April 2026, authorities stopped an unauthorized quarry operation in Barangay San Salvador, Baras, Rizal.",
+
       details: [
-        "Damaged and cleared areas contribute to faster runoff and more sediment entering rivers. These conditions can worsen erosion, landslides, and flooding during heavy rainfall.",
-        "Watershed degradation affects both upland and downstream locations because changes in forest cover influence water quality, river behavior, farms, infrastructure, and community safety.",
+        "On April 25, 2026, the NBI-Rizal District Office, in coordination with DENR-MGB Region IV-A and the local government of Baras, conducted an enforcement operation at a quarry site in Barangay San Salvador, Baras, Rizal.",
+
+        "Two individuals were arrested for an alleged violation of Section 103 (Theft of Minerals) of the Philippine Mining Act of 1995. Authorities also seized two backhoes and a mini dump truck used in the operation.",
+
+        "According to the NBI, certifications from DENR-MGB Region IV-A and the Provincial Mining Regulatory Board of Rizal showed that no permits or documents authorizing mineral extraction had been issued within the municipality.",
+
+        "In April 2026 enforcement operation shows that unauthorized mineral extraction remains an active environmental enforcement issue in Rizal. Government agencies continue monitoring mining and quarrying activities and enforcing environmental and mining regulations.",
+
+        "Location: Barangay San Salvador, Baras, Rizal, Philippines.",
       ],
-      reference: "GMA News - Why the Sierra Madre and nature-based solutions matter against floods",
-      referenceUrl: "https://www.gmanetwork.com/news/lifestyle/content/1001970/explainer-why-are-the-sierra-madre-and-nature-based-solutions-important-vs-floods/story/",
-    },
+
+      reference:
+        "National Bureau of Investigation - NBI Arrests Two for Illegal Mining",
+
+      referenceUrl:
+        "https://nbi.gov.ph/press_releases/2026/04282026/9842/",
+},
     {
       value: "04",
-      title: "Communities and Wildlife at Risk",
+      title: "Agta Indigenous Communities of the Sierra Madre",
       label: "Affected life",
       icon: FaUsers,
       image: sierraMadreImages.rainforest,
       imageAlt: "Rainforest in Dumagat ancestral domain in the Sierra Madre",
       photoSource: "Martin San Diego / Dumagat ancestral domain reporting",
-      summary: "Forest degradation threatens wildlife habitat and affects Agta, Dumagat, farming, and downstream communities that depend on healthy forests and rivers.",
+      summary: "Agta (Agtâ) — An Indigenous people of northeastern Luzon whose communities have long-standing connections to the forests, rivers, and coastal areas of the Sierra Madre. Traditional livelihoods include fishing, hunting, gathering forest products, and small-scale agriculture",
       details: [
-        "Habitat fragmentation places pressure on plants and wildlife, while degraded water, food sources, forest materials, and cultural sites directly affect forest-dependent communities.",
-        "Protection efforts need Indigenous participation, community monitoring, secure livelihoods, and meaningful consultation because environmental damage and conservation decisions both affect local rights and daily life.",
+        "Agta communities continue to live within and around the Northern Sierra Madre, particularly in Palanan, Divilacan, Maconacon, San Mariano, and Dinapigue in Isabela. They continue to depend on the area's forests, rivers, and other natural resources for their livelihoods, but face pressures from activities such as logging, agricultural expansion, and resource depletion, which can affect their food security and traditional way of life. Although their ancestral and Indigenous rights are legally recognized, research has identified barriers that can limit their participation in decisions concerning protected areas and natural resources.",
       ],
       reference: "Limits to Indigenous Participation: The Agta and the Northern Sierra Madre Natural Park",
       referenceUrl: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4194021/",
