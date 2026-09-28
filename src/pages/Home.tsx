@@ -3,6 +3,7 @@ import ProvinceForestStatus from "../components/ProvinceForestStatus";
 import sierraMadreScope from "../assets/images/sierra-madre-scope.jpg";
 import {
   FaBookOpen,
+  FaChevronDown,
   FaExternalLinkAlt,
   FaFileAlt,
   FaGlobeAsia,
@@ -24,6 +25,7 @@ const sierraMadreImages = {
 
 function Home() {
   const [selectedStatus, setSelectedStatus] = useState(0);
+  const [currentStatusOpen, setCurrentStatusOpen] = useState(true);
 
   const statusCards = [
     {
@@ -195,7 +197,10 @@ function Home() {
             <button
               key={status.title}
               type="button"
-              onClick={() => setSelectedStatus(index)}
+              onClick={() => {
+                setSelectedStatus(index);
+                setCurrentStatusOpen(true);
+              }}
               aria-pressed={selectedStatus === index}
               aria-controls="detailStatus"
               className="forest-selector-card group flex h-full min-w-0 cursor-pointer flex-col rounded-md border p-3 text-left text-teal-8 shadow-sm transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
@@ -235,24 +240,42 @@ function Home() {
                   <p className="!mt-1 text-xs leading-snug text-gray-600">{selected.summary}</p>
                 </div>
               </div>
-              <h3 className="border-y border-gray-200 !py-3 text-sm font-semibold text-teal-8">
-                Current status
-              </h3>
-              {selected.details.map((detail) => (
-                <p key={detail} className="text-sm leading-relaxed text-gray-700 !mt-5">{detail}</p>
-              ))}
-              <div className="!mt-6 border-t border-gray-200 !pt-4">
-                <h3 className="flex items-center gap-2 text-base font-bold text-teal-8">
-                  <FaBookOpen aria-hidden="true" className="text-xl" /> Reference
-                </h3>
-                <div className="!mt-2 flex min-w-0 items-start gap-3 text-xs leading-relaxed">
-                  <FaFileAlt aria-hidden="true" className="mt-0.5 shrink-0 text-teal-8" />
-                  <div className="min-w-0">
-                    <p className="font-medium text-gray-800">{selected.reference}</p>
-                    <a href={selected.referenceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex max-w-full items-center gap-1 text-blue-700 hover:underline">
-                      <span className="min-w-0 break-all">{selected.referenceUrl}</span>
-                      <FaExternalLinkAlt aria-hidden="true" className="shrink-0" />
-                    </a>
+              <div className="overflow-hidden rounded-md border border-gray-200">
+                <button
+                  type="button"
+                  id="current-status-toggle"
+                  aria-expanded={currentStatusOpen}
+                  aria-controls="current-status-panel"
+                  onClick={() => setCurrentStatusOpen((open) => !open)}
+                  className="flex w-full cursor-pointer items-center justify-between gap-3 bg-white !px-4 !py-3 text-left text-sm font-semibold text-teal-8 transition hover:bg-teal-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
+                >
+                  <span>Current status</span>
+                  <FaChevronDown aria-hidden="true" className={`shrink-0 transition-transform motion-reduce:transition-none ${currentStatusOpen ? "rotate-180" : ""}`} />
+                </button>
+                <div
+                  id="current-status-panel"
+                  role="region"
+                  aria-labelledby="current-status-toggle"
+                  hidden={!currentStatusOpen}
+                  className="border-t border-gray-200 bg-white !px-4 !pb-4 !pt-1"
+                >
+                  {selected.details.map((detail) => (
+                    <p key={detail} className="text-sm leading-relaxed text-gray-700 !mt-4">{detail}</p>
+                  ))}
+                  <div className="!mt-5 border-t border-gray-200 !pt-4">
+                    <h3 className="flex items-center gap-2 text-base font-bold text-teal-8">
+                      <FaBookOpen aria-hidden="true" className="text-xl" /> Source
+                    </h3>
+                    <div className="!mt-2 flex min-w-0 items-start gap-3 text-xs leading-relaxed">
+                      <FaFileAlt aria-hidden="true" className="mt-0.5 shrink-0 text-teal-8" />
+                      <div className="min-w-0">
+                        <p className="font-medium text-gray-800">{selected.reference}</p>
+                        <a href={selected.referenceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex max-w-full items-center gap-1 text-blue-700 hover:underline">
+                          <span className="min-w-0 break-all">{selected.referenceUrl}</span>
+                          <FaExternalLinkAlt aria-hidden="true" className="shrink-0" />
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
