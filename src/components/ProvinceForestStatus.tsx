@@ -108,7 +108,7 @@ export default function ProvinceForestStatus() {
       </ul>
       <p className="!mt-3 max-w-4xl text-xs leading-relaxed text-gray-600">Red indicates recent documented illegal logging or illegal forest-product activity, not severe deforestation across an entire province. These statuses reflect the dated reports below, not live alerts or province-wide forest-health ratings.</p>
       <div className="!mt-5 flex flex-wrap gap-2" role="group" aria-label="Filter provinces by region">
-        {regions.map((item) => <button key={item} type="button" aria-pressed={region === item} onClick={() => setRegion(item)} className={`cursor-pointer rounded-full border !px-4 !py-2 text-xs font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700 ${region === item ? "border-teal-700 bg-teal-700 text-white" : "border-teal-200 bg-white text-teal-800 hover:bg-teal-50"}`}>{item}</button>)}
+        {regions.map((item) => <button key={item} type="button" aria-pressed={region === item} onClick={() => setRegion(item)} className={`cursor-pointer rounded-full border !px-4 !py-2 text-xs font-semibold focus-visible:outline-2 focus-visible:outline-offset-2  focus-visible:outline-teal-700 ${region === item ? "border-teal-700 bg-teal-700 text-white" : "border-teal-200 bg-white text-teal-800 hover:bg-teal-50"}`}>{item}</button>)}
       </div>
       <p className="!mt-4 text-xs text-gray-600" aria-live="polite">Showing {visible.length} of {provinces.length} provinces</p>
       <p className="!mt-2 text-xs text-gray-600">Select a province to view its evidence. Groups reflect the available reports, not a worst-to-best ranking: incidents, seizures, arrests, and reporting periods differ.</p>
@@ -206,7 +206,7 @@ export default function ProvinceForestStatus() {
             <img
               src={zoomedImage.src}
               alt={zoomedImage.alt}
-              className="mx-auto max-h-[72vh] w-auto max-w-full rounded-md bg-[#c7edfc] object-contain shadow"
+              className="mx-auto w-full h-full object-cover  max-w-full rounded-md bg-[#c7edfc]  shadow"
             />
           </div>
           <footer className="shrink-0 border-t border-gray-200 !px-4 !py-3 text-xs text-gray-600 sm:!px-5">
