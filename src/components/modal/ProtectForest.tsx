@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState, type FormEvent, type PointerEvent } from "react";
-import { FaCheck, FaTimes, FaTrashAlt } from "react-icons/fa";
+import { FaTimes, FaTrashAlt } from "react-icons/fa";
 
 const emailJsConfig = {
   serviceId: "service_1yj7lcd",
@@ -202,9 +202,9 @@ function ProtectForest({ isOpen, onClose }: ProtectForestProps) {
           {supported ? (
             <div className="grid min-h-72 place-items-center !px-6 !py-12 text-center">
               <div>
-                <span className="mx-auto !mb-5 grid h-14 w-14 place-items-center rounded-full bg-teal-100 text-xl text-teal-8">
+{/*                 <span className="mx-auto !mb-5 grid h-14 w-14 place-items-center rounded-full bg-teal-100 text-xl text-teal-8">
                   <FaCheck aria-hidden="true" />
-                </span>
+                </span> */}
                 <h3 className="text-xl font-bold text-gray-900">Thank you for your support</h3>
                 <p className="mx-auto !mt-2 max-w-sm text-sm text-gray-600">
                   Your signed petition was saved as a PDF in Bantay Gubat's Google Drive. {emailSent ? "Check your inbox and spam folder for a confirmation email." : sendError || "Sending your confirmation email..."}

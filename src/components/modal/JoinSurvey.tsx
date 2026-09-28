@@ -1,5 +1,5 @@
 import { useEffect, useState, type FormEvent } from "react";
-import { FaCheck, FaTimes } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
 
 const emailJsConfig = {
   serviceId: "service_1yj7lcd",
@@ -243,9 +243,9 @@ function JoinSurvey({ isOpen, onClose }: JoinSurveyProps) {
         /* ================= SUCCESS ================= */
         <div className="grid min-h-100 place-items-center !px-6 !py-12 text-center">
           <div>
-            <span className="!mx-auto !mb-5 grid h-14 w-14 place-items-center rounded-full bg-teal-100 text-xl text-teal-8">
+{/*             <span className="!mx-auto !mb-5 grid h-14 w-14 place-items-center rounded-full bg-teal-100 text-xl text-teal-8">
               <FaCheck aria-hidden="true" />
-            </span>
+            </span> */}
 
             <h3 className="text-xl font-bold text-gray-900">
               Thank you for participating
