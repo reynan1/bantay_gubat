@@ -20,6 +20,7 @@ const sierraMadreImages = {
   rainforest: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr5T5QNaqGHTAxHHZ09wWb94-8ZQHQdHbLlK8Q5DJTcLZpqGAe8mFq8B8&s=10",
   deforestation: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRo2a5GlANnu430iyCGx1CY_6Femmu6QO8XPufrZ1Ai_CHLSf41PA22fNT&s=10",
   seizedLogs: "https://newsinfo.inquirer.net/files/2018/07/12yoyong.jpg",
+  quirinoForest: "https://newsinfo.inquirer.net/files/2013/01/logging.jpg"
 };
 
 function Home() {
@@ -104,6 +105,30 @@ function Home() {
       reference: "Limits to Indigenous Participation: The Agta and the Northern Sierra Madre Natural Park",
       referenceUrl: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4194021/",
     },
+    {
+    value: "05",
+    title: "Illegal Logging in Quirino",
+    label: "Forest protection",
+    icon: FaTree,
+    image: sierraMadreImages.quirinoForest,
+    imageAlt:
+      "Illegally cut lumber associated with illegal logging operations in Quirino",
+    photoSource:
+      "Melvin Gascon / Inquirer Northern Luzon / Illegal logging report in Quirino",
+
+    summary:
+      "A 2013 Inquirer report documented persistent illegal logging in Quirino, including timber reportedly taken from the forests of Nagtipunan and Maddela and transported through local rivers and roads.",
+
+    details: [
+      "In 2013 Illegal logging was a serious problem in Maddela and Nagtipunan, Quirino, within Cagayan Valley region II. DENR officer Alfredo Almueda was killed while guarding a checkpoint in Maddela against the transport of illegally cut timber. Timber was reportedly transported from forests through the Casecnan River toward Villa Sur.",
+      "In 2025–2026 Illegal logging remains an environmental concern in Maddela, Nagtipunan, and Diffun, Quirino. Recent operations documented illegal logging incidents, including arrests and confiscation of illegally cut timber and chainsaws. Government authorities continue monitoring forests and conducting enforcement operations",
+     ],
+    reference:
+      "Inquirer - Is Quirino's drive on illegal logging worth dying for?",
+
+    referenceUrl:
+      "https://newsinfo.inquirer.net/349257/is-quirinos-drive-on-illegal-logging-worth-dying-for",
+}
   ];
 
   const selected = statusCards[selectedStatus];
@@ -202,7 +227,7 @@ function Home() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-3 !px-3 !py-5 sm:grid-cols-2 sm:!px-6 sm:!py-6 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-3 !px-3 !py-5 sm:grid-cols-2 sm:!px-6 sm:!py-6 lg:grid-cols-5">
           {statusCards.map((status, index) => (
             <button
               key={status.title}
@@ -220,8 +245,8 @@ function Home() {
                   <status.icon aria-hidden="true" />
                 </span>
                 <div className="!min-w-0">
-                  <span className="block text-2xl font-bold leading-tight">{status.value}</span>
-                  <span className="!mt-1 block text-xs font-semibold leading-snug">{status.title}</span>
+           {/*        <span className="block text-2xl font-bold leading-tight">{status.value}</span> */}
+                  <span className="!mt-1 block text-sm font-semibold leading-snug">{status.title}</span>
                 </div>
               </div>
 {/*               <div className="forest-selector-panel !mt-2 w-full flex-1 rounded-bl-md rounded-br-md !py-3 !px-4 transition-colors">
