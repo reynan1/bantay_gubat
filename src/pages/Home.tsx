@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ProvinceForestStatus from "../components/ProvinceForestStatus";
-import sierraMadreScope from "../assets/images/sierra-madre-scope.svg";
+import sierraMadreScope from "../assets/images/sierra-madre-scope.jpg";
 import {
   FaBookOpen,
   FaExternalLinkAlt,

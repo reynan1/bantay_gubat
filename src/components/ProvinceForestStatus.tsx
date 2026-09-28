@@ -1,7 +1,17 @@
 ﻿import { useState } from "react";
-import { FaExternalLinkAlt, FaChevronDown } from "react-icons/fa";
+import { useEffect } from "react";
+import { FaExternalLinkAlt, FaChevronDown, FaSearchPlus, FaTimes } from "react-icons/fa";
+import provinceMaps from "../data/provinceMaps.json";
 
 type StatusCategory = "recent" | "historical" | "monitoring";
+type ZoomedImage = {
+  name: string;
+  src: string;
+  alt: string;
+  source: string;
+  credit: string;
+  license: string;
+};
 
 const categories: Record<StatusCategory, { label: string; badge: string; dot: string }> = {
   recent: { label: "Recent documented logging or timber cases", badge: "border-red-200 bg-red-50 text-red-800", dot: "bg-red-600" },
@@ -52,12 +62,39 @@ const shortStatuses: Record<string, string> = {
   "Nueva Ecija": "Logging documented", Isabela: "Recent case", "Nueva Vizcaya": "Recent violations",
   Cagayan: "Recent activity", Aurora: "Recent operations", Quezon: "Recent operations", Quirino: "Active pressure",
 };
+// Illustrative corridor segments, not surveyed provincial or forest boundaries.
+/* const corridorSegments: Record<string, string> = {
+  Cagayan: "M579 208 L583 250 L586 260",
+  Isabela: "M586 260 L594 290 L596 318 L583 340",
+  Quirino: "M583 340 L574 354 L564 370",
+  "Nueva Vizcaya": "M564 370 L551 390",
+  Aurora: "M574 354 L551 390 L531 426",
+  "Nueva Ecija": "M551 390 L536 417",
+  Bulacan: "M536 417 L531 426 L533 450",
+  Rizal: "M533 450 L534 465 L540 482",
+  Laguna: "M540 482 L549 505",
+  Quezon: "M534 465 L540 482 L549 505",
+}; */
 
 export default function ProvinceForestStatus() {
   const [region, setRegion] = useState("All provinces");
   const [expandedProvince, setExpandedProvince] = useState<string | null>(null);
+  const [zoomedImage, setZoomedImage] = useState<ZoomedImage | null>(null);
   const visible = provinces.filter((p) => region === "All provinces" || p.region === region);
+
+  useEffect(() => {
+    if (!zoomedImage) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setZoomedImage(null);
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [zoomedImage]);
+
   return (
+    <>
     <section id="province-forest-status" aria-labelledby="province-status-heading" className="border-t border-teal-100 !px-3 !py-8 sm:!px-6 sm:!py-10">
       <p className="text-xs font-bold uppercase tracking-widest text-teal-700">Across the Sierra Madre</p>
       <h2 id="province-status-heading" className="!mt-2 !mb-2 !text-2xl font-bold !text-teal-900">Illegal Logging Status Across the Sierra Madre Provinces</h2>
@@ -84,10 +121,32 @@ export default function ProvinceForestStatus() {
           <div className="grid items-start gap-4 md:grid-cols-3">
         {groupedProvinces.map((p) => {
           const expanded = expandedProvince === p.name;
+          const locationMap = provinceMaps[p.name as keyof typeof provinceMaps];
           const id = `province-${p.name.toLowerCase().replaceAll(" ", "-")}`;
-          return <article key={p.name} className={`min-w-0 overflow-hidden rounded-xl border bg-white shadow-sm ${categories[p.category].badge} ${p.name === "Quirino" && region === "All provinces" ? "md:col-start-2" : ""}`}>
+          return <article key={p.name} className={`min-w-0 overflow-hidden rounded-xl border shadow-sm transition-colors motion-reduce:transition-none ${expanded ? categories[p.category].badge : "border-teal-100 bg-white text-teal-900"} ${p.name === "Quirino" && region === "All provinces" ? "md:col-start-2" : ""}`}>
+          <figure className="!p-3 !pb-0">
+            <button
+              type="button"
+              onClick={() => setZoomedImage({ name: p.name, ...locationMap })}
+              className="group relative block aspect-[3/2] w-full cursor-zoom-in overflow-hidden rounded-lg border border-teal-100 bg-[#c7edfc] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
+              aria-label={`Zoom ${p.name} province image`}
+            >
+              <img
+                src={locationMap.src}
+                alt={locationMap.alt}
+                className={`h-full w-full transition-transform duration-200 group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:group-hover:scale-100 ${p.name === "Laguna" ? "object-cover" : "object-contain !p-3"}`}
+              />
+              <span className="absolute right-2 top-2 grid h-8 w-8 place-items-center rounded-md bg-teal-950/75 text-sm text-white opacity-90 transition-opacity group-hover:opacity-100">
+                <FaSearchPlus aria-hidden="true" />
+              </span>
+            </button>
+            <figcaption className="!px-1 !py-2 text-[10px] leading-relaxed text-gray-600">
+              {p.name} province reference image. Laguna uses the scenario-style Sierra Madre image; other provinces use the available fitted province locator maps.<br />
+              <a href={locationMap.source} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">{locationMap.credit} · {locationMap.license}</a>
+            </figcaption>
+          </figure>
           <h4>
-            <button type="button" id={`${id}-toggle`} aria-expanded={expanded} aria-controls={`${id}-status`} onClick={() => setExpandedProvince(expanded ? null : p.name)} className="flex min-h-32 w-full cursor-pointer items-start gap-3 !p-5 text-left hover:bg-white/60 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-teal-700">
+            <button type="button" id={`${id}-toggle`} aria-expanded={expanded} aria-controls={`${id}-status`} onClick={() => setExpandedProvince(expanded ? null : p.name)} className={`flex min-h-32 w-full cursor-pointer items-start gap-3 !p-5 text-left focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-teal-700 ${expanded ? "" : "hover:bg-teal-50"}`}>
               <span className="min-w-0 flex-1">
               <span className="flex items-center gap-2 text-base font-bold uppercase tracking-wide">
                 <span aria-hidden="true" className={`h-2.5 w-2.5 shrink-0 rounded-full ${categories[p.category].dot}`} />
@@ -112,5 +171,52 @@ export default function ProvinceForestStatus() {
         })}
       </div>
     </section>
+    {zoomedImage && (
+      <div
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 !p-3 sm:!p-6"
+        role="presentation"
+        onMouseDown={(event) => {
+          if (event.target === event.currentTarget) setZoomedImage(null);
+        }}
+      >
+        <section
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="province-image-zoom-title"
+          className="flex max-h-[92vh] w-full max-w-6xl flex-col overflow-hidden rounded-lg bg-white shadow-2xl"
+        >
+          <header className="flex shrink-0 items-center justify-between bg-teal-900 !px-4 !py-3 text-white sm:!px-5">
+            <div className="min-w-0">
+              <h2 id="province-image-zoom-title" className="!mb-0 truncate text-base font-bold !text-white">
+                {zoomedImage.name} Province Image
+              </h2>
+              <p className="!mt-1 text-xs text-teal-50">{zoomedImage.credit} · {zoomedImage.license}</p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setZoomedImage(null)}
+              aria-label="Close zoomed province image"
+              title="Close image"
+              className="ml-3 grid h-9 w-9 shrink-0 cursor-pointer place-items-center rounded-md text-white transition hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            >
+              <FaTimes aria-hidden="true" />
+            </button>
+          </header>
+          <div className="min-h-0 overflow-auto bg-slate-100 !p-3 sm:!p-4">
+            <img
+              src={zoomedImage.src}
+              alt={zoomedImage.alt}
+              className="mx-auto max-h-[72vh] w-auto max-w-full rounded-md bg-[#c7edfc] object-contain shadow"
+            />
+          </div>
+          <footer className="shrink-0 border-t border-gray-200 !px-4 !py-3 text-xs text-gray-600 sm:!px-5">
+            <a href={zoomedImage.source} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-teal-700 underline underline-offset-2">
+              Image source <FaExternalLinkAlt aria-hidden="true" className="shrink-0" />
+            </a>
+          </footer>
+        </section>
+      </div>
+    )}
+    </>
   );
 }

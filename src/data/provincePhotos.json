@@ -1,0 +1,72 @@
+﻿{
+    "Nueva Vizcaya":  {
+                          "license":  "CC BY 2.0",
+                          "alt":  "Forested hills around Santa Fe, Nueva Vizcaya",
+                          "credit":  "Shubert Ciencia from Nueva Ecija, Philippines",
+                          "source":  "https://commons.wikimedia.org/wiki/File:Sta._Fe,_Nueva_Vizcaya_(4458904289).jpg",
+                          "src":  "/images/provinces/nueva-vizcaya.jpg"
+                      },
+    "Cagayan":  {
+                    "license":  "CC BY 3.0",
+                    "alt":  "Forested foothills of Mount Cagua, Cagayan",
+                    "credit":  "Brown R, Siler C, Oliveros C, Welton L, Rock A, Swab J, Van Weerd M, van Beijnen J, Rodriguez D, Jose E, Diesmos A",
+                    "source":  "https://commons.wikimedia.org/wiki/File:View_of_the_northeast_coast_of_Luzon_from_the_foothills_of_Mt._Cagua_-_ZooKeys-266-001-g005.jpg",
+                    "src":  "/images/provinces/cagayan.jpg"
+                },
+    "Quirino":  {
+                    "license":  "CC BY-SA 4.0",
+                    "alt":  "Wooded river landscape in Quirino",
+                    "credit":  "Richardsmarcelo",
+                    "source":  "https://commons.wikimedia.org/wiki/File:Quirino_1.jpg",
+                    "src":  "/images/provinces/quirino.jpg"
+                },
+    "Quezon":  {
+                   "license":  "CC BY-SA 4.0",
+                   "alt":  "Forested slopes of Mount Banahaw viewed from Lucban, Quezon",
+                   "credit":  "Huegotpix",
+                   "source":  "https://commons.wikimedia.org/wiki/File:Mt._Banahaw_of_Lucban,_Quezon.jpg",
+                   "src":  "/images/provinces/quezon.jpg"
+               },
+    "Isabela":  {
+                    "license":  "CC BY 3.0",
+                    "alt":  "High-elevation forest in the Northern Sierra Madre Natural Park, Isabela",
+                    "credit":  "Brown R, Siler C, Oliveros C, Welton L, Rock A, Swab J, Van Weerd M, van Beijnen J, Rodriguez D, Jose E, Diesmos A",
+                    "source":  "https://commons.wikimedia.org/wiki/File:Ultrabasic_forests_above_1200_m_at_Barangay_Diddadungan_-_ZooKeys-266-001-g006.jpg",
+                    "src":  "/images/provinces/isabela.jpg"
+                },
+    "Rizal":  {
+                  "license":  "CC BY-SA 4.0",
+                  "alt":  "Forest and limestone landscape at Masungi Georeserve, Rizal",
+                  "credit":  "Jtepace",
+                  "source":  "https://commons.wikimedia.org/wiki/File:Sapot_Masungi_Georserve.jpg",
+                  "src":  "/images/provinces/rizal.jpg"
+              },
+    "Bulacan":  {
+                    "license":  "Public domain",
+                    "alt":  "Forested hills of the Angat watershed, Bulacan",
+                    "credit":  "Judgefloro",
+                    "source":  "https://commons.wikimedia.org/wiki/File:09641jfWatershed_Dams_Hills_San_Mateo_Lorenzo_Hilltop_Norzagaray_Bulacanfvf_16.JPG",
+                    "src":  "/images/provinces/bulacan.jpg"
+                },
+    "Nueva Ecija":  {
+                        "license":  "CC BY-SA 4.0",
+                        "alt":  "Wooded river gorge at Minalungao National Park, Nueva Ecija",
+                        "credit":  "Klienne Eco",
+                        "source":  "https://commons.wikimedia.org/wiki/File:The_Beauty_of_Nature.jpg",
+                        "src":  "/images/provinces/nueva-ecija.jpg"
+                    },
+    "Laguna":  {
+                   "license":  "CC BY 2.0",
+                   "alt":  "Forest surrounding Pagsanjan Falls, Laguna",
+                   "credit":  "Angelo Juan Ramos",
+                   "source":  "https://commons.wikimedia.org/wiki/File:Pagsanjan_Falls.jpg",
+                   "src":  "/images/provinces/laguna.jpg"
+               },
+    "Aurora":  {
+                   "license":  "CC BY-SA 4.0",
+                   "alt":  "Forested coastal hills at Dicasalarin Cove, Baler, Aurora",
+                   "credit":  "Kennnpogi",
+                   "source":  "https://commons.wikimedia.org/wiki/File:Dicasalarin_Cove_(Baler).jpg",
+                   "src":  "/images/provinces/aurora.jpg"
+               }
+}

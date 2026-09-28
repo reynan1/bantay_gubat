@@ -1,0 +1,72 @@
+﻿{
+    "Cagayan":  {
+                    "license":  "CC BY-SA 4.0",
+                    "credit":  "Milenioscuro",
+                    "alt":  "Cagayan highlighted on a locator map of the Philippines",
+                    "source":  "https://commons.wikimedia.org/wiki/File:Cagayan_in_Philippines.svg",
+                    "src":  "/images/province-maps/cagayan.png"
+                },
+    "Nueva Ecija":  {
+                        "license":  "CC BY-SA 4.0",
+                        "credit":  "Milenioscuro",
+                        "alt":  "Nueva Ecija highlighted on a locator map of the Philippines",
+                        "source":  "https://commons.wikimedia.org/wiki/File:Nueva_Ecija_in_Philippines.svg",
+                        "src":  "/images/province-maps/nueva-ecija.png"
+                    },
+    "Laguna":  {
+                   "license":  "CC BY-SA 4.0",
+                   "credit":  "Milenioscuro",
+                   "alt":  "Laguna highlighted on a locator map of the Philippines",
+                   "source":  "https://commons.wikimedia.org/wiki/File:Laguna_in_Philippines.svg",
+                   "src":  "/images/province-maps/laguna.png"
+               },
+    "Isabela":  {
+                    "license":  "CC BY-SA 4.0",
+                    "credit":  "Milenioscuro",
+                    "alt":  "Isabela highlighted on a locator map of the Philippines",
+                    "source":  "https://commons.wikimedia.org/wiki/File:Isabela_in_Philippines.svg",
+                    "src":  "/images/province-maps/isabela.png"
+                },
+    "Rizal":  {
+                  "license":  "CC BY-SA 4.0",
+                  "credit":  "Milenioscuro",
+                  "alt":  "Rizal highlighted on a locator map of the Philippines",
+                  "source":  "https://commons.wikimedia.org/wiki/File:Rizal_in_Philippines.svg",
+                  "src":  "/images/province-maps/rizal.png"
+              },
+    "Bulacan":  {
+                    "license":  "CC BY-SA 4.0",
+                    "credit":  "Milenioscuro",
+                    "alt":  "Bulacan highlighted on a locator map of the Philippines",
+                    "source":  "https://commons.wikimedia.org/wiki/File:Bulacan_in_Philippines.svg",
+                    "src":  "/images/province-maps/bulacan.png"
+                },
+    "Quirino":  {
+                    "license":  "CC BY-SA 4.0",
+                    "credit":  "Milenioscuro",
+                    "alt":  "Quirino highlighted on a locator map of the Philippines",
+                    "source":  "https://commons.wikimedia.org/wiki/File:Quirino_in_Philippines.svg",
+                    "src":  "/images/province-maps/quirino.png"
+                },
+    "Quezon":  {
+                   "license":  "CC BY-SA 4.0",
+                   "credit":  "Milenioscuro",
+                   "alt":  "Quezon highlighted on a locator map of the Philippines",
+                   "source":  "https://commons.wikimedia.org/wiki/File:Quezon_in_Philippines.svg",
+                   "src":  "/images/province-maps/quezon.png"
+               },
+    "Nueva Vizcaya":  {
+                          "license":  "CC BY-SA 4.0",
+                          "credit":  "Milenioscuro",
+                          "alt":  "Nueva Vizcaya highlighted on a locator map of the Philippines",
+                          "source":  "https://commons.wikimedia.org/wiki/File:Nueva_Vizcaya_in_Philippines.svg",
+                          "src":  "/images/province-maps/nueva-vizcaya.png"
+                      },
+    "Aurora":  {
+                   "license":  "CC BY-SA 4.0",
+                   "credit":  "Milenioscuro",
+                   "alt":  "Aurora highlighted on a locator map of the Philippines",
+                   "source":  "https://commons.wikimedia.org/wiki/File:Aurora_in_Philippines.svg",
+                   "src":  "/images/province-maps/aurora.png"
+               }
+}
