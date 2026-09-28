@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ProvinceForestStatus from "../components/ProvinceForestStatus";
 import sierraMadreScope from "../assets/images/sierra-madre-scope.svg";
 import {
   FaBookOpen,
@@ -277,6 +278,8 @@ function Home() {
 
         </div>
       </section>
+
+      <ProvinceForestStatus />
 
       <section id="timeline-events" className="w-full border-t border-gray-200 !px-3 !py-8 text-gray-800 sm:!px-6 sm:!py-10">
         <div className="text-center">
