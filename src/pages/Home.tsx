@@ -8,7 +8,6 @@ import {
   FaGlobeAsia,
   FaHistory,
   FaLeaf,
-  FaMapMarkerAlt,
   FaMountain,
   FaShieldAlt,
   FaTree,
