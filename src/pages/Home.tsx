@@ -201,7 +201,7 @@ function Home() {
               aria-controls="detailStatus"
               className="forest-selector-card group flex h-full min-w-0 cursor-pointer flex-col rounded-md border p-3 text-left text-teal-8 shadow-sm transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
             >
-              <div className="flex min-h-20 w-full items-start gap-3 !py-3 !px-2 ">
+              <div className="flex min-h-30 w-full items-center gap-3 !py-3 !px-2 ">
                 <span className="forest-icon-badge grid h-12 w-12 !shrink-0 place-items-center rounded-full text-xl">
                   <status.icon aria-hidden="true" />
                 </span>
@@ -210,12 +210,12 @@ function Home() {
                   <span className="!mt-1 block text-xs font-semibold leading-snug">{status.title}</span>
                 </div>
               </div>
-              <div className="forest-selector-panel !mt-2 w-full flex-1 rounded-bl-md rounded-br-md !py-3 !px-4 transition-colors">
+{/*               <div className="forest-selector-panel !mt-2 w-full flex-1 rounded-bl-md rounded-br-md !py-3 !px-4 transition-colors">
                 <span className="flex items-center gap-2 text-xs font-bold text-teal-8">
                   <FaMapMarkerAlt aria-hidden="true" /> {status.label}
                 </span>
                 <span className="!mt-2 block text-xs  text-gray-700">{status.summary}</span>
-              </div>
+              </div> */}
             </button>
           ))}
         </div>
