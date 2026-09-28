@@ -134,14 +134,14 @@ export default function ProvinceForestStatus() {
               <img
                 src={locationMap.src}
                 alt={locationMap.alt}
-                className={`h-full w-full transition-transform duration-200 group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:group-hover:scale-100 ${p.name === "Laguna" ? "object-cover" : "object-contain !p-3"}`}
+                className="h-full w-full object-contain !p-2"
               />
               <span className="absolute right-2 top-2 grid h-8 w-8 place-items-center rounded-md bg-teal-950/75 text-sm text-white opacity-90 transition-opacity group-hover:opacity-100">
                 <FaSearchPlus aria-hidden="true" />
               </span>
             </button>
             <figcaption className="!px-1 !py-2 text-[10px] leading-relaxed text-gray-600">
-              {p.name} province reference image. Laguna uses the scenario-style Sierra Madre image; other provinces use the available fitted province locator maps.<br />
+              {p.name} province reference image, fitted to show the full available image.<br />
               <a href={locationMap.source} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">{locationMap.credit} · {locationMap.license}</a>
             </figcaption>
           </figure>
