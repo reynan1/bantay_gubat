@@ -1,4 +1,5 @@
 import { useState } from "react";
+import sierraMadreScope from "../assets/images/sierra-madre-scope.svg";
 import {
   FaBookOpen,
   FaExternalLinkAlt,
@@ -15,7 +16,7 @@ import {
 } from "react-icons/fa";
 
 const sierraMadreImages = {
-  panorama: "https://pais.bmb.gov.ph/pas/bmb_assets2/uploads/pa_profile_pic/Screenshot_2025-06-30_130905.png",
+  locationMap: sierraMadreScope,
   rainforest: "https://martinsandiego.ph/assets/uploads/2022/08/0001-Photojournalist-Martin-San-Diego-Philippine-Hawk-Eagle-Aurora-Dumagat-7MS04498-scaled.jpg",
   deforestation: "https://i0.wp.com/feed.org.ph/wp-content/uploads/2019/05/sierramadre-deforestation.jpg?resize=584%2C391&ssl=1",
   seizedLogs: "https://media.philstar.com/photos/2019/09/20/nat4-illegal-logs-afp_2019-09-20_21-08-03.jpg",
@@ -30,9 +31,9 @@ function Home() {
       title: "Rapid Forest Cover Decline",
       label: "Overall condition",
       icon: FaMountain,
-      image: sierraMadreImages.panorama,
-      imageAlt: "Forested peaks of the Northern Sierra Madre",
-      photoSource: "DENR-BMB Protected Area Information System",
+      image: sierraMadreImages.locationMap,
+      imageAlt: "Map of Luzon with a dashed line marking the approximate Sierra Madre route from Cagayan to Quezon",
+      photoSource: "Luzon coastline: Natural Earth (public domain). Approximate Sierra Madre coverage: Forest Foundation Philippines.",
       summary: "The Sierra Madre is a nearly 1.4-million-hectare forest landscape, but Haribon reports that approximately 9,000 hectares of its forest cover are being lost each year.",
       details: [
         "The Haribon Foundation reported that the Sierra Madre is losing about 9,000 hectares of forest cover each year. A separate GMA report estimated that 130,000 hectares were lost from 2003 to 2020, an average of about 7,647 hectares per year during that period.",
@@ -177,11 +178,11 @@ function Home() {
           <span className="h-px flex-1 bg-gray-200" aria-hidden="true" />
         </div>
 
-        <div className="!mx-3 !mt-5 border-l-4 border-teal-700 bg-green-50 !px-4 !py-4 sm:!mx-6 sm:!px-5">
+        <div className="!mx-3 !mt-5 border-l-4 border-teal-700 !px-4 !py-4 sm:!mx-6 sm:!px-5">
           <div className="flex items-start gap-3">
             <FaBookOpen aria-hidden="true" className="!mt-1 shrink-0 text-lg text-teal-8" />
             <div className="min-w-0">
-              <h2 className="!mb-1 text-base font-bold text-teal-8">What is illegal logging in the Sierra Madre context?</h2>
+              <h2 className="!mb-1 text-base font-bold !text-teal-8">What is illegal logging in the Sierra Madre context?</h2>
               <p className="text-sm leading-relaxed text-gray-700">
                 Illegal logging is the cutting, harvesting, transporting, or selling of trees and forest products without required permits or government approval. In the Sierra Madre, the issue matters because upland forest loss can affect biodiversity, watersheds, Indigenous communities, and towns downstream.
               </p>
@@ -199,7 +200,7 @@ function Home() {
               aria-controls="detailStatus"
               className="forest-selector-card group flex h-full min-w-0 cursor-pointer flex-col rounded-md border p-3 text-left text-teal-8 shadow-sm transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
             >
-              <div className="flex min-h-20 w-full items-start gap-3 !py-3 !px-2">
+              <div className="flex min-h-20 w-full items-start gap-3 !py-3 !px-2 ">
                 <span className="forest-icon-badge grid h-12 w-12 !shrink-0 place-items-center rounded-full text-xl">
                   <status.icon aria-hidden="true" />
                 </span>
@@ -212,7 +213,7 @@ function Home() {
                 <span className="flex items-center gap-2 text-xs font-bold text-teal-8">
                   <FaMapMarkerAlt aria-hidden="true" /> {status.label}
                 </span>
-                <span className="!mt-2 block text-xs leading-relaxed text-gray-700">{status.summary}</span>
+                <span className="!mt-2 block text-xs  text-gray-700">{status.summary}</span>
               </div>
             </button>
           ))}
@@ -221,8 +222,9 @@ function Home() {
         <div id="detailStatus" className="!mt-5 w-full border-t border-gray-200 !px-3 !py-8 text-teal-8 sm:!px-6 sm:!py-10">
           <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:gap-8">
             <div className="flex min-w-0 flex-col gap-2">
-              <img src={selected.image} alt={selected.imageAlt} className="aspect-[3/2] w-full rounded-md object-cover" />
+              <img src={selected.image} alt={selected.imageAlt} className={selectedStatus === 0 ? "max-h-[620px] w-full rounded-md bg-white object-contain" : "aspect-[3/2] w-full rounded-md object-cover"} />
               <span className="text-xs text-gray-600">{selected.photoSource}</span>
+
             </div>
 
             <div className="min-w-0 !space-y-3">

@@ -25,14 +25,14 @@
     position: relative;
     overflow: hidden;
     border-color: #dbe7df;
-    border-radius: 8px;
+  /*   border-radius: 11px !important; */
     background: #ffffff;
     color: #073f33;
-    box-shadow: 0 6px 14px rgba(8, 63, 49, 0.08);
+    box-shadow: 0 6px 14px rgba(76, 78, 78, 0.08);
   }
 
   .forest-selector-card > div:first-child {
-    border-radius: 8px 8px 0 0;
+/*     border-radius: 8px 8px 0 0; */
     background: transparent;
     color: #087f5b;
   }
@@ -49,7 +49,7 @@
   }
 
   .forest-selector-card[aria-pressed="true"] > div:first-child {
-    background: #087f5b;
+    background: var(--color-teal-700);
   }
 
   .forest-selector-card > div:first-child > div,
@@ -62,11 +62,15 @@
     color: #ffffff !important;
   }
 
+  .forest-selector-card[aria-pressed="true"] > div:first-child > div > span:last-child {
+    color: var(--color-teal-50) !important;
+  }
+
   .forest-selector-card .forest-icon-badge {
     border: 0;
     background: #dff4e9;
     color: #087f5b;
-    box-shadow: inset 0 0 0 1px rgba(8, 127, 91, 0.08);
+    box-shadow: inset 0 0 0 2px rgba(8, 127, 91, 0.08);
   }
 
   .forest-selector-card[aria-pressed="true"] .forest-icon-badge {
@@ -77,7 +81,7 @@
   .forest-selector-panel {
     position: static;
     border-top: 1px solid #dbe7df;
-    background: #ecf9f1;
+    background: #fff;
   }
 
   .forest-selector-card[aria-pressed="true"] .forest-selector-panel {
@@ -96,7 +100,7 @@
 
   .forest-selector-card[aria-pressed="true"] .forest-selector-panel > span:last-child,
   .forest-selector-card[aria-pressed="true"] .forest-selector-panel p {
-    color: #374151 !important;
+    color: var(--color-teal-900) !important;
   }
 
   .forest-info-card {
