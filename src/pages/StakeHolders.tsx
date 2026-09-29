@@ -1,282 +1,154 @@
-import { useState } from "react";
 import {
   FaBookOpen,
-  FaChartBar,
+  FaBuilding,
   FaCubes,
   FaExternalLinkAlt,
-  FaFileAlt,
   FaHandshake,
   FaMapMarkerAlt,
+  FaNewspaper,
   FaSearch,
   FaShieldAlt,
   FaTree,
   FaUsers,
 } from "react-icons/fa";
-import denrImage from "../assets/images/DENR.jpg";
-import timberImage from "../assets/images/causes/timbers.png";
 
-const sierraMadrePanorama =
-  "https://pais.bmb.gov.ph/pas/bmb_assets2/uploads/pa_profile_pic/Screenshot_2025-06-30_130905.png";
-const sierraMadreRainforest =
-  "https://martinsandiego.ph/assets/uploads/2022/08/0001-Photojournalist-Martin-San-Diego-Philippine-Hawk-Eagle-Aurora-Dumagat-7MS04498-scaled.jpg";
+const stakeholders = [
+  {
+    "title": "Local Farmers / Rural Transporters",
+    "description": "Individuals like the four men caught in Aglipay, Quirino, are often small-scale farmers who cut or haul timber for extra income rather than as part of an organized syndicate. They are usually the ones actually arrested, even though they're low in the supply chain."
+  },
+  {
+    "title": "DENR (Department of Environment and Natural Resources)",
+    "description": "The lead government agency mandated under Executive Order No. 23 to chair the National Anti-Illegal Logging Task Force, issue logging permits, and record confiscations (e.g., the 148 reported apprehensions in Caraga)."
+  },
+  {
+    "title": "PNP (Philippine National Police)",
+    "description": "Runs checkpoints, similar to the one in Palacian village that caught the Quirino suspects, and conducts raids. Nationally, PNP recorded 6,710 anti-illegal-logging operations and over 3,300 arrests from Jan–Oct 2020 alone."
+  },
+  {
+    "title": "AFP (Armed Forces of the Philippines) / Military",
+    "description": "A task force member since forest rangers and DENR personnel have been killed in the line of duty; the DENR has at times asked the military to take the lead role in high-risk logging hotspots like Caraga and Davao."
+  },
+  {
+    "title": "Local Government Units (LGUs) & Barangay Officials",
+    "description": "Coordinate with DENR's PENRO/CENRO offices, help set up monitoring stations, and are often the first to receive citizen tips (as happened in the Nueva Ecija case where a \"concerned citizen\" reported the activity)."
+  },
+  {
+    "title": "NBI (National Bureau of Investigation)",
+    "description": "Partners with DENR on raids of illegal wood-processing operations, such as a 2022 joint operation with DENR-CENRO Lipa that seized ₱11 million worth of undocumented lumber and equipment from a wood factory in Malvar, Batangas."
+  },
+  {
+    "title": "Wood/Timber Industry",
+    "description": "Licensed loggers and wood processors who argue that logging bans and moratoria unfairly restrict their legal business while illegal operators keep supplying the market anyway, creating tension between conservation policy and industry livelihoods. The wood-processing sector alone reportedly employs hundreds of thousands of workers."
+  },
+  {
+    "title": "NDRRMC (National Disaster Risk Reduction and Management Council)",
+    "description": "The national disaster-response body that tracks casualties and damage from the floods/landslides that illegal logging worsens — e.g., reporting over 2 million people affected across 190 towns during the January 2011 floods, and coordinating emergency response after Typhoons Molave, Goni, and Vamco in 2020."
+  },
+  {
+    "title": "Investigative Journalists",
+    "description": "Reporters covering illegal logging on the ground have faced real risk for their coverage. One local reporter covering the Ormoc disaster received death threats and had to withhold his name, illustrating how press scrutiny of logging syndicates carries direct personal danger."
+  }
+];
+
+const references = [
+  {
+    "title": "Batas Natin. (n.d.). Executive Order No. 23, s. 2011.",
+    "url": "https://batasnatin.com/laws/eo-23-3"
+  },
+  {
+    "title": "Bicarme, T. C. (2011). Philippines: DENR 2 organizes anti-illegal logging task force. Indigenous Peoples Issues & Resources.",
+    "url": "https://did.isuma.tv/indigenous-peoples-issues-and-resources/philippines-denr-2-organizes-anti-illegal-logging-task-force"
+  },
+  {
+    "title": "Bulatlat. (2011, February 2). Environmental activist group to Aquino: Impose commercial log ban now. Bulatlat.",
+    "url": "https://www.bulatlat.com/2011/02/02/environmental-activist-group-to-aquino-impose-commercial-log-ban-now/"
+  },
+  {
+    "title": "Christian Science Monitor. (1991, November 12). Illegal logging blamed for Philippine flood toll. The Christian Science Monitor.",
+    "url": "https://proof.csmonitor.com/1991/1112/12061.html"
+  },
+  {
+    "title": "DENR CALABARZON. (n.d.). DENR CENRO Lipa, NBI partnered in the confiscation of ₱11-M worth of undocumented forest products in Malvar, Batangas. Department of Environment and Natural Resources Region IV-A CALABARZON.",
+    "url": "https://calabarzon.denr.gov.ph/index.php/news-events/photo-releases/2752-denr-cenro-lipa-nbi-partnered-in-the-confiscation-of-11-m-worth-of-undocumented-forest-products-in-malvar-batangas"
+  },
+  {
+    "title": "DENR Region 3. (n.d.). Authorities nab 5 suspected illegal loggers in Nueva Ecija. Department of Environment and Natural Resources Region III.",
+    "url": "https://r3.denr.gov.ph/index.php/news-events/press-releases/1354-authorities-nab-5-suspected-illegal-loggers-in-nueva-ecija"
+  },
+  {
+    "title": "Eco-Business. (n.d.). Philippines: Ban on logging in natural forests. Eco-Business.",
+    "url": "https://www.eco-business.com/id/news/philippines-ban-logging-natural-forests/"
+  },
+  {
+    "title": "Gascon, M. (2018, March 2). 4 farmers nabbed for illegal logging in Quirino. Inquirer News.",
+    "url": "https://newsinfo.inquirer.net/972512/4-farmers-nabbed-for-illegal-logging-in-quirino"
+  },
+  {
+    "title": "Jarina, D. (2012, July 28). DENR asks military to lead fight vs illegal loggers. Inquirer News.",
+    "url": "https://newsinfo.inquirer.net/238105/denr-asks-military-to-lead-fight-vs-illegal-loggers"
+  },
+  {
+    "title": "Philstar.com. (2012, September 29). Wood producers seek review of logging moratorium. The Philippine Star.",
+    "url": "https://www.philstar.com/business/2012/09/29/854000/wood-producers-seek-review-logging-moratorium/amp/"
+  },
+  {
+    "title": "Press Reader / Arab News. (2020, November 17). Duterte urged to act after typhoon wreaks havoc. Arab News, via PressReader.",
+    "url": "https://www.pressreader.com/saudi-arabia/arab-news/20201117/281887300846008"
+  }
+];
+
+const stakeholderIcons = [FaUsers, FaTree, FaShieldAlt, FaShieldAlt, FaMapMarkerAlt, FaSearch, FaCubes, FaBuilding, FaNewspaper];
 
 function StakeHolders() {
-  const [selectedStakeholder, setSelectedStakeholder] = useState(0);
-
-  const stakeholders = [
-    {
-      value: "01",
-      title: "Indigenous and Forest Communities",
-      role: "Most affected",
-      icon: FaUsers,
-      image: sierraMadreRainforest,
-      imageAlt: "Sierra Madre rainforest connected to Dumagat ancestral domain",
-      photoSource: "Sierra Madre rainforest in Dumagat ancestral domain",
-      description:
-        "Communities living near forest areas depend on forest resources, water, food, medicine, and culturally important places.",
-      whyTheyMatter:
-        "They are often the first to notice forest changes and the first to feel the effects when resources become harder to access.",
-      needs:
-        "Protection of ancestral and community lands, respectful consultation, livelihood support, and inclusion in monitoring and restoration decisions.",
-      contribution:
-        "Local knowledge can help identify forest damage, document impacts, guide restoration priorities, and strengthen community-based protection.",
-      risk:
-        "Forest loss can reduce access to water, food, medicinal plants, livelihood resources, and culturally important areas.",
-      reference:
-        "Limits to Indigenous Participation: The Agta and the Northern Sierra Madre Natural Park",
-      referenceUrl:
-        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4194021/",
-    },
-    {
-      value: "02",
-      title: "DENR and Law Enforcement",
-      role: "Forest protection",
-      icon: FaShieldAlt,
-      image: denrImage,
-      imageAlt: "DENR forest protection and enforcement activity",
-      photoSource: "DENR forest protection and monitoring work",
-      description:
-        "Government agencies are responsible for forest protection, permits, monitoring, apprehensions, and legal enforcement.",
-      whyTheyMatter:
-        "Illegal logging cannot be reduced without active field monitoring, inter-agency coordination, and consistent follow-through on cases.",
-      needs:
-        "Reliable reports, patrol capacity, evidence handling, coordination with police and LGUs, and public trust in enforcement action.",
-      contribution:
-        "DENR and partner agencies can verify reports, conduct patrols, seize undocumented forest products, and support prosecution.",
-      risk:
-        "Weak coordination or limited field presence can allow unauthorized cutting, transport, and trading to continue.",
-      reference:
-        "Philstar - hot logs seized in Sierra Madre watershed",
-      referenceUrl:
-        "https://www.philstar.com/nation/2019/09/21/1953552/p17-million-hot-logs-seized-sierra-madre-watershed",
-    },
-    {
-      value: "03",
-      title: "LGUs and Barangays",
-      role: "Local response",
-      icon: FaMapMarkerAlt,
-      image: sierraMadrePanorama,
-      imageAlt: "Northern Sierra Madre forest landscape",
-      photoSource: "Northern Sierra Madre forest landscape and local monitoring area",
-      description:
-        "Local governments and barangays connect national forest rules with local reporting, land-use planning, and community action.",
-      whyTheyMatter:
-        "They are closest to the communities, roads, checkpoints, and local decisions that can either prevent or enable forest loss.",
-      needs:
-        "Clear reporting channels, land-use information, community cooperation, and coordination with DENR, police, and protected-area managers.",
-      contribution:
-        "LGUs can help organize patrol support, local ordinances, awareness work, livelihood programs, and quick response to reports.",
-      risk:
-        "If local monitoring is weak, illegal transport routes and small-scale cutting can be missed until the damage grows.",
-      reference:
-        "DENR-BMB PAIS - Northern Sierra Madre Natural Park",
-      referenceUrl:
-        "https://pais.bmb.gov.ph/home/info/WXTHTRUGGBP",
-    },
-    {
-      value: "04",
-      title: "Researchers and Civil Society",
-      role: "Evidence and advocacy",
-      icon: FaSearch,
-      image: "/images/forest-field-survey.jpg",
-      imageAlt: "Forest field survey",
-      photoSource: "Forest field survey and documentation",
-      description:
-        "Researchers, NGOs, schools, and media help document forest conditions, explain impacts, and make evidence easier for the public to understand.",
-      whyTheyMatter:
-        "Public action is stronger when claims are supported by field evidence, satellite data, community testimony, and transparent reporting.",
-      needs:
-        "Access to reliable data, community consent, clear methodology, and careful language that avoids unsupported blame.",
-      contribution:
-        "They can publish research, verify patterns, educate communities, and support campaigns for stronger forest protection.",
-      risk:
-        "Without good evidence, the issue may be misunderstood, ignored, or reduced to claims that are difficult to act on.",
-      reference:
-        "Climate Change Commission - Save Sierra Madre Day statement",
-      referenceUrl:
-        "https://www.climate.gov.ph/news/934",
-    },
-    {
-      value: "05",
-      title: "Timber Sector and Consumers",
-      role: "Market pressure",
-      icon: FaCubes,
-      image: timberImage,
-      imageAlt: "Timber products and wood supply",
-      photoSource: "Timber and forest products supply chain",
-      description:
-        "Buyers, transporters, builders, and sellers shape demand for wood and influence whether timber is sourced legally.",
-      whyTheyMatter:
-        "Illegal logging is partly sustained by markets that accept undocumented forest products or fail to check legal sourcing.",
-      needs:
-        "Traceable supply, permit checking, responsible procurement, and awareness that cheap undocumented wood can carry forest costs.",
-      contribution:
-        "Responsible buyers and businesses can reduce illegal demand by refusing undocumented lumber and supporting legal wood supply.",
-      risk:
-        "Unchecked demand can reward illegal cutting, transport, and sale even when enforcement improves in hotspot areas.",
-      reference:
-        "GMA News - Sierra Madre and nature-based solutions against floods",
-      referenceUrl:
-        "https://www.gmanetwork.com/news/lifestyle/content/1001970/explainer-why-are-the-sierra-madre-and-nature-based-solutions-important-vs-floods/story/",
-    },
-  ];
-
-  const selected = stakeholders[selectedStakeholder];
-  const SelectedIcon = selected.icon;
-
   return (
-    <section id="stakeholders-illegal-logging" className="w-full border-t-[1px] text-teal-8">
-      <div className="flex w-full items-center gap-3 !px-3 !pt-7 !pb-2 sm:gap-4 sm:!px-6 sm:!pt-8">
-        <span className="h-px flex-1 bg-gray-200" aria-hidden="true" />
-        <div className="text-center">
-          <h1 className="flex items-center justify-center gap-2 !text-xl font-bold !text-teal-8">
+    <section id="stakeholders-illegal-logging" className="w-full border-t border-gray-200 text-teal-8">
+      <header className="flex w-full items-center gap-3 !px-3 !pt-8 !pb-5 sm:gap-5 sm:!px-6 sm:!pt-10">
+        <span className="h-px min-w-0 flex-1 bg-gray-200" aria-hidden="true" />
+        <div className="min-w-0 max-w-[85%] text-center">
+          <h1 className="flex items-center justify-center gap-2 !text-xl font-bold !leading-snug !text-teal-8 sm:!text-2xl">
             <FaHandshake aria-hidden="true" className="shrink-0" />
-            Stakeholders in Forest Protection
+            Stakeholders in Illegal Logging and Forest Protection
           </h1>
-          <p className="!mt-1 text-xs text-gray-600">
-            People and institutions connected to Sierra Madre forest protection
-          </p>
+          <p className="!mt-1 text-xs leading-relaxed text-slate-600 sm:text-sm">People, institutions, and industries connected to forest protection in the Philippines</p>
         </div>
-        <span className="h-px flex-1 bg-gray-200" aria-hidden="true" />
-      </div>
+        <span className="h-px min-w-0 flex-1 bg-gray-200" aria-hidden="true" />
+      </header>
 
-      <div className="flex snap-x snap-mandatory items-stretch gap-3 overflow-x-auto !px-3 !py-5 sm:!px-6 sm:!py-6">
-        {stakeholders.map((stakeholder, index) => (
-          <button
-            key={stakeholder.title}
-            type="button"
-            onClick={() => setSelectedStakeholder(index)}
-            aria-pressed={selectedStakeholder === index}
-            aria-controls="stakeholder-detail"
-            className="forest-selector-card group flex min-w-[82vw] snap-start flex-1 cursor-pointer flex-col rounded-md border text-left text-teal-8 shadow-sm transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700 sm:min-w-[280px] lg:min-w-0"
-          >
-            <div className="flex min-h-20 w-full items-start gap-3 !px-2 !py-3">
-              <span className="forest-icon-badge grid h-12 w-12 shrink-0 place-items-center rounded-full text-xl">
-                <stakeholder.icon aria-hidden="true" />
-              </span>
-              <div className="min-w-0">
-                <span className="block text-2xl font-bold leading-tight">{stakeholder.value}</span>
-                <span className="!mt-1 block text-xs font-semibold leading-snug">{stakeholder.title}</span>
-              </div>
-            </div>
-            <div className="forest-selector-panel !mt-2 w-full flex-1 rounded-b-md !px-4 !py-3 transition-colors">
-              <span className="flex items-center gap-2 text-xs font-bold text-teal-8">
-                <FaHandshake aria-hidden="true" /> Role
-              </span>
-              <span className="!mt-1 block text-xs font-semibold text-teal-700">{stakeholder.role}</span>
-              <p className="!mt-2 text-xs leading-relaxed text-gray-700">
-                {stakeholder.description}
-              </p>
-            </div>
-          </button>
-        ))}
-      </div>
-
-      <div id="stakeholder-detail" className="!mt-5 w-full border-t border-gray-200 !px-3 !py-8 text-teal-8 sm:!px-6 sm:!py-10">
-        <div className="grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:gap-8">
-          <div className="flex min-w-0 flex-col gap-2">
-            <img
-              src={selected.image}
-              alt={selected.imageAlt}
-              className="aspect-[3/2] w-full rounded-md object-cover"
-            />
-            <span className="text-xs text-gray-600">{selected.photoSource}</span>
-          </div>
-
-          <div className="min-w-0 !space-y-3">
-            <div className="flex items-center gap-3">
-              <SelectedIcon aria-hidden="true" className="mt-0.5 shrink-0 text-xl" />
-              <div className="min-w-0">
-                <span className="text-xs font-bold uppercase text-gray-500">
-                  {selected.role}
-                </span>
-                <h2 className="text-base !text-xl font-bold leading-tight !mb-0 !text-teal-8">
-                  {selected.title}
-                </h2>
-                <p className="!mt-1 text-xs leading-snug text-gray-600">
-                  {selected.description}
-                </p>
-              </div>
-            </div>
-
-            <div className="border-y border-gray-200 !py-4">
-              <h3 className="flex items-center gap-2 text-sm font-bold text-teal-8">
-                <FaTree aria-hidden="true" />
-                Why this stakeholder matters
-              </h3>
-              <p className="!mt-2 text-sm leading-relaxed text-gray-700">
-                {selected.whyTheyMatter}
-              </p>
-            </div>
-
-            <div className="grid gap-2 sm:grid-cols-2">
-              <div className="forest-soft-panel rounded-md border !p-4">
-                <h3 className="text-sm font-bold text-teal-8">What they need</h3>
-                <p className="!mt-2 text-xs leading-relaxed text-gray-700">{selected.needs}</p>
-              </div>
-              <div className="forest-info-card rounded-md border !p-4">
-                <h3 className="text-sm font-bold text-teal-8">What they contribute</h3>
-                <p className="!mt-2 text-xs leading-relaxed text-gray-700">{selected.contribution}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="!mt-8 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-          {[
-            { title: "Stakeholder risk", content: selected.risk, icon: FaChartBar },
-            { title: "Shared action", content: "The strongest response combines local reporting, verified evidence, enforcement, responsible markets, and restoration work.", icon: FaHandshake },
-            { title: "Information needed", content: "Useful evidence includes community reports, permit records, seizure data, maps, photos, site visits, and livelihood impacts.", icon: FaSearch },
-          ].map(({ title, content, icon: Icon }) => (
-            <div key={title} className="forest-info-card group min-w-0 cursor-pointer rounded-md border !p-4 transition-all duration-200 hover:shadow-md">
-              <h3 className="flex items-center gap-2 text-sm font-bold text-teal-8">
-                <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-green-50 text-lg text-teal-8 transition-colors duration-200 group-hover:bg-white">
+      <div className="grid items-stretch gap-4 !px-3 !py-6 sm:!px-6 md:grid-cols-2 xl:grid-cols-3">
+        {stakeholders.map((stakeholder, index) => {
+          const Icon = stakeholderIcons[index];
+          return (
+            <article key={stakeholder.title} className="min-w-0 rounded-lg border border-teal-100 bg-white !p-5 shadow-sm">
+              <div className="flex items-center justify-between gap-3">
+                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-teal-50 text-xl text-teal-800">
                   <Icon aria-hidden="true" />
                 </span>
-                {title}
-              </h3>
-              <p className="!mt-3 text-xs leading-relaxed text-gray-700">{content}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="!mt-5">
-          <h3 className="flex items-center gap-2 text-base font-bold text-teal-8">
-            <FaBookOpen aria-hidden="true" className="text-xl" /> Reference
-          </h3>
-          <div className="!mt-2 flex min-w-0 items-start gap-3 text-xs leading-relaxed">
-            <FaFileAlt aria-hidden="true" className="mt-0.5 shrink-0 text-teal-8" />
-            <div className="min-w-0">
-              <p className="font-medium text-gray-800">{selected.reference}</p>
-              <a href={selected.referenceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex max-w-full items-center gap-1 text-blue-700 hover:underline">
-                <span className="min-w-0 break-all">{selected.referenceUrl}</span>
-                <FaExternalLinkAlt aria-hidden="true" className="shrink-0" />
-              </a>
-            </div>
-          </div>
-        </div>
+                <span className="text-sm font-bold text-teal-600">{String(index + 1).padStart(2, "0")}</span>
+              </div>
+              <h2 className="!mt-4 !mb-0 !text-lg font-bold !leading-snug !text-teal-8">{stakeholder.title}</h2>
+              <p className="!mt-3 text-sm leading-relaxed text-gray-700">{stakeholder.description}</p>
+            </article>
+          );
+        })}
       </div>
 
+      <section aria-labelledby="stakeholder-references-heading" className="!mt-3 border-t border-gray-200 !px-3 !py-8 sm:!px-6">
+        <h2 id="stakeholder-references-heading" className="flex items-center gap-2 !text-2xl font-bold !text-teal-8">
+          <FaBookOpen aria-hidden="true" /> References
+        </h2>
+        <ol className="!mt-5 grid list-none gap-4 !p-0 md:grid-cols-2">
+          {references.map((reference, index) => (
+            <li key={reference.url} className="min-w-0 rounded-lg border border-gray-200 !p-4">
+              <p className="text-sm leading-relaxed text-gray-700">{index + 1}. {reference.title}</p>
+              <a href={reference.url} target="_blank" rel="noopener noreferrer" className="!mt-3 inline-flex max-w-full items-start gap-2 text-xs leading-relaxed text-teal-700 hover:underline">
+                <span className="min-w-0 break-all">{reference.url}</span>
+                <FaExternalLinkAlt aria-label="Opens in a new tab" className="!mt-1 shrink-0" />
+              </a>
+            </li>
+          ))}
+        </ol>
+      </section>
     </section>
   );
 }
