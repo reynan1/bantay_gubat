@@ -134,7 +134,7 @@ export default function ProvinceForestStatus() {
               <img
                 src={locationMap.src}
                 alt={locationMap.alt}
-                className="h-full w-full object-contain !p-2"
+                className="h-full w-full object-cover"
               />
               <span className="absolute right-2 top-2 grid h-8 w-8 place-items-center rounded-md bg-teal-950/75 text-sm text-white opacity-90 transition-opacity group-hover:opacity-100">
                 <FaSearchPlus aria-hidden="true" />
