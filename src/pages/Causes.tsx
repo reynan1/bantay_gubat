@@ -1,5 +1,5 @@
 
-import { FaUserCog, FaExclamationTriangle, FaTree, FaShieldAlt, FaMapMarkerAlt, FaCubes, FaChevronDown, FaBullseye, FaSearch, FaFileAlt, FaChartBar, FaBookOpen, FaExternalLinkAlt } from "react-icons/fa";
+import { FaUserCog, FaExclamationTriangle, FaTree, FaShieldAlt, FaMapMarkerAlt, FaCubes, FaChevronDown,  FaBookOpen, FaExternalLinkAlt } from "react-icons/fa";
 import { useState } from "react";
 import timberDemand from '../assets/images/causes/timbers.png'
 import livelihood from '../assets/images/causes/poverty.png'
@@ -265,44 +265,48 @@ function Causes() {
               </ol>
               </div>
             </div>
-            <div className="!mt-8 grid gap-2 sm:grid-cols-2 xl:grid-cols-[1.35fr_1fr_1.35fr_1fr]">
+{/*             <section aria-labelledby="cause-analysis-heading" className="!mt-8">
+              <div>
+                <h3 id="cause-analysis-heading" className="text-lg font-bold text-teal-950">Cause analysis at a glance</h3>
+                <p className="!mt-1 text-xs leading-relaxed text-gray-600">Key findings and limits for {detailsCauses[selectedStatus].title.toLowerCase()}.</p>
+              </div>
+              <div className="!mt-4 grid items-stretch gap-3 md:grid-cols-2">
               {[
                 { title: "Root cause", content: detailsCauses[selectedStatus].rootCause, icon: FaBullseye },
                 { title: "Information needed", content: detailsCauses[selectedStatus].informationNeeded, icon: FaSearch },
                 { title: "Evidence", content: detailsCauses[selectedStatus].evidence, icon: FaFileAlt },
                 { title: "Conclusion and limit", content: detailsCauses[selectedStatus].conclusion, icon: FaChartBar },
               ].map(({ title, content, icon: Icon }) => (
-                <div key={title} className="forest-info-card group min-w-0 cursor-pointer rounded-md border !p-4 transition-all duration-200 hover:shadow-md">
-                  <h3 className="flex items-center gap-2 text-sm font-bold text-teal-8">
-                    <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-green-50 text-lg text-teal-8 transition-colors duration-200 group-hover:bg-white"><Icon aria-hidden="true" /></span>
+                <article key={title} className="min-w-0 rounded-lg border border-gray-200 bg-transparent !p-4 transition-colors hover:border-teal-200 hover:bg-white">
+                  <h4 className="flex items-center gap-2 text-sm font-semibold leading-relaxed text-teal-800">
+                    <span className="grid h-7 w-7 shrink-0 place-items-center rounded-md bg-teal-50 text-sm text-teal-700"><Icon aria-hidden="true" /></span>
                     {title}
-                  </h3>
-                  <p className="!mt-3 text-xs leading-relaxed text-gray-700">{content}</p>
-                </div>
+                  </h4>
+                  <p className="!mt-2 text-xs leading-relaxed text-gray-600">{content}</p>
+                </article>
               ))}
-            </div>
-            <div className="!mt-5">
-              <h3 className="flex items-center gap-2 text-base font-bold text-teal-8">
-                <FaBookOpen aria-hidden="true" className="text-xl" /> References
-              </h3>
-              <div className="!mt-2 grid gap-4 sm:grid-cols-2">
-                {[
-                  { label: detailsCauses[selectedStatus].reference, url: detailsCauses[selectedStatus].referenceUrl },
-                  { label: detailsCauses[selectedStatus].supportingReference, url: detailsCauses[selectedStatus].supportingUrl },
-                ].map(({ label, url }) => (
-                  <div key={url} className="flex min-w-0 items-start gap-3 text-xs leading-relaxed">
-                    <FaFileAlt aria-hidden="true" className="mt-0.5 shrink-0 text-teal-8" />
-                    <div className="min-w-0">
-                      <p className="font-medium text-gray-800">{label}</p>
-                      <a href={url} target="_blank" rel="noopener noreferrer" className="inline-flex max-w-full items-center gap-1 text-blue-700 hover:underline">
-                        <span className="min-w-0 break-all">{url}</span>
-                        <FaExternalLinkAlt aria-hidden="true" className="shrink-0" />
-                      </a>
-                    </div>
-                  </div>
-                ))}
               </div>
-            </div>
+            </section> */}
+            <section aria-labelledby="cause-references-heading" className="!mt-7 border-t border-gray-200 !pt-6">
+              <h3 id="cause-references-heading" className="flex items-center gap-2 text-xl font-bold text-teal-8">
+                <FaBookOpen aria-hidden="true" /> References
+              </h3>
+              <p className="!mt-2 text-xs leading-relaxed text-gray-600">Primary and supporting sources for {detailsCauses[selectedStatus].title.toLowerCase()}.</p>
+              <ol className="!mt-4 grid list-none gap-3 !p-0 md:grid-cols-2">
+                {[
+                  { label: detailsCauses[selectedStatus].reference, url: detailsCauses[selectedStatus].referenceUrl, description: "Primary source for the national analysis of forest-loss drivers." },
+                  { label: detailsCauses[selectedStatus].supportingReference, url: detailsCauses[selectedStatus].supportingUrl, description: "Supporting source documenting Sierra Madre context and related evidence." },
+                ].map(({ label, url, description }, index) => (
+                  <li key={url} className="min-w-0 rounded-lg border border-gray-200 bg-transparent !p-4 transition-colors ">
+                    <a href={url} target="_blank" rel="noopener noreferrer" className="inline-flex items-start gap-2 text-xs font-semibold leading-relaxed text-teal-800 hover:underline sm:text-sm">
+                      <span>{index + 1}. {label}</span>
+                      <FaExternalLinkAlt aria-label="Opens in a new tab" className="mt-0.5 shrink-0 text-[10px]" />
+                    </a>
+                    <p className="!mt-2 text-xs leading-relaxed text-gray-600">{description}</p>
+                  </li>
+                ))}
+              </ol>
+            </section>
         </div>    
      
       </section>

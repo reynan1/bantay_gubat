@@ -1,0 +1,31 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="410" viewBox="0 0 1440 410">
+<defs>
+ <linearGradient id="paper" x2="0" y2="1"><stop stop-color="#f7f8f2"/><stop offset="1" stop-color="#eef3e9"/></linearGradient>
+ <linearGradient id="forest" x2="1" y2="1"><stop stop-color="#426d50"/><stop offset="1" stop-color="#153e32"/></linearGradient>
+ <filter id="shadow" x="-20%" y="-30%" width="150%" height="170%"><feDropShadow dx="0" dy="7" stdDeviation="11" flood-color="#173f33" flood-opacity=".1"/></filter>
+</defs>
+<rect width="1440" height="410" fill="url(#paper)"/>
+<!-- small surrounding viewport cue -->
+<rect x="77" y="26" width="1286" height="357" rx="14" fill="#fff" stroke="#e2e8df"/>
+<rect x="77" y="26" width="8" height="357" rx="4" fill="#087f5b"/>
+<!-- forest illustration -->
+<rect x="111" y="59" width="360" height="287" rx="12" fill="url(#forest)"/>
+<circle cx="396" cy="103" r="28" fill="#e0d49e" opacity=".9"/>
+<path d="M111 238 168 177l48 43 69-81 53 59 72-71 61 68v151H111z" fill="#9bae7c"/>
+<path d="M111 262 177 212l63 52 67-77 75 71 58-51 61 56v83H111z" fill="#587a53"/>
+<path d="M111 302q42-49 84-3t79-16 94 22 103-18v59H111z" fill="#214b3b"/>
+<g fill="#173d32"><path d="m143 271 25-82 25 82h-17v39h-16v-39z"/><path d="m212 291 21-69 23 69h-15v36h-14v-36z"/><path d="m365 276 27-91 27 91h-18v41h-18v-41z"/><path d="m419 295 18-60 20 60h-13v31h-13v-31z"/></g>
+<rect x="128" y="313" width="150" height="22" rx="11" fill="#fff" opacity=".94"/><circle cx="143" cy="324" r="3.5" fill="#087f5b"/><text x="153" y="328" font-family="Arial,sans-serif" font-size="9" font-weight="700" fill="#345748">Sierra Madre · Luzon</text>
+<!-- text -->
+<text x="514" y="87" font-family="Arial,sans-serif" font-size="10" font-weight="700" letter-spacing="2" fill="#087f5b">A CONNECTED FOREST LANDSCAPE</text>
+<text x="514" y="133" font-family="Georgia,serif" font-size="35" font-weight="700" fill="#193a2f">A forest’s effects reach far</text>
+<text x="514" y="174" font-family="Georgia,serif" font-size="35" font-weight="700" fill="#193a2f">beyond the trees.</text>
+<text x="514" y="214" font-family="Arial,sans-serif" font-size="14" fill="#56685d">Stretching about 540 kilometers along eastern Luzon, the Sierra Madre</text>
+<text x="514" y="237" font-family="Arial,sans-serif" font-size="14" fill="#56685d">connects forests, watersheds, wildlife, and communities. Forest loss can</text>
+<text x="514" y="260" font-family="Arial,sans-serif" font-size="14" fill="#56685d">put water, livelihoods, biodiversity, and climate resilience under pressure.</text>
+<!-- interaction links -->
+<rect x="514" y="287" width="202" height="39" rx="7" fill="#087f5b"/><text x="534" y="311" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="white">Explore the impacts</text><text x="695" y="311" font-family="Arial,sans-serif" font-size="12" font-weight="700" fill="white">↓</text>
+<rect x="728" y="287" width="179" height="39" rx="7" fill="#fff" stroke="#dce6dc"/><text x="748" y="311" font-family="Arial,sans-serif" font-size="11" font-weight="700" fill="#17604a">View references ↗</text>
+<!-- subtle note -->
+<text x="514" y="349" font-family="Arial,sans-serif" font-size="9" fill="#849087">Explore the documented connections between forest degradation and its wider effects.</text>
+</svg>

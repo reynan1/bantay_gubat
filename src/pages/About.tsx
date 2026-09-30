@@ -4,9 +4,6 @@ import {
   FaLeaf,
   FaLightbulb,
   FaNetworkWired,
-  FaSearch,
-  FaShieldAlt,
-  FaTree,
   FaUsers,
 } from "react-icons/fa";
 import aboutLogo from "../assets/logo/bantay-gubat-full.png";
@@ -39,14 +36,14 @@ const teamMembers = [
   {
     initials: "ED",
     name: "Elijah Constantine Dela Cruz",
-    program: "Bachelor of Science in Information Technology",
+    program: "BSIT, Major in Software Development",
     icon: FaUsers,
     roles: ["Research on stakeholders"],
     contributionUrl: "/stakeholders",
   },
 ];
 
-const researchFeatures = [
+/* const researchFeatures = [
   {
     icon: FaSearch,
     title: "Evidence-based research",
@@ -62,7 +59,7 @@ const researchFeatures = [
     title: "Careful interpretation",
     description: "Evidence is presented with conclusions and limitations so reported figures are not confused with estimates of total forest loss.",
   },
-];
+]; */
 
 function About() {
   return (
@@ -94,12 +91,12 @@ function About() {
             </p>
           </div>
         </div>
-        <figure className="flex min-h-72 items-center justify-center overflow-hidden rounded-md border border-teal-100 bg-green-50 !p-5 lg:min-h-0">
+        <figure className="flex min-h-72 items-center justify-center overflow-hidden rounded-md  !p-5 lg:min-h-0">
           <img src={aboutLogo} alt="Bantay Gubat: People, Forests, Brighter Tomorrows" className="h-full max-h-[28rem] w-full object-contain" />
         </figure>
       </div>
 
-      <div className="!px-3 !py-8 sm:!px-6 sm:!py-10">
+{/*       <div className="!px-3 !py-8 sm:!px-6 sm:!py-10">
         <div className="flex items-center gap-4">
           <span className="h-px flex-1 bg-teal-200" aria-hidden="true" />
           <div className="text-center">
@@ -119,38 +116,38 @@ function About() {
             </article>
           ))}
         </div>
-      </div>
+      </div> */}
 
-      <div className="border-y border-teal-100 bg-green-50 !px-3 !py-8 sm:!px-6 sm:!py-10">
+      <div className=" !mt-10 !px-3 !py-8 sm:!px-6 sm:!py-10">
         <div className="flex items-center gap-4">
-          <span className="h-px flex-1 bg-teal-200" aria-hidden="true" />
+          <span className="h-px flex-1 bg-gray-200" aria-hidden="true" />
           <div className="text-center">
-            <h2 className="flex items-center justify-center gap-2 text-xl font-bold text-teal-8"><FaUsers aria-hidden="true" /> Barangay Gubat Team</h2>
-            <p className="!mt-2 text-sm text-gray-600">The students behind the website, analysis, and research</p>
+            <h2 className="flex items-center justify-center gap-2 !text-xl font-bold text-teal-8"><FaUsers aria-hidden="true" /> Barangay Gubat Team</h2>
+            <p className="!mt-2 !text-sm text-gray-600">The students behind the website, analysis, and research</p>
           </div>
-          <span className="h-px flex-1 bg-teal-200" aria-hidden="true" />
+          <span className="h-px flex-1 bg-gray-200" aria-hidden="true" />
         </div>
-        <div className="!mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="!mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4 justify-center items-center">
           {teamMembers.map((member) => (
-            <article key={member.name} className="group flex min-w-0 flex-col rounded-md border border-teal-100 bg-white !p-5 shadow-sm transition-all duration-200 hover:border-teal-700 hover:shadow-md">
-              <div className="flex min-h-20 items-start gap-3">
+            <article key={member.name} className="group flex min-w-0 flex-col justify-center items-center rounded-md border border-teal-100 bg-white !p-5 shadow-sm transition-all duration-200 hover:border-teal-700 hover:shadow-md">
+              <div className="flex min-h-20 items-center gap-3">
                 <div className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-teal-8 text-base font-bold text-white shadow-sm transition-transform duration-200 group-hover:scale-105">{member.initials}</div>
                 <div className="min-w-0">
                   <h3 className="text-sm font-bold leading-tight text-teal-8">{member.name}</h3>
                   <p className="!mt-1 flex items-start gap-2 text-xs font-medium leading-relaxed text-gray-600"><member.icon aria-hidden="true" className="mt-0.5 shrink-0 text-teal-8" /> {member.program}</p>
                 </div>
               </div>
-              <div className="!my-4 h-1 w-full rounded bg-gradient-to-r from-teal-8 via-teal-600 to-green-400" aria-hidden="true" />
-              <div className="flex flex-1 flex-col">
-                <p className="text-[11px] font-bold uppercase text-gray-500">Contribution</p>
+{/*               <div className="!my-4 h-1 w-full rounded bg-gradient-to-r from-teal-8 via-teal-600 to-green-400" aria-hidden="true" />
+              <div className="flex flex-1 flex-col"> */}
+      {/*           <p className="text-[11px] font-bold uppercase text-gray-500">Contribution</p>
                 <div className="flex">
                   <p className="!mt-2 flex-1 text-sm leading-relaxed text-gray-700">{member.roles.join(", ")}.</p>
-                </div>
+                </div> */}
 
 {/*                 <Link to={member.contributionUrl} className="!mt-5 inline-flex w-full items-center justify-center gap-2 rounded-md border border-teal-8 !px-3 !py-2.5 text-xs font-semibold text-teal-8 transition-colors hover:bg-teal-8 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700">
                   <FaExternalLinkAlt aria-hidden="true" /> View contribution
                 </Link> */}
-              </div>
+        {/*       </div> */}
             </article>
           ))}
         </div>

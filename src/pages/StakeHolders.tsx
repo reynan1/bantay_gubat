@@ -54,47 +54,58 @@ const stakeholders = [
 const references = [
   {
     "title": "Batas Natin. (n.d.). Executive Order No. 23, s. 2011.",
-    "url": "https://batasnatin.com/laws/eo-23-3"
+    "url": "https://batasnatin.com/laws/eo-23-3",
+    "description": "Text and legal context for the 2011 logging moratorium and the national anti-illegal-logging task force."
   },
   {
     "title": "Bicarme, T. C. (2011). Philippines: DENR 2 organizes anti-illegal logging task force. Indigenous Peoples Issues & Resources.",
-    "url": "https://did.isuma.tv/indigenous-peoples-issues-and-resources/philippines-denr-2-organizes-anti-illegal-logging-task-force"
+    "url": "https://did.isuma.tv/indigenous-peoples-issues-and-resources/philippines-denr-2-organizes-anti-illegal-logging-task-force",
+    "description": "Report on DENR Region II organizing an anti-illegal-logging task force."
   },
   {
     "title": "Bulatlat. (2011, February 2). Environmental activist group to Aquino: Impose commercial log ban now. Bulatlat.",
-    "url": "https://www.bulatlat.com/2011/02/02/environmental-activist-group-to-aquino-impose-commercial-log-ban-now/"
+    "url": "https://www.bulatlat.com/2011/02/02/environmental-activist-group-to-aquino-impose-commercial-log-ban-now/",
+    "description": "Environmental advocates call for a commercial logging ban and stronger forest protection."
   },
   {
     "title": "Christian Science Monitor. (1991, November 12). Illegal logging blamed for Philippine flood toll. The Christian Science Monitor.",
-    "url": "https://proof.csmonitor.com/1991/1112/12061.html"
+    "url": "https://proof.csmonitor.com/1991/1112/12061.html",
+    "description": "Historical reporting on flooding and concerns about illegal logging in the Philippines."
   },
   {
     "title": "DENR CALABARZON. (n.d.). DENR CENRO Lipa, NBI partnered in the confiscation of ₱11-M worth of undocumented forest products in Malvar, Batangas. Department of Environment and Natural Resources Region IV-A CALABARZON.",
-    "url": "https://calabarzon.denr.gov.ph/index.php/news-events/photo-releases/2752-denr-cenro-lipa-nbi-partnered-in-the-confiscation-of-11-m-worth-of-undocumented-forest-products-in-malvar-batangas"
+    "url": "https://calabarzon.denr.gov.ph/index.php/news-events/photo-releases/2752-denr-cenro-lipa-nbi-partnered-in-the-confiscation-of-11-m-worth-of-undocumented-forest-products-in-malvar-batangas",
+    "description": "DENR and NBI joint operation against undocumented forest products in Malvar, Batangas."
   },
   {
     "title": "DENR Region 3. (n.d.). Authorities nab 5 suspected illegal loggers in Nueva Ecija. Department of Environment and Natural Resources Region III.",
-    "url": "https://r3.denr.gov.ph/index.php/news-events/press-releases/1354-authorities-nab-5-suspected-illegal-loggers-in-nueva-ecija"
+    "url": "https://r3.denr.gov.ph/index.php/news-events/press-releases/1354-authorities-nab-5-suspected-illegal-loggers-in-nueva-ecija",
+    "description": "DENR Region III report on suspected illegal loggers apprehended in Nueva Ecija."
   },
   {
     "title": "Eco-Business. (n.d.). Philippines: Ban on logging in natural forests. Eco-Business.",
-    "url": "https://www.eco-business.com/id/news/philippines-ban-logging-natural-forests/"
+    "url": "https://www.eco-business.com/id/news/philippines-ban-logging-natural-forests/",
+    "description": "Coverage of the Philippines’ ban on logging in natural forests."
   },
   {
     "title": "Gascon, M. (2018, March 2). 4 farmers nabbed for illegal logging in Quirino. Inquirer News.",
-    "url": "https://newsinfo.inquirer.net/972512/4-farmers-nabbed-for-illegal-logging-in-quirino"
+    "url": "https://newsinfo.inquirer.net/972512/4-farmers-nabbed-for-illegal-logging-in-quirino",
+    "description": "Report on four farmers apprehended in an illegal logging case in Quirino."
   },
   {
     "title": "Jarina, D. (2012, July 28). DENR asks military to lead fight vs illegal loggers. Inquirer News.",
-    "url": "https://newsinfo.inquirer.net/238105/denr-asks-military-to-lead-fight-vs-illegal-loggers"
+    "url": "https://newsinfo.inquirer.net/238105/denr-asks-military-to-lead-fight-vs-illegal-loggers",
+    "description": "Coverage of DENR asking the military to lead enforcement in high-risk logging areas."
   },
   {
     "title": "Philstar.com. (2012, September 29). Wood producers seek review of logging moratorium. The Philippine Star.",
-    "url": "https://www.philstar.com/business/2012/09/29/854000/wood-producers-seek-review-logging-moratorium/amp/"
+    "url": "https://www.philstar.com/business/2012/09/29/854000/wood-producers-seek-review-logging-moratorium/amp/",
+    "description": "Timber producers’ perspective on the natural forest logging moratorium and industry impacts."
   },
   {
     "title": "Press Reader / Arab News. (2020, November 17). Duterte urged to act after typhoon wreaks havoc. Arab News, via PressReader.",
-    "url": "https://www.pressreader.com/saudi-arabia/arab-news/20201117/281887300846008"
+    "url": "https://www.pressreader.com/saudi-arabia/arab-news/20201117/281887300846008",
+    "description": "Coverage of calls for action after typhoon damage and the associated disaster response."
   }
 ];
 
@@ -137,14 +148,15 @@ function StakeHolders() {
         <h2 id="stakeholder-references-heading" className="flex items-center gap-2 !text-2xl font-bold !text-teal-8">
           <FaBookOpen aria-hidden="true" /> References
         </h2>
+        <p className="!mt-2 text-sm leading-relaxed text-gray-600">Government, news, and environmental sources informing the stakeholder profiles above.</p>
         <ol className="!mt-5 grid list-none gap-4 !p-0 md:grid-cols-2">
           {references.map((reference, index) => (
-            <li key={reference.url} className="min-w-0 rounded-lg border border-gray-200 !p-4">
-              <p className="text-sm leading-relaxed text-gray-700">{index + 1}. {reference.title}</p>
-              <a href={reference.url} target="_blank" rel="noopener noreferrer" className="!mt-3 inline-flex max-w-full items-start gap-2 text-xs leading-relaxed text-teal-700 hover:underline">
-                <span className="min-w-0 break-all">{reference.url}</span>
-                <FaExternalLinkAlt aria-label="Opens in a new tab" className="!mt-1 shrink-0" />
+            <li key={reference.url} className="group min-w-0 rounded-lg border border-gray-200 bg-transparent !p-4 transition-colors">
+              <a href={reference.url} target="_blank" rel="noopener noreferrer" className="inline-flex items-start gap-1.5 text-sm font-semibold leading-relaxed text-teal-800 hover:underline">
+                <span>{index + 1}. {reference.title}</span>
+                <FaExternalLinkAlt aria-label="Opens in a new tab" className="mt-1 shrink-0 text-[10px]" />
               </a>
+              <p className="!mt-2 text-xs leading-relaxed text-gray-600">{reference.description}</p>
             </li>
           ))}
         </ol>

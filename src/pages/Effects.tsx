@@ -1,4 +1,4 @@
-﻿import { FaArrowDown, FaBookOpen, FaExternalLinkAlt, FaFilePdf, FaLeaf } from "react-icons/fa";
+﻿import { FaArrowDown, FaBookOpen, FaExternalLinkAlt, FaLeaf } from "react-icons/fa";
 
 const references = [
   { title: "Climate Change Commission. Sierra Madre: Mountain Range for Resilience (2024)", url: "https://www.climate.gov.ph/news/934", description: "The range's biodiversity, carbon storage, forest cover, and role in climate resilience." },
@@ -28,7 +28,7 @@ const effects = [
   { title: "Illegal logging can reinforce other environmental degradation", summary: "Logging access routes can make further extraction and land conversion easier.", detail: "Roads and trails can open previously inaccessible forest to agricultural expansion, hunting, charcoal production, mining, and further timber extraction. Southern Sierra Madre research identifies kaingin, infrastructure expansion, timber poaching, small-scale mining, charcoal making, and natural hazards as pressures associated with degradation. Illegal logging can become part of a wider cycle of forest loss.", sources: [8] },
 ];
 
-const keyFacts = [
+/* const keyFacts = [
   { icon: "🌳", issue: "Forest loss", effect: "Reduces forest cover and ecosystem services" },
   { icon: "🐾", issue: "Biodiversity", effect: "Destroys and fragments wildlife habitat" },
   { icon: "🌧", issue: "Heavy rainfall", effect: "Increases runoff from degraded slopes" },
@@ -41,7 +41,7 @@ const keyFacts = [
   { icon: "👨‍🌾", issue: "Communities", effect: "Threatens natural resources and rural livelihoods" },
   { icon: "⛏", issue: "Other activities", effect: "Can facilitate agricultural expansion, mining, hunting, and further forest degradation" },
 ];
-
+ */
 const chains = [
   { title: "Soil, water, and communities", steps: ["Illegal logging", "Loss of trees and forest cover", "Habitat destruction and soil exposure", "Erosion and increased runoff", "Landslides, river sedimentation, and flooding", "Watershed degradation", "Damage to agriculture, infrastructure, wildlife, and communities"] },
   { title: "Carbon and climate", steps: ["Forest loss", "Less carbon storage", "Reduced climate-regulation capacity"] },
@@ -119,7 +119,7 @@ function Effects() {
         </div>
       </section>
 
-      <section aria-labelledby="key-facts-heading" className="border-b border-gray-200 !px-3 !py-8 sm:!px-6">
+{/*       <section aria-labelledby="key-facts-heading" className="border-b border-gray-200 !px-3 !py-8 sm:!px-6">
         <h2 id="key-facts-heading" className="!text-2xl font-bold !text-teal-8">Key facts</h2>
         <div className="!mt-5 overflow-hidden rounded-lg border border-teal-100">
           <table className="w-full border-collapse text-left text-sm leading-relaxed" aria-labelledby="key-facts-heading">
@@ -144,7 +144,7 @@ function Effects() {
             </tbody>
           </table>
         </div>
-      </section>
+      </section> */}
 
       <section id="effects-references" aria-labelledby="references-heading" className="!px-3 !py-8 sm:!px-6">
         <h2 id="references-heading" className="flex items-center gap-2 !text-2xl font-bold !text-teal-8"><FaBookOpen aria-hidden="true" /> References</h2>
@@ -157,13 +157,13 @@ function Effects() {
             </li>
           ))}
         </ol>
-        <div className="!mt-6 rounded-lg bg-green-50 !p-5">
+{/*         <div className="!mt-6 rounded-lg bg-green-50 !p-5">
           <h3 className="text-base font-bold text-teal-8">Source documents</h3>
           <div className="!mt-3 flex flex-col gap-3 text-sm sm:flex-row sm:flex-wrap sm:gap-6">
             <a href={`${import.meta.env.BASE_URL}documents/effects.pdf`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 font-semibold text-teal-800 hover:underline"><FaFilePdf aria-hidden="true" /> Effects (PDF)</a>
             <a href={`${import.meta.env.BASE_URL}documents/sierra-madre-deforestation-effects-references.pdf`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 font-semibold text-teal-800 hover:underline"><FaFilePdf aria-hidden="true" /> Sierra Madre Deforestation Effects References (PDF)</a>
           </div>
-        </div>
+        </div> */}
       </section>
     </section>
   );
