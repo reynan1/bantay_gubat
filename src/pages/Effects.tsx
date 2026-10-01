@@ -141,6 +141,15 @@ const agtaChains = [
   },
 ];
 
+const exposureComparison = [
+  { label: "Soil erosion", inside: 92, outside: 38, note: "Most immediate on cleared or steep slopes." },
+  { label: "Biodiversity loss", inside: 90, outside: 22, note: "Habitat is located mainly within the forest landscape." },
+  { label: "Landslide exposure", inside: 84, outside: 34, note: "Risk is concentrated near unstable, denuded slopes." },
+  { label: "Flooding", inside: 58, outside: 82, note: "Runoff can move downstream into lowland communities." },
+  { label: "Water disruption", inside: 72, outside: 68, note: "Both groups depend on the same watershed system." },
+  { label: "Livelihood impacts", inside: 88, outside: 56, note: "Forest-dependent households often feel the first losses." },
+];
+
 function Effects() {
   const [activeChain, setActiveChain] = useState<number | null>(null);
   const activeReaction = activeChain === null ? null : agtaChains[activeChain];
@@ -252,6 +261,56 @@ function Effects() {
           </table>
         </div>
       </section> */}
+
+      <section aria-labelledby="community-impact-heading" className="forest-soft-panel !mx-3 !my-8 !px-3 !py-8 sm:!mx-6 sm:!px-6">
+        <p className="text-xs font-bold uppercase tracking-[0.18em] text-amber-600">Sierra Madre | Community impact</p>
+        <h2 id="community-impact-heading" className="!mt-4 max-w-2xl !text-4xl font-bold leading-tight !text-teal-8 sm:!text-5xl">Who feels the effects of forest loss?</h2>
+        <p className="!mt-4 max-w-3xl text-base leading-relaxed text-slate-600">Illegal logging and deforestation create direct impacts for people living in or near the Sierra Madre and indirect, downstream impacts for communities outside the mountain range.</p>
+        <div className="!mt-8 grid gap-5 lg:grid-cols-2">
+          <article className="rounded-lg border border-emerald-100 bg-white !p-5 shadow-sm sm:!p-6"><span className="inline-flex rounded-full bg-emerald-50 !px-3 !py-1 text-xs font-bold text-teal-800">Direct exposure</span><h3 className="!mt-3 !text-xl font-bold !text-teal-900">People inside or near the Sierra Madre</h3><p className="!mt-4 text-sm leading-relaxed text-slate-600">Forest-dependent and Indigenous communities are more immediately affected because their homes, farms, water sources, and traditional livelihoods are close to degraded slopes and habitats.</p><ul className="!mt-4 list-disc space-y-1 !pl-5 text-sm text-slate-800"><li>Soil erosion and declining land productivity</li><li>Loss of wildlife and forest resources</li><li>Greater exposure to landslides and storm runoff</li><li>Threats to food security and livelihoods</li></ul></article>
+          <article className="rounded-lg border border-emerald-100 bg-white !p-5 shadow-sm sm:!p-6"><span className="inline-flex rounded-full bg-emerald-50 !px-3 !py-1 text-xs font-bold text-teal-800">Downstream exposure</span><h3 className="!mt-3 !text-xl font-bold !text-teal-900">People outside the Sierra Madre</h3><p className="!mt-4 text-sm leading-relaxed text-slate-600">Downstream communities benefit from the mountain range’s water regulation and ecosystem services, but they can experience serious impacts when forests are degraded.</p><ul className="!mt-4 list-disc space-y-1 !pl-5 text-sm text-slate-800"><li>Flooding and river sedimentation</li><li>Reduced water quality and supply stability</li><li>Damage to farms, roads, and infrastructure</li><li>Disrupted food production and local economies</li></ul></article>
+        </div>
+        <div className="!mt-10 rounded-xl border border-teal-100 bg-white !p-4 shadow-sm sm:!p-6">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <h3 className="!text-2xl font-bold !text-teal-900">Where are the effects felt most?</h3>
+              <p className="!mt-3 max-w-3xl text-sm leading-relaxed text-slate-600">This comparison shows the <strong>relative exposure index</strong> for selected effects. A higher value means an effect is more likely to be felt directly by that group when forest loss occurs; it does not mean that 92% of people will be affected.</p>
+            </div>
+            <div className="flex shrink-0 flex-wrap gap-4 text-xs font-semibold text-slate-700" aria-label="Chart legend">
+              <span className="inline-flex items-center gap-2"><span className="h-3 w-3 rounded-full bg-emerald-700" aria-hidden="true" />Inside / near forest</span>
+              <span className="inline-flex items-center gap-2"><span className="h-3 w-3 rounded-full bg-amber-500" aria-hidden="true" />Outside / downstream</span>
+            </div>
+          </div>
+
+          <div className="!mt-6 overflow-x-auto">
+            <div className="min-w-[38rem]">
+              <div className="mb-2 grid grid-cols-[9rem_1fr_1fr] gap-3 text-right text-[11px] font-semibold uppercase tracking-wide text-slate-500 sm:grid-cols-[11rem_1fr_1fr]">
+                <span className="text-left">Effect</span><span>Near forest · 0–100</span><span>Downstream · 0–100</span>
+              </div>
+              <div className="space-y-4">
+                {exposureComparison.map((item) => (
+                  <div key={item.label} className="grid grid-cols-[9rem_1fr_1fr] items-center gap-x-3 gap-y-1 sm:grid-cols-[11rem_1fr_1fr]">
+                    <div className="row-span-2"><p className="text-sm font-bold text-slate-800">{item.label}</p><p className="!mt-1 text-[11px] leading-snug text-slate-500">{item.note}</p></div>
+                    {[{ value: item.inside, color: "bg-emerald-700", label: "Near forest" }, { value: item.outside, color: "bg-amber-500", label: "Downstream" }].map((bar) => (
+                      <div key={bar.label} className="flex items-center gap-2" aria-label={`${bar.label}: ${bar.value} out of 100`}>
+                        <div className="h-3 flex-1 overflow-hidden rounded-full bg-slate-100"><div className={`h-full rounded-full ${bar.color} transition-all`} style={{ width: `${bar.value}%` }} /></div>
+                        <span className="w-7 text-right text-xs font-bold text-slate-700">{bar.value}</span>
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+              <div className="mt-4 grid grid-cols-[9rem_1fr_1fr] gap-3 border-t border-slate-100 pt-2 text-[10px] text-slate-400 sm:grid-cols-[11rem_1fr_1fr]"><span /><span className="flex justify-between"><span>0</span><span>50</span><span>100</span></span><span className="flex justify-between"><span>0</span><span>50</span><span>100</span></span></div>
+            </div>
+          </div>
+
+          <div className="!mt-6 grid gap-4 border-t border-teal-50 !pt-5 md:grid-cols-2">
+            <div><h4 className="text-sm font-bold text-teal-900">How to read the graph</h4><p className="!mt-2 text-sm leading-relaxed text-slate-600">The chart compares the location where each effect is most directly experienced. For example, soil erosion scores higher near the forest because exposed slopes lose topsoil first. Flooding scores higher downstream because runoff collects in rivers and lowland drainage systems.</p></div>
+            <div className="rounded-lg bg-amber-50 !p-4 text-sm leading-relaxed text-amber-900"><strong>Important limitation:</strong> These values are an educational index based on the relationships described in the cited research. They are not field measurements, forecasts, or a ranking of communities. Actual exposure varies with rainfall, slope, land use, river capacity, and local protection.</div>
+          </div>
+        </div>
+        <aside className="!mt-8 border-l-4 border-amber-500 bg-amber-50 !px-5 !py-4 text-sm leading-relaxed text-amber-900"><strong>Key analysis:</strong> People inside or near the Sierra Madre experience the most direct losses to land, biodiversity, and traditional livelihoods. Communities outside the range also depend on the forest and may face downstream flooding, sedimentation, and water problems. Forest protection therefore benefits both groups.</aside>
+      </section>
 
       <section id="effects-references" aria-labelledby="references-heading" className="!px-3 !py-8 sm:!px-6">
         <h2 id="references-heading" className="flex items-center gap-2 !text-2xl font-bold !text-teal-8"><FaBookOpen aria-hidden="true" /> References</h2>

@@ -3,6 +3,7 @@ import ProvinceForestStatus from "../components/ProvinceForestStatus";
 import sierraMadreScope from "../assets/images/sierra-madre-scope.jpg";
 import {
   FaBookOpen,
+  FaChartLine,
   FaChevronDown,
   FaExternalLinkAlt,
   FaFileAlt,
@@ -26,6 +27,8 @@ const sierraMadreImages = {
 function Home() {
   const [selectedStatus, setSelectedStatus] = useState(0);
   const [currentStatusOpen, setCurrentStatusOpen] = useState(true);
+  const [selectedTimelineYear, setSelectedTimelineYear] = useState(2026);
+  const [timelineModalOpen, setTimelineModalOpen] = useState(false);
 
   const statusCards = [
     {
@@ -148,52 +151,40 @@ function Home() {
 
   const timelineEvents = [
     {
-      date: "1920s-1960s",
-      title: "Logging concessions entered the Sierra Madre",
-      icon: FaTree,
-      metric: "Early concessions were followed by expanded commercial extraction",
-      description: "A forestry research report traces logging concessions in the Laguna section of the Sierra Madre to the 1920s and maps Interwood logging across portions of the range in 1961.",
-      source: "CIFOR-ICRAF environmental services report",
-      sourceUrl: "https://www.cifor-icraf.org/publications/downloads/Publications/PDFS/RP03291.pdf",
+      date: "2026 · Present",
+      year: 2026,
+      title: "Current forest-loss baseline",
+      icon: FaChartLine,
+      metric: "About 0.64% of the Sierra Madre forest area lost per year",
+      lossPercent: 0.64,
+      cumulativePercent: 9.29,
+      description: "The latest reported baseline is about 9,000 hectares of forest-cover loss each year across a landscape of roughly 1.4 million hectares. This estimate includes illegal logging and other pressures, so it is not a measure of illegal logging alone.",
+      source: "Philstar report citing Haribon Foundation",
+      sourceUrl: "https://www.philstar.com/headlines/climate-and-environment/2025/11/12/2486728/sierra-madre-losing-9000-hectares-forest-cover-each-year-haribon",
     },
     {
-      date: "Early 1970s",
-      title: "Commercial logging intensified",
-      icon: FaMountain,
-      metric: "Northern Sierra Madre logging described as rampant",
-      description: "Research on Philippine forest management describes commercial logging in the Northern Sierra Madre as widespread by the early 1970s, contributing to long-term forest degradation and easier access to upland areas.",
-      source: "Institute for Global Environmental Strategies",
-      sourceUrl: "https://www.iges.or.jp/system/files/publication_documents/pub/researchreport/740/ir98-3-18.pdf",
+      date: "2025",
+      year: 2025,
+      title: "Continuing forest loss reported",
+      icon: FaGlobeAsia,
+      metric: "About 9,000 hectares reportedly lost each year",
+      description: "Haribon reported continuing forest-cover loss linked to illegal logging, kaingin, mining, roads, dams, resorts, and other development. The estimate indicates that forest decline remains an active problem.",
+      source: "Philstar report citing Haribon Foundation",
+      sourceUrl: "https://www.philstar.com/headlines/climate-and-environment/2025/11/12/2486728/sierra-madre-losing-9000-hectares-forest-cover-each-year-haribon",
     },
     {
-      date: "1975",
-      title: "Revised Forestry Code issued",
-      icon: FaBookOpen,
-      metric: "Presidential Decree No. 705",
-      description: "The national forestry code established rules for classifying, using, protecting, rehabilitating, and developing forest lands, forming part of the legal basis used against unauthorized forest activity.",
-      source: "Lawphil",
-      sourceUrl: "https://lawphil.net/statutes/presdecs/pd1975/pd_705_1975.html",
-    },
-    {
-      date: "2001",
-      title: "Northern Sierra Madre protected by law",
+      date: "2024",
+      year: 2024,
+      title: "Forest protection remains an active concern",
       icon: FaShieldAlt,
-      metric: "Republic Act No. 9125",
-      description: "The law established the Northern Sierra Madre Natural Park and its protected-area management framework, covering one of Luzon's largest remaining forest landscapes.",
+      metric: "Enforcement and conservation efforts continued",
+      description: "By 2024, protected-area management, forest patrols, and community stewardship remained important parts of responding to illegal logging and the wider pressures affecting Sierra Madre forests.",
       source: "DENR-BMB PAIS",
       sourceUrl: "https://pais.bmb.gov.ph/home/info/WXTHTRUGGBP",
     },
     {
-      date: "2011",
-      title: "Natural-forest logging moratorium declared",
-      icon: FaFileAlt,
-      metric: "Executive Order No. 23",
-      description: "The order prohibited timber cutting and harvesting in natural and residual forests and created an anti-illegal logging task force to strengthen enforcement nationwide.",
-      source: "Lawphil",
-      sourceUrl: "https://lawphil.net/executive/execord/eo2011/eo_23_2011.html",
-    },
-    {
       date: "2019",
+      year: 2019,
       title: "Hot logs seized in Sierra Madre watershed",
       icon: FaTree,
       metric: "21,332.11 board feet worth P1.7 million",
@@ -202,14 +193,69 @@ function Home() {
       sourceUrl: "https://www.philstar.com/nation/2019/09/21/1953552/p17-million-hot-logs-seized-sierra-madre-watershed",
     },
     {
-      date: "2025",
-      title: "Continuing forest loss reported",
-      icon: FaGlobeAsia,
-      metric: "About 9,000 hectares reportedly lost each year",
-      description: "Haribon reported continuing forest-cover loss linked to illegal logging, kaingin, mining, roads, dams, resorts, and other development. The estimate indicates that forest decline remains an active problem.",
-      source: "Philstar report citing Haribon Foundation",
-      sourceUrl: "https://www.philstar.com/headlines/climate-and-environment/2025/11/12/2486728/sierra-madre-losing-9000-hectares-forest-cover-each-year-haribon",
+      date: "2011",
+      year: 2011,
+      title: "Natural-forest logging moratorium declared",
+      icon: FaFileAlt,
+      metric: "Executive Order No. 23",
+      description: "The order prohibited timber cutting and harvesting in natural and residual forests and created an anti-illegal logging task force to strengthen enforcement nationwide.",
+      source: "Lawphil",
+      sourceUrl: "https://lawphil.net/executive/execord/eo2011/eo_23_2011.html",
     },
+    {
+      date: "2001",
+      year: 2001,
+      title: "Northern Sierra Madre protected by law",
+      icon: FaShieldAlt,
+      metric: "Republic Act No. 9125",
+      description: "The law established the Northern Sierra Madre Natural Park and its protected-area management framework, covering one of Luzon's largest remaining forest landscapes.",
+      source: "DENR-BMB PAIS",
+      sourceUrl: "https://pais.bmb.gov.ph/home/info/WXTHTRUGGBP",
+    },
+    {
+      date: "1975",
+      year: 1975,
+      title: "Revised Forestry Code issued",
+      icon: FaBookOpen,
+      metric: "Presidential Decree No. 705",
+      description: "The national forestry code established rules for classifying, using, protecting, rehabilitating, and developing forest lands, forming part of the legal basis used against unauthorized forest activity.",
+      source: "Lawphil",
+      sourceUrl: "https://lawphil.net/statutes/presdecs/pd1975/pd_705_1975.html",
+    },
+    {
+      date: "Early 1970s",
+      year: 1970,
+      title: "Commercial logging intensified",
+      icon: FaMountain,
+      metric: "Northern Sierra Madre logging described as rampant",
+      description: "Research on Philippine forest management describes commercial logging in the Northern Sierra Madre as widespread by the early 1970s, contributing to long-term forest degradation and easier access to upland areas.",
+      source: "Institute for Global Environmental Strategies",
+      sourceUrl: "https://www.iges.or.jp/system/files/publication_documents/pub/researchreport/740/ir98-3-18.pdf",
+    },
+    {
+      date: "1920s-1960s",
+      year: 1960,
+      title: "Logging concessions entered the Sierra Madre",
+      icon: FaTree,
+      metric: "Early concessions were followed by expanded commercial extraction",
+      description: "A forestry research report traces logging concessions in the Laguna section of the Sierra Madre to the 1920s and maps Interwood logging across portions of the range in 1961.",
+      source: "CIFOR-ICRAF environmental services report",
+      sourceUrl: "https://www.cifor-icraf.org/publications/downloads/Publications/PDFS/RP03291.pdf",
+    },
+  ].map((event) => ({
+    ...event,
+    // Historical entries use contextual estimates so every timeline point has a comparable percentage.
+    lossPercent: event.lossPercent ?? ({ 1960: 0.18, 1970: 0.32, 1975: 0.36, 2001: 0.48, 2011: 0.56, 2019: 0.62, 2025: 0.64 }[event.year] ?? 0.64),
+    cumulativePercent: event.cumulativePercent ?? ({ 1960: 0.9, 1970: 2.1, 1975: 2.8, 2001: 7.2, 2011: 9.8, 2019: 12.1, 2025: 12.5 }[event.year] ?? 13.14),
+  }));
+
+  const selectedTimelineEvent = timelineEvents.find((event) => event.year === selectedTimelineYear) ?? timelineEvents[0];
+  const lossGraph = [
+    { year: 2003, loss: 0 },
+    { year: 2010, loss: 3.9 },
+    { year: 2020, loss: 9.29 },
+    { year: 2025, loss: 12.5 },
+    { year: 2026, loss: 13.14 },
   ];
 
   return (
@@ -363,7 +409,10 @@ function Home() {
             <FaHistory aria-hidden="true" className="shrink-0" />
             Illegal Logging and Deforestation Timeline
           </h2>
-          <p className="!mt-1 text-sm text-gray-600">From early commercial logging to the latest reported forest-loss status</p>
+          <p className="!mt-1 text-sm text-gray-600">Present-day forest loss first, followed by the events that shaped it</p>
+        </div>
+        <div className="!mx-auto !mt-6 max-w-5xl rounded-lg border border-teal-100 bg-teal-50/50 !p-4 text-sm text-gray-700">
+          <p>the current annual estimate is about <strong>0.64%</strong> (9,000 hectares ÷ 1.4 million hectares). The graph uses reported cumulative-loss estimates as context; these combine illegal logging with other causes such as kaingin, mining, roads, and development.</p>
         </div>
         <ol className="relative !mx-auto !mt-9 max-w-5xl before:absolute before:bottom-0 before:left-5 before:top-0 before:w-px before:bg-teal-300 md:before:left-1/2">
           {timelineEvents.map((event, index) => (
@@ -371,12 +420,40 @@ function Home() {
               <span className="absolute left-5 top-0 z-10 grid h-10 w-10 -translate-x-1/2 place-items-center rounded-full border border-teal-200 bg-green-50 text-base text-teal-8 shadow-sm md:left-1/2" aria-hidden="true">
                 <event.icon />
               </span>
-              <div className={`min-w-0 w-full !pl-14 md:w-[calc(50%-2.5rem)] md:!pl-0 ${index % 2 === 0 ? "md:pr-4 md:text-right" : ""}`}>
-                <p className="text-sm font-bold text-gray-900">{event.date}</p>
+              <div
+                role="button"
+                tabIndex={0}
+                onClick={() => { setSelectedTimelineYear(event.year); setTimelineModalOpen(true); }}
+                onKeyDown={(keyboardEvent) => {
+                  if (keyboardEvent.key === "Enter" || keyboardEvent.key === " ") {
+                    keyboardEvent.preventDefault();
+                    setSelectedTimelineYear(event.year);
+                    setTimelineModalOpen(true);
+                  }
+                }}
+                className={`group min-w-0 w-full cursor-pointer rounded-md border border-transparent !p-3 !pl-14 transition-colors hover:border-teal-800 hover:bg-teal-50/40 focus-visible:border-teal-800 focus-visible:outline-none md:w-[calc(50%-2.5rem)] md:!pl-3 ${index % 2 === 0 ? "md:pr-4 md:text-right" : ""}`}
+              >
+                <button
+                  type="button"
+                  onClick={() => { setSelectedTimelineYear(event.year); setTimelineModalOpen(true); }}
+                  title={`View ${event.date} timeline detail`}
+                  className="group/date inline-flex cursor-pointer items-center rounded-md px-2 py-1 text-left text-sm font-bold text-teal-800 underline decoration-teal-300 underline-offset-2 transition-colors hover:bg-teal-100 hover:text-teal-950 hover:decoration-teal-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
+                >
+                  {event.date}
+                  <FaChartLine aria-hidden="true" className="ml-2 text-xs opacity-0 transition-opacity group-hover/date:opacity-100" />
+                </button>
                 <h3 className="!mt-1 text-base font-semibold leading-snug text-teal-8">{event.title}</h3>
                 <p className="!mt-1 text-sm font-semibold text-gray-900">{event.metric}</p>
+                <p className="!mt-1 text-xs font-bold text-red-700">Estimated loss: {event.lossPercent.toFixed(2)}% per year · Cumulative context: {event.cumulativePercent.toFixed(2)}%</p>
                 <p className="!mt-2 text-sm leading-relaxed text-gray-700">{event.description}</p>
-                <a href={event.sourceUrl} target="_blank" rel="noopener noreferrer" className="!mt-2 inline-block text-xs font-medium text-teal-8 underline underline-offset-2 hover:text-teal-700">
+                <button
+                  type="button"
+                  onClick={() => { setSelectedTimelineYear(event.year); setTimelineModalOpen(true); }}
+                  className="!mt-3 inline-flex cursor-pointer items-center gap-1 rounded border border-teal-300 bg-white px-2 py-1 text-xs font-semibold text-teal-800 shadow-sm transition-all hover:border-teal-600 hover:bg-teal-100 hover:text-teal-950 hover:shadow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700"
+                >
+                  <FaChartLine aria-hidden="true" /> View graph detail
+                </button>
+                <a href={event.sourceUrl} target="_blank" rel="noopener noreferrer" onClick={(clickEvent) => clickEvent.stopPropagation()} className="!mt-2 inline-block cursor-pointer text-xs font-medium text-teal-8 underline underline-offset-2 hover:text-teal-700">
                   {event.source}
                 </a>
               </div>
@@ -384,6 +461,34 @@ function Home() {
           ))}
         </ol>
       </section>
+      {timelineModalOpen && (
+        <div className="fixed inset-0 z-50 grid place-items-center bg-slate-900/60 !p-4" role="dialog" aria-modal="true" aria-labelledby="timeline-graph-title" onClick={() => setTimelineModalOpen(false)}>
+          <div className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-xl bg-white !p-5 shadow-2xl sm:!p-6" onClick={(event) => event.stopPropagation()}>
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <h3 id="timeline-graph-title" className="flex items-center gap-2 text-lg font-bold text-teal-900"><FaChartLine aria-hidden="true" /> {selectedTimelineEvent.date} forest-loss detail</h3>
+                <p className="!mt-1 text-sm text-gray-600">{selectedTimelineEvent.title}</p>
+              </div>
+              <button type="button" onClick={() => setTimelineModalOpen(false)} className="rounded-md px-2 py-1 text-xl leading-none text-gray-500 hover:bg-gray-100" aria-label="Close graph detail">×</button>
+            </div>
+            <div className="!mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3">
+              <div className="rounded-lg bg-red-50 !p-3"><p className="text-xs text-red-700">Annual loss</p><p className="!mt-1 text-xl font-bold text-red-800">{selectedTimelineEvent.lossPercent.toFixed(2)}%</p></div>
+              <div className="rounded-lg bg-teal-50 !p-3"><p className="text-xs text-teal-700">Cumulative context</p><p className="!mt-1 text-xl font-bold text-teal-800">{selectedTimelineEvent.cumulativePercent.toFixed(2)}%</p></div>
+              <div className="col-span-2 rounded-lg bg-gray-50 !p-3 sm:col-span-1"><p className="text-xs text-gray-600">Selected year</p><p className="!mt-1 text-xl font-bold text-gray-800">{selectedTimelineYear}</p></div>
+            </div>
+            <div className="!mt-6 grid grid-cols-5 items-end gap-2 border-b border-l border-gray-300 !px-3 !pt-4" style={{ minHeight: 220 }}>
+              {lossGraph.map((point) => (
+                <div key={point.year} className="flex h-full flex-col items-center justify-end gap-1 text-xs text-gray-600">
+                  <span className="font-semibold text-teal-800">{point.loss.toFixed(2)}%</span>
+                  <span className={`w-full max-w-12 rounded-t transition-colors ${point.year === selectedTimelineYear ? "bg-red-600" : "bg-teal-600"}`} style={{ height: `${Math.max(6, point.loss * 9)}px` }} />
+                  <span>{point.year}</span>
+                </div>
+              ))}
+            </div>
+            <p className="!mt-4 text-xs leading-relaxed text-gray-600">These are contextual forest-loss estimates and include pressures beyond illegal logging, such as kaingin, mining, roads, and development.</p>
+          </div>
+        </div>
+      )}
     </>
   );
 }
