@@ -5,7 +5,7 @@ import {
   FaYoutube,
 } from "react-icons/fa";
 
-const categories = ["All", "Forests", "Threats", "Communities", "Watersheds"] as const;
+const categories = ["All", "News", "Effects", "Cause"] as const;
 type Category = (typeof categories)[number];
 
 type GalleryItem = {
@@ -19,53 +19,77 @@ type GalleryItem = {
 
 const galleryItems: GalleryItem[] = [
   {
-    youtubeId: "6giJejuNhNY",
-    title: "Fighting to save the Sierra Madre rainforest",
+    youtubeId: "GYI23igiFcM",
+    title: "Quarrying site sa Sierra Madre, siniyasat ni Jessica Soho! | Kapuso Mo, Jessica Soho",
     location: "Sierra Madre, Luzon",
-    category: "Threats",
-    description: "A report on forest loss, illegal logging, and the people working to restore and protect the Sierra Madre rainforest.",
+    category: "News",
+    description: "",
+    channel: "GMA Public Affairs",
+  },
+  {
+    youtubeId: "6giJejuNhNY",
+    title: "Sierra Madre: Fighting to save what's left of a vital rainforest in the Philippines – BBC News",
+    location: "Sierra Madre, Luzon",
+    category: "News",
+    description: "It is estimated that about 90% of the Sierra Madre rainforest, which protects the Philippines from the worst of climate change, is gone due to mining, quarrying and illegal logging.",
     channel: "BBC News",
   },
   {
-    youtubeId: "wFb2_0qr93g",
-    title: "Tree nurturing in the Sierra Madre",
-    location: "Siniloan, Laguna",
-    category: "Forests",
-    description: "Local communities and volunteers demonstrate how tree nurturing supports long-term forest recovery in the mountain range.",
-    channel: "FEED Inc.",
-  },
-  {
-    youtubeId: "0nsIp5jNomI",
-    title: "Life with a Dumagat community",
-    location: "Sierra Madre highlands",
-    category: "Communities",
-    description: "A visit with a Dumagat community sharing its traditions, everyday life, and relationship with the surrounding forest.",
-    channel: "UNICO",
-  },
-  {
-    youtubeId: "1v5A3yTteis",
-    title: "Protect Sierra Madre",
-    location: "Sierra Madre, Luzon",
-    category: "Threats",
-    description: "An advocacy video about the effects of illegal logging, mining, quarrying, and deforestation across the range.",
-    channel: "Protect Sierra Madre",
-  },
-  {
     youtubeId: "a8u_U3NyOiA",
-    title: "Deforestation and increased flood risk",
+    title: "Watersheds and water supplies",
     location: "Sierra Madre, Luzon",
-    category: "Threats",
-    description: "A report connecting shrinking Sierra Madre forest cover with greater flooding risks for communities and watersheds across Luzon.",
+    category: "News",
+    description: "How healthy forest watersheds filter, store, and release water that communities depend on.",
     channel: "One News PH",
   },
   {
-    youtubeId: "XUyXGqCZKWM",
-    title: "Forest loss and downstream flooding",
-    location: "Sierra Madre watersheds",
-    category: "Watersheds",
-    description: "An explainer showing how damaged mountain forests can worsen flooding and why restoring natural watersheds helps protect downstream communities.",
+    youtubeId: "zeaE-8rlXGY",
+    title: "Causes of illegal logging in the Philippines",
+    location: "Mindanao, Philippines",
+    category: "News",
+    description: "A report on logging-ban violations, rapid urbanisation, weak enforcement, and how illegal logging worsens disaster impacts.",
+    channel: "Al Jazeera English",
+  },
+  {
+    youtubeId: "ZOsGlmpOy4U",
+    title: "Ano ang biodiversity conservation plan ng bansa? | Need to Know",
+    location: "Philippines",
+    category: "Effects",
+    description: "Bilang isa ang Pilipinas sa 17 megadiverse countries sa buong mundo, mayaman ang bansa sa iba’t ibang species ng hayop at halaman. Sa kabila nito, kabilang din ang Pilipinas sa top 10 countries na may pinamakaraming species na nanganganib maging extinct at itinuturing din ito na hotspot for biodiversity loss.  ",
     channel: "GMA News",
   },
+  {
+    youtubeId: "em1eRDsXD4U",
+    title: "Born to be Wild: Effects of deforestation in the Philippines",
+    location: "Surigao, Philippines",
+    category: "Effects",
+    description: " Doc Nielsen traveled to Surigao del Sur to observe the effect of deforestation in the area",
+    channel: "GMA Public Affairs",
+  },
+  {
+    youtubeId: "s0F2c1ECuo4",
+    title: "Soil Erosion Round the World - Causes and Solutions | Global 3000",
+    location: "Myanmar and Colombia",
+    category: "Effects",
+    description: "Deforestation and intense agricultural practices are accelerating soil degradation in regions like Myanmar and Colombia",
+    channel: "DW News",
+  },
+  {
+    youtubeId: "YTcl9Olxj8",
+    title: "Illegal logging umanong nagpalala sa pagbaha, paiimbestigahan ng DENR",
+    location: "City of Tuguegarao, Philippines",
+    category: "Effects",
+    description: "Illegal logging is one of the factors that contributes to severe flooding in areas of Cagayan.",
+    channel: "GMA News",
+  },
+  {
+    youtubeId: "WXy2ZmYDDhU",
+    title: "Vanishing forests: Why is the Philippines failing at reforestation?",
+    location: "Palawan, Philippines",
+    category: "Cause",
+    description: "Poor Enforcement of Anti-Illegal Logging Laws in the Philippines due to goverment corruption",
+    channel: "AL Jazeera English",
+  }
 ];
 
 const videoIds = galleryItems.map((item) => item.youtubeId);
