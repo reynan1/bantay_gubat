@@ -1,5 +1,8 @@
 ﻿import { FaArrowDown, FaBookOpen, FaExternalLinkAlt, FaLeaf } from "react-icons/fa";
 
+import { useState } from "react";
+import { FaTimes } from "react-icons/fa";
+
 const references = [
   { title: "Climate Change Commission. Sierra Madre: Mountain Range for Resilience (2024)", url: "https://www.climate.gov.ph/news/934", description: "The range's biodiversity, carbon storage, forest cover, and role in climate resilience." },
   { title: "Forest Foundation Philippines. Sierra Madre Mountain Range: Landscape Profile (2022)", url: "https://forestfoundation.ph/wp-content/uploads/2022/04/Sierra-Madre-Mountain-Range_Landscape-Profile.pdf", description: "Watersheds, wildlife, communities, and pressures on the landscape." },
@@ -23,9 +26,6 @@ const effects = [
   { title: "Increased sedimentation of rivers", summary: "Soil washed from deforested slopes enters rivers and degrades freshwater ecosystems.", detail: "Excess sediment can make waterways shallower, affect aquatic habitats, and reduce the storage capacity of rivers and reservoirs. Sierra Madre watershed studies connect forest degradation with heavy soil erosion and sedimentation of riverbeds.", sources: [9] },
   { title: "Loss of carbon storage and increased climate impacts", summary: "Deforestation reduces carbon storage and weakens the forest's contribution to climate regulation.", detail: "Trees, roots, vegetation, and soils store carbon. Intact forests absorb carbon dioxide through photosynthesis. Cutting trees reduces that capacity, and burning or decomposing forest biomass can release stored carbon. The Climate Change Commission's 2024 report describes the Sierra Madre as an important carbon sink and cites approximately 1.4 million hectares of forested area.", sources: [0] },
   { title: "Damage to agriculture and rural livelihoods", summary: "Forest degradation threatens the natural resources and ecosystem services on which rural communities depend.", detail: "Communities rely on surrounding forests for water, agriculture, forest products, and income. Damage to these systems can undermine livelihoods beyond the logging site. Research in the Northern Sierra Madre Natural Park also links illegal logging with distorted local markets and obstacles to sustainable rural development.", sources: [3, 4] },
-  { title: "Loss of ecosystem services", summary: "Several benefits of a healthy forest can decline at the same time.", detail: "These benefits include water regulation, carbon storage, soil stabilization, flood regulation, wildlife habitat, climate regulation, pollination, and forest resources for communities. Their loss makes illegal logging a water, agricultural, economic, and disaster-risk issue as well as an environmental one.", sources: [0, 1, 2] },
-  { title: "Forest fragmentation makes recovery more difficult", summary: "Logging breaks continuous forests into smaller, isolated patches that are more vulnerable to degradation.", detail: "A forest need not disappear entirely to lose ecological function. Fragmented patches have more exposed edges and fewer connected habitats, interrupting wildlife movement and exposing remaining forests to additional human disturbance. Protecting remaining forest areas helps limit continuing land-use pressure.", sources: [1, 3] },
-  { title: "Illegal logging can reinforce other environmental degradation", summary: "Logging access routes can make further extraction and land conversion easier.", detail: "Roads and trails can open previously inaccessible forest to agricultural expansion, hunting, charcoal production, mining, and further timber extraction. Southern Sierra Madre research identifies kaingin, infrastructure expansion, timber poaching, small-scale mining, charcoal making, and natural hazards as pressures associated with degradation. Illegal logging can become part of a wider cycle of forest loss.", sources: [8] },
 ];
 
 /* const keyFacts = [
@@ -42,13 +42,108 @@ const effects = [
   { icon: "⛏", issue: "Other activities", effect: "Can facilitate agricultural expansion, mining, hunting, and further forest degradation" },
 ];
  */
-const chains = [
+/* const chains = [
   { title: "Soil, water, and communities", steps: ["Illegal logging", "Loss of trees and forest cover", "Habitat destruction and soil exposure", "Erosion and increased runoff", "Landslides, river sedimentation, and flooding", "Watershed degradation", "Damage to agriculture, infrastructure, wildlife, and communities"] },
   { title: "Carbon and climate", steps: ["Forest loss", "Less carbon storage", "Reduced climate-regulation capacity"] },
   { title: "Wildlife and recovery", steps: ["Forest fragmentation", "Loss of wildlife habitat", "Declining biodiversity", "Greater ecosystem vulnerability"] },
+]; */
+
+const agtaChains = [
+  {
+    title: "01 — Loss of biodiversity and wildlife habitat",
+    steps: [
+      "Illegal logging",
+      "Forest habitat destruction",
+      "Wildlife populations decline",
+      "Loss of wildlife species",
+      "Loss of biodiversity and wildlife habitat",
+    ],
+  },
+  {
+    title: "02 — Increased soil erosion",
+    steps: [
+      "Illegal logging",
+      "Removal of vegetation and tree roots",
+      "Soil becomes exposed and unstable",
+      "Heavy rain washes away topsoil",
+      "Increased soil erosion",
+    ],
+  },
+  {
+    title: "03 — Higher risk of landslides",
+    steps: [
+      "Deforestation",
+      "Removal of deep-rooted trees",
+      "Soil loses stability and water absorption",
+      "Steep forest slopes become vulnerable",
+      "Higher risk of landslides",
+    ],
+  },
+  {
+    title: "04 — Increased flooding in downstream communities",
+    steps: [
+      "Illegal logging",
+      "Reduced forest cover",
+      "Less water is absorbed by the soil",
+      "Increased surface runoff during heavy rain",
+      "Increased flooding in downstream communities",
+    ],
+  },
+  {
+    title: "05 — Degradation of watersheds and water supplies",
+    steps: [
+      "Deforestation",
+      "Loss of vegetation along watersheds",
+      "Reduced water filtration and soil retention",
+      "Streams become polluted and water flow becomes irregular",
+      "Degradation of watersheds and water supplies",
+    ],
+  },
+  {
+    title: "06 — Reduced protection against typhoons",
+    steps: [
+      "Illegal logging",
+      "Loss of forest canopy and natural wind barriers",
+      "Communities become more exposed to strong winds",
+      "Reduced protection from heavy rain and typhoon impacts",
+      "Reduced protection against typhoons",
+    ],
+  },
+  {
+    title: "07 — Increased sedimentation of rivers",
+    steps: [
+      "Deforestation",
+      "Increased soil erosion",
+      "Loose soil is carried into streams",
+      "Riverbeds accumulate soil and debris",
+      "Increased sedimentation of rivers",
+    ],
+  },
+  {
+    title: "08 — Loss of carbon storage and increased climate impacts",
+    steps: [
+      "Illegal logging",
+      "Removal and burning of forest trees",
+      "Stored carbon is released into the atmosphere",
+      "Forest carbon storage capacity declines",
+      "Loss of carbon storage and increased climate impacts",
+    ],
+  },
+  {
+    title: "09 — Damage to agriculture and rural livelihoods",
+    steps: [
+      "Deforestation",
+      "Soil erosion and reduced water regulation",
+      "Flooding and landslides damage farmland",
+      "Crop production and income decline",
+      "Damage to agriculture and rural livelihoods",
+    ],
+  },
 ];
 
 function Effects() {
+  const [activeChain, setActiveChain] = useState<number | null>(null);
+  const activeReaction = activeChain === null ? null : agtaChains[activeChain];
   return (
     <section id="effects-illegal-logging" className="w-full border-t border-gray-200 text-teal-8">
       <header className="flex w-full items-center gap-3 !px-3 !pt-8 !pb-5 sm:gap-5 sm:!px-6 sm:!pt-10">
@@ -84,9 +179,9 @@ function Effects() {
 
       <section aria-labelledby="twelve-effects-heading" className="!px-3 !py-8 sm:!px-6">
         <h2 id="twelve-effects-heading" className="flex items-center gap-2 !text-2xl font-bold !text-teal-8"><FaLeaf aria-hidden="true" /> How forest loss affects the Sierra Madre</h2>
-        <div className="!mt-5 grid items-start gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <div className="!mt-5 grid items-center gap-4 md:grid-cols-2 xl:grid-cols-3">
           {effects.map((effect, index) => (
-            <article key={effect.title} className="h-full rounded-lg border border-gray-200 bg-white !p-5 shadow-sm">
+            <button type="button" key={effect.title} onClick={() => setActiveChain(index % agtaChains.length)} className="h-full w-full flex flex-col cursor-pointer rounded-lg border border-gray-200 bg-white !p-5 text-left shadow-sm transition hover:border-teal-700 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700">
               <span className="text-sm font-bold text-teal-600">{String(index + 1).padStart(2, "0")}</span>
               <h3 className="!mt-2 text-lg font-bold leading-snug text-teal-8">{effect.title}</h3>
               <p className="!mt-3 text-sm font-medium leading-relaxed text-teal-800">{effect.summary}</p>
@@ -94,12 +189,24 @@ function Effects() {
               <div className="!mt-4 flex flex-wrap gap-3 text-xs font-semibold text-teal-700" aria-label="Supporting references">
                 {effect.sources.map((source) => <a key={source} href={`#effect-reference-${source + 1}`} className="hover:underline">Reference {source + 1}</a>)}
               </div>
-            </article>
+            </button>
           ))}
         </div>
       </section>
 
-      <section aria-labelledby="chain-heading" className="border-y border-gray-200 !px-3 !py-8 sm:!px-6">
+      {activeReaction && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/55 p-4" role="presentation" onMouseDown={(event) => event.target === event.currentTarget && setActiveChain(null)}>
+          <section role="dialog" aria-modal="true" aria-labelledby="chain-modal-title" className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-lg bg-gray-50 shadow-2xl">
+            <header className="sticky top-0 z-10 flex items-start justify-between gap-4 bg-teal-8 !px-5 !py-4 text-white">
+              <div><p className="text-xs font-semibold uppercase tracking-wide text-teal-100">Chain reaction {String(activeChain! + 1).padStart(2, "0")} of 09</p><h2 id="chain-modal-title" className="!mb-0 !mt-1 !text-xl !text-white">{activeReaction.title}</h2></div>
+              <button type="button" onClick={() => setActiveChain(null)} aria-label="Close chain reaction" className="grid h-9 w-9 shrink-0 place-items-center rounded-md text-white hover:bg-white/15"><FaTimes aria-hidden="true" /></button>
+            </header>
+            <div className="!p-5"><ol className="list-none !p-0">{activeReaction.steps.map((step, stepIndex) => <li key={step} className="text-sm leading-relaxed">{stepIndex > 0 && <FaArrowDown aria-hidden="true" className="!mx-auto !my-2 text-teal-600" />}<div className="rounded border border-teal-100 bg-white !px-3 !py-3 text-center font-medium text-gray-700">{step}</div></li>)}</ol><div className="!mt-5 flex justify-between gap-3 border-t border-gray-200 !pt-4"><button type="button" onClick={() => setActiveChain(activeChain! === 0 ? 8 : activeChain! - 1)} className="rounded border border-gray-300 bg-white !px-4 !py-2 text-sm font-semibold text-teal-800">Previous</button><button type="button" onClick={() => setActiveChain(activeChain! === 8 ? 0 : activeChain! + 1)} className="rounded bg-teal-8 !px-4 !py-2 text-sm font-semibold text-white">Next chain</button></div></div>
+          </section>
+        </div>
+      )}
+
+{/*       <section aria-labelledby="chain-heading" className="border-y border-gray-200 !px-3 !py-8 sm:!px-6">
         <h2 id="chain-heading" className="!text-2xl font-bold !text-teal-8">The chain reaction</h2>
         <p className="!mt-2 text-sm leading-relaxed text-gray-600">Forest loss can set several connected processes in motion. These pathways describe potential effects; not every flood or landslide is caused by illegal logging.</p>
         <div className="!mt-5 grid items-start gap-5 lg:grid-cols-3">
@@ -117,7 +224,7 @@ function Effects() {
             </div>
           ))}
         </div>
-      </section>
+      </section> */}
 
 {/*       <section aria-labelledby="key-facts-heading" className="border-b border-gray-200 !px-3 !py-8 sm:!px-6">
         <h2 id="key-facts-heading" className="!text-2xl font-bold !text-teal-8">Key facts</h2>

@@ -42,6 +42,8 @@ function Home() {
         "Report Location: Rizal and Quezon Provinces — Sierra Madre Mountain Range, Luzon, Philippines. The original November 2025 report specifically identified development projects in Rizal and Quezon as contributing to forest loss, although the Sierra Madre itself extends across ten provinces of Luzon.",
       ],
       reference: "Philstar - Sierra Madre losing 9,000 hectares of forest cover each year, according to Haribon",
+      referenceTitle: "Philstar - Sierra Madre losing 9,000 hectares of forest cover each year, according to Haribon",
+      referenceDescription: "Reports annual forest-cover loss in the Sierra Madre.",
       referenceUrl: "https://www.philstar.com/headlines/climate-and-environment/2025/11/12/2486728/sierra-madre-losing-9000-hectares-forest-cover-each-year-haribon",
     },
     {
@@ -59,6 +61,8 @@ function Home() {
         "This report documents the scale of one enforcement operation. It should not be treated as the current or total volume of illegal logging across the entire Sierra Madre mountain range.",
       ],
       reference: "Philstar - P1.7 million 'hot' logs seized in Sierra Madre watershed",
+      referenceTitle: "Philstar - P1.7 million 'hot' logs seized in Sierra Madre watershed",
+      referenceDescription: "Covers a DENR operation that seized illegally cut lumber.",
       referenceUrl: "https://www.philstar.com/nation/2019/09/21/1953552/p17-million-hot-logs-seized-sierra-madre-watershed",
     },
     {
@@ -86,6 +90,8 @@ function Home() {
 
       reference:
         "National Bureau of Investigation - NBI Arrests Two for Illegal Mining",
+      referenceTitle: "National Bureau of Investigation - NBI Arrests Two for Illegal Mining",
+      referenceDescription: "Documents an enforcement operation against unauthorized quarrying.",
 
       referenceUrl:
         "https://nbi.gov.ph/press_releases/2026/04282026/9842/",
@@ -103,6 +109,8 @@ function Home() {
         "Agta communities continue to live within and around the Northern Sierra Madre, particularly in Palanan, Divilacan, Maconacon, San Mariano, and Dinapigue in Isabela. They continue to depend on the area's forests, rivers, and other natural resources for their livelihoods, but face pressures from activities such as logging, agricultural expansion, and resource depletion, which can affect their food security and traditional way of life. Although their ancestral and Indigenous rights are legally recognized, research has identified barriers that can limit their participation in decisions concerning protected areas and natural resources.",
       ],
       reference: "Limits to Indigenous Participation: The Agta and the Northern Sierra Madre Natural Park",
+      referenceTitle: "Limits to Indigenous Participation: The Agta and the Northern Sierra Madre Natural Park",
+      referenceDescription: "Examines Agta communities and conservation participation.",
       referenceUrl: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4194021/",
     },
     {
@@ -125,6 +133,10 @@ function Home() {
      ],
     reference:
       "Inquirer - Is Quirino's drive on illegal logging worth dying for?",
+    referenceTitle:
+      "Inquirer - Is Quirino's drive on illegal logging worth dying for?",
+    referenceDescription:
+      "Reports illegal logging and timber enforcement in Quirino.",
 
     referenceUrl:
       "https://newsinfo.inquirer.net/349257/is-quirinos-drive-on-illegal-logging-worth-dying-for",
@@ -297,18 +309,25 @@ function Home() {
                   {selected.details.map((detail) => (
                     <p key={detail} className="text-sm leading-relaxed text-gray-700 !mt-4">{detail}</p>
                   ))}
-                  <div className="!mt-5 border-t border-gray-200 !pt-4">
-                    <h3 className="flex items-center gap-2 text-base font-bold text-teal-8">
-                      <FaBookOpen aria-hidden="true" className="text-xl" /> Source
+                  <div className="!mt-5 rounded-lg border border-gray-200 bg-white !px-5 !py-5">
+                    <h3 className="flex items-center gap-2 text-lg font-bold text-teal-8">
+                      <FaBookOpen aria-hidden="true" className="shrink-0 text-xl" />
+                      Source
                     </h3>
-                    <div className="!mt-2 flex min-w-0 items-start gap-3 text-xs leading-relaxed">
-                      <FaFileAlt aria-hidden="true" className="mt-0.5 shrink-0 text-teal-8" />
-                      <div className="min-w-0">
-                        <p className="font-medium text-gray-800">{selected.reference}</p>
-                        <a href={selected.referenceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex max-w-full items-center gap-1 text-blue-700 hover:underline">
-                          <span className="min-w-0 break-all">{selected.referenceUrl}</span>
-                          <FaExternalLinkAlt aria-hidden="true" className="shrink-0" />
+                    <div className="!mt-3 flex min-w-0 items-start gap-3">
+                      <FaFileAlt aria-hidden="true" className="mt-1 shrink-0 text-teal-8" />
+                      <div className="min-w-0 flex-1">
+                        <a
+                          href={selected.referenceUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`Open source: ${selected.reference}`}
+                          className="!mt-1 inline-flex max-w-full items-start gap-2 text-sm leading-relaxed text-blue-700 hover:underline"
+                        >
+                          <span className="min-w-0 break-all text-teal-800 hover:underline">{selected.title}</span>
+                          <FaExternalLinkAlt aria-hidden="true" className="mt-1 shrink-0 text-teal-800 hover:underlineh" />
                         </a>
+                        <p className="!mt-1 text-sm leading-relaxed text-gray-600">{selected.referenceDescription}</p>
                       </div>
                     </div>
                   </div>

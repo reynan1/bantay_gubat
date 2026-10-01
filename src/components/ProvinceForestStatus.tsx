@@ -117,7 +117,7 @@ export default function ProvinceForestStatus() {
           const groupedProvinces = group.names.flatMap((name) => visible.filter((p) => p.name === name));
           if (!groupedProvinces.length) return null;
           return <section key={group.title} aria-label={group.title}>
-          <h3 className="!mb-3 text-base font-bold text-teal-900">{group.title}</h3>
+          <h3 className="!mb-3 !mt-2 text-base font-bold text-teal-900">{group.title}</h3>
           <div className="grid items-start gap-4 md:grid-cols-3">
         {groupedProvinces.map((p) => {
           const expanded = expandedProvince === p.name;
