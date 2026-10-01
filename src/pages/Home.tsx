@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProvinceForestStatus from "../components/ProvinceForestStatus";
 import sierraMadreScope from "../assets/images/sierra-madre-scope.jpg";
 import {
@@ -29,6 +29,8 @@ function Home() {
   const [currentStatusOpen, setCurrentStatusOpen] = useState(true);
   const [selectedTimelineYear, setSelectedTimelineYear] = useState(2026);
   const [timelineModalOpen, setTimelineModalOpen] = useState(false);
+  const [analysisProgress, setAnalysisProgress] = useState(0);
+  const [analysisPlaying, setAnalysisPlaying] = useState(false);
 
   const statusCards = [
     {
@@ -258,6 +260,59 @@ function Home() {
     { year: 2026, loss: 13.14 },
   ];
 
+  // Simple 2035 scenario: continue the reported 9,000 ha/year rate from the
+  // current 2026 baseline. This is landscape-wide pressure, not illegal
+  // logging alone and not a province-level forecast.
+  const scenarioLandscapeHa = 1_400_000;
+  const scenarioAnnualLossHa = 9_000;
+  const scenarioCurrentYear = 2026;
+  const scenarioTargetYear = 2035;
+  const scenarioYears = scenarioTargetYear - scenarioCurrentYear;
+  const scenarioAddedLossHa = scenarioAnnualLossHa * scenarioYears;
+  const scenarioCurrentCumulativeHa = scenarioLandscapeHa * (13.14 / 100);
+  const scenario2035CumulativeHa = scenarioCurrentCumulativeHa + scenarioAddedLossHa;
+  const scenarioCurrentCumulativePercent = (scenarioCurrentCumulativeHa / scenarioLandscapeHa) * 100;
+  const scenario2035CumulativePercent = (scenario2035CumulativeHa / scenarioLandscapeHa) * 100;
+  const scenarioAddedPercent = (scenarioAddedLossHa / scenarioLandscapeHa) * 100;
+  const scenarioRemainingHa = scenarioLandscapeHa - scenario2035CumulativeHa;
+
+  const sierraMadreProvinces = [
+    { name: "Cagayan", value: 3, label: "Recent documented activity", detail: "Recent reports document illegal logging and forest-product activity." },
+    { name: "Isabela", value: 3, label: "Recent documented activity", detail: "Recent reports document activity in Northern Sierra Madre communities." },
+    { name: "Nueva Vizcaya", value: 3, label: "Recent documented activity", detail: "Recent reports document forest pressure and enforcement activity." },
+    { name: "Quirino", value: 3, label: "Recent documented activity", detail: "Reports document illegal logging concerns and timber enforcement." },
+    { name: "Aurora", value: 3, label: "Recent documented activity", detail: "A DENR operation documented seized illegally cut lumber." },
+    { name: "Nueva Ecija", value: 2, label: "Historical documented cases", detail: "Historical cases are documented; comparable recent totals were unavailable." },
+    { name: "Bulacan", value: 2, label: "Historical documented cases", detail: "Historical cases are documented; comparable recent totals were unavailable." },
+    { name: "Rizal", value: 2, label: "Recent enforcement / monitoring", detail: "Recent enforcement and monitoring include unauthorized quarrying concerns." },
+    { name: "Laguna", value: 1, label: "Monitoring / limited evidence", detail: "The cited evidence is limited and primarily monitoring-related." },
+    { name: "Quezon", value: 3, label: "Recent documented activity", detail: "Recent reports document illegal forest-product activity and enforcement." },
+  ];
+
+  useEffect(() => {
+    setAnalysisPlaying(true);
+    setAnalysisProgress(0);
+  }, []);
+
+  useEffect(() => {
+    if (!analysisPlaying) return undefined;
+    const timer = window.setInterval(() => {
+      setAnalysisProgress((progress) => {
+        if (progress >= 100) {
+          setAnalysisPlaying(false);
+          return 100;
+        }
+        return Math.min(progress + 5, 100);
+      });
+    }, 35);
+    return () => window.clearInterval(timer);
+  }, [analysisPlaying]);
+
+  const replayAnalysis = () => {
+    setAnalysisProgress(0);
+    setAnalysisPlaying(true);
+  };
+
   return (
     <>
       <section id="status-illegal-logging" className="w-full border-t-[1px] text-teal-8">
@@ -461,6 +516,95 @@ function Home() {
           ))}
         </ol>
       </section>
+
+      <section id="sierra-madre-2035-analysis" className="w-full border-t border-gray-200 !px-3 !py-8 text-gray-800 sm:!px-6 sm:!py-10">
+        <div className="text-center">
+          <h2 className="flex items-center justify-center gap-2 !text-xl font-bold !text-teal-8"><FaChartLine aria-hidden="true" /> Sierra Madre 2035: Possible Outcomes</h2>
+          <p className="!mt-1 text-sm text-gray-600">An interactive scenario based on the evidence and estimates already shown on this page</p>
+        </div>
+        <div className="!mx-auto !mt-6 w-full rounded-xl border border-teal-100 bg-white shadow-sm">
+          <div className="grid gap-6 !p-5 sm:!p-7 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)]">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-wide text-amber-700">Scenario assumptions</p>
+              <h3 className="!mt-1 text-xl font-bold text-teal-900">What could continued pressure mean by 2035?</h3>
+              <p className="!mt-3 text-sm leading-relaxed text-gray-700">If the reported rate of about 9,000 hectares of forest-cover loss per year continued without stronger protection or restoration, the accumulated pressure could increase forest fragmentation, watershed stress, and exposure for communities that depend on Sierra Madre ecosystems.</p>
+              <div className="!mt-5 rounded-lg border-l-4 border-amber-500 bg-amber-50 !px-4 !py-3 text-xs leading-relaxed text-amber-900"><strong>Assumption and limitation:</strong> this scenario assumes that provinces with documented deforestation, illegal logging, or illegal forest-product activity will experience greater pressure if those activities continue. It is a scenario, not a forecast. The 2035 forest figure is a simple continuation of the reported annual rate, while the other effects are educational indices derived from the relationships described in this page's research, not field measurements.</div>
+              <div className="!mt-5 rounded-lg border border-teal-100 bg-teal-50/60 !px-4 !py-3 text-xs leading-relaxed text-gray-700">
+                <p className="font-bold text-teal-900">Where the pressure is documented</p>
+                <p className="!mt-1">The province section records documented cases or forest-product activity in <strong>Cagayan, Isabela, Nueva Vizcaya, Quirino, Aurora, Nueva Ecija, Bulacan, Rizal, Laguna, and Quezon</strong>. The strongest recent evidence in the cited reports is for Cagayan, Isabela, Nueva Vizcaya, Quirino, Aurora, and Quezon; the other provinces include historical cases or monitoring evidence.</p>
+                <p className="!mt-1"><strong>Important:</strong> these reports do not provide one comparable, verified hectare-loss total for every province. Therefore, this page shows the documented provinces and the overall reported estimate, but does not invent a province-by-province total.</p>
+              </div>
+              <div className="!mt-5 rounded-lg border border-amber-200 bg-amber-50 !p-4" aria-label="Current versus 2035 forest loss scenario">
+                <div className="flex flex-wrap items-baseline justify-between gap-2">
+                  <h4 className="text-sm font-bold text-amber-950">Current result vs. 2035 assumption</h4>
+                  <span className="text-[11px] font-semibold text-amber-800">{scenarioCurrentYear} → {scenarioTargetYear} · {scenarioYears} years</span>
+                </div>
+                <p className="!mt-1 text-xs leading-relaxed text-amber-900">If the reported <strong>{scenarioAnnualLossHa.toLocaleString()} hectares per year</strong> continues unchanged, the model adds <strong>{scenarioAddedLossHa.toLocaleString()} hectares</strong> by 2035. That is an additional <strong>{scenarioAddedPercent.toFixed(2)} percentage points</strong> of the approximately {scenarioLandscapeHa.toLocaleString()}-hectare landscape.</p>
+                <div className="!mt-4 grid gap-3 sm:grid-cols-3">
+                  <div className="rounded-md bg-white !p-3"><p className="text-[11px] text-gray-500">Current cumulative context</p><p className="!mt-1 text-lg font-bold text-teal-900">{scenarioCurrentCumulativeHa.toLocaleString()} ha</p><p className="text-[11px] text-gray-600">{scenarioCurrentCumulativePercent.toFixed(2)}% of landscape</p></div>
+                  <div className="rounded-md bg-red-50 !p-3"><p className="text-[11px] text-red-700">Added by 2035</p><p className="!mt-1 text-lg font-bold text-red-800">+{scenarioAddedLossHa.toLocaleString()} ha</p><p className="text-[11px] text-red-700">+{scenarioAddedPercent.toFixed(2)} percentage points</p></div>
+                  <div className="rounded-md bg-white !p-3"><p className="text-[11px] text-gray-500">2035 cumulative scenario</p><p className="!mt-1 text-lg font-bold text-teal-900">{scenario2035CumulativeHa.toLocaleString()} ha</p><p className="text-[11px] text-gray-600">{scenario2035CumulativePercent.toFixed(2)}% · {scenarioRemainingHa.toLocaleString()} ha remaining</p></div>
+                </div>
+                <div className="!mt-4" aria-label="Bar chart comparing current cumulative loss with 2035 scenario">
+                  <div className="flex h-28 items-end gap-4 border-b border-l border-amber-300 !px-3 !pt-3 sm:gap-8">
+                    {[{ label: `${scenarioCurrentYear} current`, value: scenarioCurrentCumulativePercent, color: "bg-teal-600" }, { label: `${scenarioTargetYear} scenario`, value: scenario2035CumulativePercent, color: "bg-red-600" }].map((bar) => (
+                      <div key={bar.label} className="flex h-full flex-1 flex-col items-center justify-end gap-1 text-center text-[11px] text-gray-600"><span className="font-bold text-gray-800">{bar.value.toFixed(2)}%</span><span className={`w-full max-w-20 rounded-t ${bar.color}`} style={{ height: `${Math.max(8, (bar.value / 20) * 90)}px` }} /><span>{bar.label}</span></div>
+                    ))}
+                  </div>
+                </div>
+                <p className="!mt-3 text-[11px] leading-relaxed text-amber-900"><strong>How to read this:</strong> the red section is the projected addition, not a newly measured 2035 result. The calculation assumes a constant annual rate and treats the existing 13.14% cumulative figure as the 2026 context. Actual loss may be higher or lower, and the source does not provide comparable province-level hectare totals.</p>
+              </div>
+              <div className="!mt-5 rounded-lg border border-teal-100 bg-white !p-4">
+                <div className="flex flex-wrap items-center justify-between gap-2"><h4 className="text-sm font-bold text-teal-900">All Sierra Madre provinces</h4><span className="rounded-full bg-teal-100 !px-2 !py-1 text-[10px] font-bold text-teal-800">2026 documented baseline</span></div>
+                <p className="!mt-1 text-xs leading-relaxed text-gray-600">Forest-loss pressure comparison based on the documented evidence category for each province. This is not a province-level hectare-loss measurement and is not a 2035 prediction.</p>
+                <div className="!mt-4 grid gap-x-5 gap-y-3 sm:grid-cols-2" aria-label="Sierra Madre province forest-loss pressure comparison">
+                  {sierraMadreProvinces.map((province) => (
+                    <div key={province.name}>
+                      <div className="flex items-center justify-between gap-3 text-xs"><span className="font-bold text-gray-800">{province.name}</span><span className="text-right text-gray-600">{province.label}</span></div>
+                      <div className="!mt-1 h-3 overflow-hidden rounded-full bg-gray-100" role="img" aria-label={`${province.name}: ${province.label}`}><div className={`h-full rounded-full ${province.value === 3 ? "bg-red-600" : province.value === 2 ? "bg-orange-500" : "bg-yellow-500"} transition-[width,filter] duration-500 ease-out`} style={{ width: `${(province.value / 3) * analysisProgress}%`, transitionDelay: `${sierraMadreProvinces.indexOf(province) * 70}ms`, filter: analysisProgress > 96 ? "saturate(1.15)" : "saturate(0.8)" }} /></div>
+                    </div>
+                  ))}
+                </div>
+                <p className="!mt-3 text-[11px] leading-relaxed text-gray-500"><strong>Scale:</strong> 3 = recent documented activity, 2 = historical documented cases, 1 = monitoring or limited recent evidence. These categories come from the cited province reports and must not be read as province-level forest-loss percentages.</p>
+              </div>
+            </div>
+
+            <div className="rounded-lg bg-teal-50/60 !p-4 sm:!p-5">
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <div><h3 className="flex items-center gap-2 text-base font-bold text-teal-900"><FaTree aria-hidden="true" /> Forest loss by province</h3><p className="!mt-1 text-xs text-gray-600">Current documented-pressure index · 1–3</p><p className="!mt-1 text-[11px] font-semibold text-amber-700">2035 values are scenario assumptions, not province-level measurements.</p></div>
+              </div>
+              <button type="button" onClick={replayAnalysis} className="!mt-3 rounded-full border border-teal-200 bg-white !px-3 !py-1 text-xs font-bold text-teal-800 transition hover:border-teal-500 hover:bg-teal-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700" aria-label="Replay forest loss graph animation">Replay animation</button>
+              <div className="!mt-6 grid grid-cols-2 items-end gap-x-3 gap-y-5 border-b border-l border-teal-200 !px-3 !pt-5 sm:grid-cols-5" style={{ minHeight: 280 }} aria-live="polite">
+                {sierraMadreProvinces.map((province) => {
+                  const animatedHeight = Math.max(5, (province.value / 3) * 175 * (analysisProgress / 100));
+                  return <div key={province.name} title={`${province.name}: ${province.value}/3 — ${province.label}. ${province.detail}`} className="flex h-full flex-col items-center justify-end gap-1 text-center text-xs text-gray-600"><span className="font-bold text-teal-900 transition-opacity duration-300" style={{ opacity: analysisProgress > 15 ? 1 : 0 }}>{province.value}/3</span><span className="w-full max-w-12 rounded-t-md bg-red-600 shadow-[0_0_0_rgba(239,68,68,0)] transition-[height,box-shadow] duration-300 ease-out" style={{ height: `${animatedHeight}px`, transitionDelay: `${sierraMadreProvinces.indexOf(province) * 70}ms`, boxShadow: analysisProgress > 96 ? "0 0 18px rgba(239,68,68,0.22)" : "0 0 0 rgba(239,68,68,0)" }} /><span className="font-bold text-gray-800">{province.name}</span><span className="max-w-24 text-[10px] leading-tight text-gray-500">{province.label}</span><span className="max-w-28 text-[9px] leading-tight text-teal-700">{province.detail}</span></div>;
+                })}
+              </div>
+              <div className="!mt-4 rounded-lg border border-teal-100 bg-white !px-3 !py-3 text-xs leading-relaxed text-gray-600">
+                <p className="font-bold text-teal-900">How to understand this graph</p>
+                <p className="!mt-1"><strong>The province names below the bars</strong> show all ten provinces associated with the Sierra Madre. <strong>The number above each bar</strong> is the documented-pressure category, while a taller bar means stronger or more recent evidence in the cited reports.</p>
+                <p className="!mt-1"><strong>This is not a percentage of forest lost</strong> and it is not a province-level hectare estimate. The overall 0.64% annual figure applies to the approximately 1.4-million-hectare Sierra Madre landscape as a whole; comparable province-level totals were not available in the cited sources.</p>
+              </div>
+              <div className="!mt-4 rounded-lg border border-amber-200 bg-amber-50 !p-4 text-xs leading-relaxed text-amber-950">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <p className="font-bold">2026 baseline vs. 2035 scenario</p>
+                  <span className="rounded-full bg-white !px-2 !py-1 text-[10px] font-bold text-amber-800">Landscape-wide estimate</span>
+                </div>
+                <p className="!mt-1">The bars above show what is documented as of <strong>2026</strong>. They do not predict a score for 2035. If the reported loss rate stays at about <strong>{scenarioAnnualLossHa.toLocaleString()} hectares per year</strong>, the simple 2035 scenario adds <strong>{scenarioAddedLossHa.toLocaleString()} hectares</strong>—about <strong>{scenarioAddedPercent.toFixed(2)} percentage points</strong>—across the whole Sierra Madre landscape.</p>
+                <div className="!mt-3 grid gap-2 sm:grid-cols-2">
+                  <div className="rounded-md bg-white !p-3"><p className="text-[10px] font-bold uppercase tracking-wide text-gray-500">2026 documented baseline</p><p className="!mt-1 text-base font-bold text-teal-900">{scenarioCurrentCumulativeHa.toLocaleString()} ha cumulative</p><p className="text-[11px] text-gray-600">{scenarioCurrentCumulativePercent.toFixed(2)}% of the landscape</p></div>
+                  <div className="rounded-md bg-white !p-3"><p className="text-[10px] font-bold uppercase tracking-wide text-gray-500">2035 constant-rate scenario</p><p className="!mt-1 text-base font-bold text-red-800">{scenario2035CumulativeHa.toLocaleString()} ha cumulative</p><p className="text-[11px] text-gray-600">{scenario2035CumulativePercent.toFixed(2)}% of the landscape</p></div>
+                </div>
+                <p className="!mt-3"><strong>Why the province bars stay the same:</strong> the cited reports identify evidence categories for 2026, but do not provide comparable provincial hectare totals or a defensible 2035 forecast for each province. The 2035 figure is therefore a warning scenario for the entire landscape, not a new measured result.</p>
+              </div>
+              <div className="!mt-4 flex items-center justify-between text-xs text-gray-500"><span>Animation progress</span><span className="font-semibold text-teal-800">{analysisProgress}%</span></div>
+              <div className="!mt-1 h-1.5 overflow-hidden rounded-full bg-teal-100"><span className="block h-full rounded-full bg-teal-700 transition-[width] duration-200" style={{ width: `${analysisProgress}%` }} /></div>
+            </div>
+          </div>
+          <div className="border-t border-teal-100 bg-teal-50/50 !px-5 !py-4 text-xs leading-relaxed text-gray-600 sm:!px-7"><strong className="text-teal-900">Evidence and references:</strong> the overall model uses the page's reported estimate of about <strong>9,000 hectares of annual forest-cover loss</strong> across an approximately <strong>1.4-million-hectare</strong> Sierra Madre landscape, or about <strong>0.64% per year</strong>. This estimate includes multiple pressures such as illegal logging, kaingin, mining, roads, and development; it is not an illegal-logging-only total. Province-level status is based on the linked DENR, <a href="https://pia.gov.ph/features/echoing-call-for-stronger-action-against-illegal-logging/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">Philippine Information Agency</a>, <a href="https://www.pna.gov.ph/articles/1266440" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">Philippine News Agency</a>, and <a href="https://calabarzon.denr.gov.ph/news-events/cenro-real-nagsagawa-ng-magkakahiwalay-na-operasyon-sa-bayan-ng-gen-nakar-quezon-na-kumumpiska-ng-mga-ilegal-na-produktong-gubat/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">DENR CALABARZON</a> reports in the province cards. Select a province above to inspect its evidence source.</div>
+        </div>
+      </section>
+
       {timelineModalOpen && (
         <div className="fixed inset-0 z-50 grid place-items-center bg-slate-900/60 !p-4" role="dialog" aria-modal="true" aria-labelledby="timeline-graph-title" onClick={() => setTimelineModalOpen(false)}>
           <div className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-xl bg-white !p-5 shadow-2xl sm:!p-6" onClick={(event) => event.stopPropagation()}>
