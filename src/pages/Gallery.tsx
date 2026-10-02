@@ -127,7 +127,7 @@ function Gallery() {
             type="button"
             onClick={() => setSelectedCategory(category)}
             aria-pressed={selectedCategory === category}
-            className={`cursor-pointer rounded-md border !px-4 !py-2 text-xs font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700 ${selectedCategory === category ? "border-teal-8 bg-teal-8 text-white" : "border-gray-200 bg-white text-teal-8 hover:border-teal-700 hover:bg-green-50"}`}
+            className={`cursor-pointer rounded-md border !px-4 !py-2 text-xs font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700 ${selectedCategory === category ? "border-teal-8 bg-teal-700 text-white" : "border-gray-200 bg-white text-teal-700 hover:border-teal-700 hover:bg-green-50"}`}
           >
             {category}
           </button>
@@ -152,7 +152,7 @@ function Gallery() {
             <div className="!p-4">
               <div className="flex items-start justify-between gap-3">
                 <h2 className="text-sm font-bold leading-snug text-teal-8">{item.title}</h2>
-                <span className="shrink-0 rounded bg-teal-8 !px-2 !py-1 text-[11px] font-semibold text-white">{item.category}</span>
+                <span className="shrink-0 rounded bg-teal-700 !px-2 !py-1 text-[11px] font-semibold text-white">{item.category}</span>
               </div>
               <p className="!mt-1 flex items-start gap-1.5 text-xs text-gray-500">
                 <FaMapMarkerAlt aria-hidden="true" className="mt-0.5 shrink-0" /> {item.location}
