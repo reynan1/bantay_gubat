@@ -190,7 +190,7 @@ function Effects() {
         <h2 id="twelve-effects-heading" className="flex items-center gap-2 !text-2xl font-bold !text-teal-8"><FaLeaf aria-hidden="true" /> How forest loss affects the Sierra Madre</h2>
         <div className="!mt-5 grid items-center gap-4 md:grid-cols-2 xl:grid-cols-3">
           {effects.map((effect, index) => (
-            <button type="button" key={effect.title} onClick={() => setActiveChain(index % agtaChains.length)} className="h-full w-full flex flex-col cursor-pointer rounded-lg border border-gray-200 bg-white !p-5 text-left shadow-sm transition hover:border-teal-700 hover:shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700">
+            <button type="button" key={effect.title} onClick={() => setActiveChain(index % agtaChains.length)} className="h-full w-full flex flex-col cursor-pointer rounded-lg border border-gray-200 bg-white !p-5 text-left shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-teal-600 hover:bg-teal-50 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700">
               <span className="text-sm font-bold text-teal-600">{String(index + 1).padStart(2, "0")}</span>
               <h3 className="!mt-2 text-lg font-bold leading-snug text-teal-8">{effect.title}</h3>
               <p className="!mt-3 text-sm font-medium leading-relaxed text-teal-800">{effect.summary}</p>
