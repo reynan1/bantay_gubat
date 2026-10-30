@@ -1,12 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 .cardHighlight{
     min-height: 100%;
 }
@@ -129,4 +123,26 @@ img,
 video,
 canvas {
   max-width: 100%;
+}
+
+@keyframes solution-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.solution-reveal {
+  animation: solution-reveal 320ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .solution-reveal {
+    animation: none;
+  }
 }

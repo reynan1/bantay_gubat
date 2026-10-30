@@ -10,6 +10,7 @@ import About from './pages/About';
 import Effects from './pages/Effects';
 import StakeHolders from './pages/StakeHolders';
 import Gallery from './pages/Gallery';
+import Solutions from './pages/Solution';
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
             <Route path="/causes" element={<Causes/>} />
             <Route path="/effects" element={<Effects />} />
             <Route path="/stakeholders" element={<StakeHolders />} />
+            <Route path="/solutions" element={<Solutions />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/about" element={<About />} />
         </Routes>

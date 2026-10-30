@@ -10,6 +10,7 @@ const navigationLinks = [
   { label: "Causes", to: "/causes" },
   { label: "Effects", to: "/effects" },
   { label: "Stakeholders", to: "/stakeholders" },
+  { label: "Solutions", to: "/solutions" },
   { label: "Gallery", to: "/gallery" },
   { label: "About", to: "/about" },
 ];
